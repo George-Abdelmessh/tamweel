@@ -38,6 +38,7 @@ dependencies:
   dio: ^4.0.6
   url_launcher: ^6.1.5
   page_transition: ^2.0.9
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
   assets:
     - assets/images/
     - assets/logos/
+    - assets/translations/
 
   # fonts:
   #   - family: Schyler
