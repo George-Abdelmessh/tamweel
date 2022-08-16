@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -14,47 +15,44 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 20.0,
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 20.0,
+          ),
+          child: IntroductionScreen(
+            pages: ListOnBoardingScreen.pages,
+            dotsDecorator: DotsDecorator(
+              size: Size(10, 10),
+              color: AppColor.grey,
+              activeSize: Size.square(15.0),
+              activeColor: AppColor.primary,
             ),
-            child: IntroductionScreen(
-              pages: ListOnBoardingScreen.pages,
-              dotsDecorator: DotsDecorator(
-                size: Size(10, 10),
-                color: AppColor.grey,
-                activeSize: Size.square(15.0),
-                activeColor: AppColor.primary,
-              ),
-              showDoneButton: true,
-              done: Text(
-                'تم',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: AppColor.primary,
-                ),
-              ),
-              showSkipButton: true,
-              skip: Text(
-                'تخطى',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: AppColor.primary,
-                ),
-              ),
-              showNextButton: true,
-              next: Icon(
-                Icons.arrow_forward,
-                size: 20.0,
+            showDoneButton: true,
+            done: Text(
+              'OnBoarding.OnDone'.tr(),
+              style: TextStyle(
+                fontSize: 20.0,
                 color: AppColor.primary,
               ),
-              onDone: () => onDone(context),
-              curve: Curves.decelerate,
             ),
+            showSkipButton: true,
+            skip: Text(
+              'OnBoarding.OnSkip'.tr(),
+              style: TextStyle(
+                fontSize: 20.0,
+                color: AppColor.primary,
+              ),
+            ),
+            showNextButton: true,
+            next: Icon(
+              Icons.arrow_forward,
+              size: 20.0,
+              color: AppColor.primary,
+            ),
+            onDone: () => onDone(context),
+            curve: Curves.decelerate,
           ),
         ),
       ),
