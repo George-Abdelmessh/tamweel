@@ -1,8 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:tamweel/layout/auth/login_screen.dart';
+import 'package:tamweel/layout/auth/signup_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/constants/app_image.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding%20copy.dart';
@@ -11,7 +15,7 @@ import 'package:wave/wave.dart';
 
 class LoginOptionsScreen extends StatelessWidget {
   const LoginOptionsScreen({Key? key}) : super(key: key);
-  static const routeName = '/login_options';
+  // static const routeName = '/login_options';
 
   static final _colors = [
     [
@@ -101,7 +105,13 @@ class LoginOptionsScreen extends StatelessWidget {
                         width: AppSize.width * 0.425,
                         child: CustomWideButton(
                           title: 'Auth.Login'.tr(),
-                          onTap: () {},
+                          onTap: () {
+                            AppNavigator.push(
+                              context: context,
+                              screen: LoginScreen(),
+                              type: PageTransitionType.bottomToTop,
+                            );
+                          },
                         ),
                       ),
                       Spacer(),
@@ -109,7 +119,13 @@ class LoginOptionsScreen extends StatelessWidget {
                         width: AppSize.width * 0.425,
                         child: CustomWideButton(
                           title: 'Auth.SignUp'.tr(),
-                          onTap: () {},
+                          onTap: () {
+                            AppNavigator.push(
+                              context: context,
+                              screen: SignupScreen(),
+                              type: PageTransitionType.bottomToTop,
+                            );
+                          },
                         ),
                       ),
                       SizedBox(width: AppSize.width * 0.05),

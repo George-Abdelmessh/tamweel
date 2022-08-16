@@ -10,4 +10,10 @@ class AppImage {
 
   ///Image displayed in login options screen.
   static String loginOptionsImage = 'assets/images/login_options.png';
+
+  ///Image displayed in login screen
+  static String loginWelcomeImage = 'assets/images/login_welcome.png';
+
+  // ///background displayed in login screen
+  // static String loginBackgroundImage = 'assets/images/login_background.png';
 }

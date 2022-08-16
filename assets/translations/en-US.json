@@ -2,6 +2,17 @@
     "Auth":{
       "Login":"Login",
       "ContinueAsGuest":"Continue as a Guest",
-      "SignUp":"Sign Up"
+      "SignUp":"Sign Up",
+      "Email":"Email",
+      "Password":"Password"
+    },
+    "Validators":{
+      "EmailRequired":"Email is required",
+      "EmailPattern":"Email is not valid",
+      "PasswordRequired":"Password is required",
+      "PasswordMinLength":"Password must be at least 8 characters long",
+      "PasswordContainNumber" : "Password must contain at least one number",
+      "PasswordContainUpperCase" : "Password must contain at least one upper case letter",
+      "PasswordContainSpecialChar" : "Password must contain at least one special character"
     }
   }

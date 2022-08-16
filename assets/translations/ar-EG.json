@@ -2,6 +2,18 @@
   "Auth":{
     "Login":"تسجيل الدخول",
     "ContinueAsGuest":"استمر كضيف",
-    "SignUp":"انشاء حساب"
+    "SignUp":"انشاء حساب",
+    "Email":"البريد الالكتروني",
+    "Password":"كلمة المرور"
+  },
+  "Validators":{
+    "EmailRequired":"البريد الالكتروني مطلوب",
+    "EmailPattern":"البريد الالكتروني غير صحيح",
+    "PasswordRequired":"كلمة المرور مطلوبة",
+    "PasswordMinLength":"كلمة المرور لا تقل عن 8 حروف",
+    "PasswordContainNumber":"كلمة المرور يجب ان تحتوي على رقم",
+    "PasswordContainUpperCase":"كلمة المرور يجب ان تحتوي على حرف كبير",
+    "PasswordContainSpecialChar":"كلمة المرور يجب ان تحتوي على حرف خاص %#@$"
   }
+
 }

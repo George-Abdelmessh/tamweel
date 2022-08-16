@@ -25,8 +25,8 @@ class AppNavigator {
     );
   }
 
-  /// App Routes to be used in the Material App routes, used for named navigation
-  static Map<String, Widget Function(BuildContext)> routes = {
-    LoginOptionsScreen.routeName: (context) => LoginOptionsScreen(),
-  };
+  // /// App Routes to be used in the Material App routes, used for named navigation
+  // static Map<String, Widget Function(BuildContext)> routes = {
+  //   LoginOptionsScreen.routeName: (context) => LoginOptionsScreen(),
+  // };
 }

@@ -10,6 +10,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
     //TODO: Login the user using Auth repository.
     try {
       await Future.delayed(Duration(seconds: 1));
+      print('User logged in with email: $email and password: $password');
       state = state.copyWith(
         userState: authState.loggedIn,
         accessToken: 'accessToken',
@@ -33,4 +34,5 @@ class AuthNotifier extends StateNotifier<AppUser> {
 
 /// Provider that provides the AuthNotifier.
 /// This is used to notify the UI of the user's authentication state.
-final authNotifierProvider = StateNotifierProvider((ref) => AuthNotifier());
+final authNotifierProvider =
+    StateNotifierProvider<AuthNotifier, AppUser>((ref) => AuthNotifier());
