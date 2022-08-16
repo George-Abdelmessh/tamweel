@@ -11,9 +11,13 @@ import 'package:flutter/cupertino.dart';
 ///
 ///  Example:
 /// ```dart
-/// final myLocalesController = Get.put(MyLocales());
-/// myLocalesController.setLocale(supportedLocales[supportedLocales.length - 1]);
-/// print(myLocalesController.currentLocale.value.languageCode); //prints 'en'
+/// AppLocales.setLocale(AppLocales.supportedLocales[AppLocales.supportedLocales.length - 1]);
+///  --OR--
+/// supportedLocales = AppLocales.supportedLocales;
+/// AppLocales.setLocale(supportedLocales[supportedLocales.length - 1]);
+///
+/// --either way--
+/// print(AppLocales.currentLocale.value.languageCode); //prints 'en'
 /// ```
 class AppLocales {
   //current Locale

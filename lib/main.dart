@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:tamweel/shared/style/locales.dart';
+import 'package:tamweel/shared/style/app_locales.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
