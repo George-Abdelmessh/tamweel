@@ -3,5 +3,6 @@
 
 class AppImage {
  // Example
- /// static String shoppingApp = 'assets/images/shopping.png';
+  static String firstPage = 'assets/images/page_one.png';
+  static String secondPage = 'assets/images/page_two.png';
 }

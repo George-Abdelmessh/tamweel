@@ -1,7 +1,6 @@
 
 /// this for api end points
 /// examples
-
 const LOGIN = 'login';
 
 const HOME = 'home';

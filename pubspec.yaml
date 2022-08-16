@@ -46,6 +46,8 @@ dependencies:
   hooks_riverpod: ^1.0.4
   # used for change app language
   easy_localization: ^3.0.1
+  # used for Onboarding screen
+  introduction_screen: ^3.0.2
 
 
 dev_dependencies:
@@ -73,6 +75,7 @@ flutter:
   assets:
     - assets/images/
     - assets/logos/
+    - assets/translations/
 
   # fonts:
   #   - family: Schyler
