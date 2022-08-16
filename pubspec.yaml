@@ -50,6 +50,12 @@ dependencies:
   easy_localization: ^3.0.1
   # used for OnBoarding screen
   introduction_screen: ^3.0.2
+  # used for bottom navigation bar
+  bottom_navy_bar: ^6.0.0
+  # used for implement slider
+  carousel_slider: ^4.1.1
+  # used for caching images
+  cached_network_image: ^3.2.1
 
 
 dev_dependencies:
