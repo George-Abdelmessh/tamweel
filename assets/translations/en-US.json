@@ -1,1 +1,7 @@
-{}
+{
+    "Auth":{
+      "Login":"Login",
+      "ContinueAsGuest":"Continue as a Guest",
+      "SignUp":"Sign Up"
+    }
+  }

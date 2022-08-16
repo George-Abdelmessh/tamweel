@@ -1,5 +1,7 @@
 {
-  "o": {
-    "D": "sdsd"
+  "Auth":{
+    "Login":"تسجيل الدخول",
+    "ContinueAsGuest":"استمر كضيف",
+    "SignUp":"سجل"
   }
 }
