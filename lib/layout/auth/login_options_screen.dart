@@ -92,30 +92,27 @@ class LoginOptionsScreen extends StatelessWidget {
               physics: AppHelper.neverScroll,
               children: [
                 SizedBox(
-                  height: AppSize.height * 0.06,
+                  height: AppSize.height * 0.05,
                   width: AppSize.width,
                   child: Row(
                     children: [
-                      Padding(
-                        padding: AppPaddingCopy.PaddingH005,
-                        child: SizedBox(
-                          width: AppSize.width * 0.4,
-                          child: CustomWideButton(
-                            title: 'Auth.SignUp'.tr(),
-                            onTap: () {},
-                          ),
+                      SizedBox(width: AppSize.width * 0.05),
+                      SizedBox(
+                        width: AppSize.width * 0.425,
+                        child: CustomWideButton(
+                          title: 'Auth.Login'.tr(),
+                          onTap: () {},
                         ),
                       ),
-                      Padding(
-                        padding: AppPaddingCopy.PaddingH005,
-                        child: SizedBox(
-                          width: AppSize.width * 0.4,
-                          child: CustomWideButton(
-                            title: 'Auth.Login'.tr(),
-                            onTap: () {},
-                          ),
+                      Spacer(),
+                      SizedBox(
+                        width: AppSize.width * 0.425,
+                        child: CustomWideButton(
+                          title: 'Auth.SignUp'.tr(),
+                          onTap: () {},
                         ),
                       ),
+                      SizedBox(width: AppSize.width * 0.05),
                     ],
                   ),
                 ),

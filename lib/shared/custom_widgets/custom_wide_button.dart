@@ -22,7 +22,7 @@ class CustomWideButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? AppSize.height * 0.06,
+      height: height ?? AppSize.height * 0.05,
       child: ElevatedButton(
         onPressed: () => onTap(),
         child: Text(
