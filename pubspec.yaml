@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   # used for cashing values
   shared_preferences: ^2.0.15
+  # used for generate splash Screen
+  # flutter_native_splash: ^2.2.7
   # used for handle api
   dio: ^4.0.6
   # used for launch all urls
@@ -46,7 +48,7 @@ dependencies:
   hooks_riverpod: ^1.0.4
   # used for change app language
   easy_localization: ^3.0.1
-  # used for Onboarding screen
+  # used for OnBoarding screen
   introduction_screen: ^3.0.2
 
 
@@ -63,6 +65,14 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+# flutter pub run flutter_native_splash:create
+# splash screen
+#flutter_native_splash:
+#  color: "#ffffff"
+#  image: "assets/logos/splash_logo1.png"
+#  android: true
+#  ios: true
 
 # The following section is specific to Flutter packages.
 flutter:

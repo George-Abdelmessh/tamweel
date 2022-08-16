@@ -13,14 +13,15 @@ void main() async {
   await CacheHelper.init();
   runApp(EasyLocalization(
       supportedLocales: AppLocales.supportedLocales,
-      path: 'assets/translations', // <-- change the path of the translation files
+      path:
+          'assets/translations', // <-- change the path of the translation files
       fallbackLocale: AppLocales.supportedLocales[0],
       child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
-  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse);
+  MyApp({Key? key}) : super(key: key);
+  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) ?? true;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,11 +32,12 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        title: 'Flutter Demo',
+        title: 'Tamweel',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: firstUse? OnBoardingScreen() : HomeScreen(),
+        home: firstUse ? OnBoardingScreen() : HomeScreen(),
       ),
     );
   }
