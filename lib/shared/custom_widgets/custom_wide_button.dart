@@ -23,7 +23,9 @@ class CustomWideButton extends StatelessWidget {
     return SizedBox(
       height: height ?? AppSize.height * 0.05,
       child: ElevatedButton(
-        onPressed: () => onTap,
+        onPressed: () {
+          onTap();
+        },
         style: ElevatedButton.styleFrom(
           primary: background,
           elevation: 0.0,

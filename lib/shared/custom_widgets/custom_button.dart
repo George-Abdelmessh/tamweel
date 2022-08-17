@@ -25,7 +25,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       height: height,
-      onPressed: () => onTap,
+      onPressed: () {
+        onTap();
+      },
       minWidth: double.infinity,
       padding: AppPadding.paddingV10,
       shape: RoundedRectangleBorder(

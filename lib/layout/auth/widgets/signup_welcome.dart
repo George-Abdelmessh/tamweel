@@ -32,7 +32,6 @@ class SignUpWelcome extends StatelessWidget {
           fit: BoxFit.cover,
           height: AppSize.height * 0.25,
         ),
-        SizedBox(height: AppSize.height * 0.05),
       ],
     );
   }

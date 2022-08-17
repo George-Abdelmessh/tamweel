@@ -3,12 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:tamweel/layout/auth/widgets/signup_welcome.dart';
-import 'package:tamweel/providers/auth/app_user_provider.dart';
+import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
-import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/style/app_padding_copy.dart';
 
 class SignupScreen extends HookConsumerWidget {
   const SignupScreen({super.key});
@@ -28,13 +28,11 @@ class SignupScreen extends HookConsumerWidget {
     // const String Governorate = '';
     // const String city = '';
     // const maritalStatus userMaritalStatus = maritalStatus.single;
-    final authProvider = ref.watch(authNotifierProvider.notifier);
+    final authProvider = ref.watch(signupFormNotifierProvider.notifier);
 
     // THE FOLLOWING TWO VARIABLES ARE REQUIRED TO CONTROL THE STEPPER.
-    int activeStep = 0; // Initial step set to 5.
-
-    const int upperBound =
-        1; // upperBound MUST BE total number of icons minus 1.
+    final activeStep =
+        ref.watch(signupFormNotifierProvider); // Initial step set to 5.
 
     Future<void> signup() async {
       //form is valid, perform login
@@ -51,7 +49,19 @@ class SignupScreen extends HookConsumerWidget {
         );
         //login
         await authProvider
-            .login(emailController.text, passwordController.text)
+            .signUp(
+              email: emailController.text,
+              password: passwordController.text,
+              confirmPassword: passwordController.text,
+              name: '',
+              phone: '',
+              address: '',
+              personalId: '',
+              isMale: false,
+              userMaritalStatus: MaritalStatus.single,
+              governorate: '',
+              city: '',
+            )
             .then(
               (value) => //hide the loading indicator dialog
                   Navigator.of(context).pop(),
@@ -92,17 +102,28 @@ class SignupScreen extends HookConsumerWidget {
                     padding: AppPaddingCopy.paddingH005,
                     child: IconStepper(
                       icons: const [
-                        Icon(Icons.person_outline_rounded),
-                        Icon(Icons.flag_outlined),
+                        Icon(
+                          Icons.person_outline_rounded,
+                          color: AppColor.white,
+                        ),
+                        Icon(
+                          Icons.flag_outlined,
+                          color: AppColor.white,
+                        ),
                       ],
                       // activeStep property set to activeStep variable defined above.
                       activeStep: activeStep,
-                      // This ensures step-tapping updates the activeStep.
-                      onStepReached: (index) {
-                        if (activeStep <= upperBound) activeStep = index;
-                      },
+                      activeStepBorderColor: AppColor.transparent,
+                      activeStepColor: AppColor.secondary,
+                      activeStepBorderWidth: 2,
+                      enableNextPreviousButtons: false,
+                      enableStepTapping: false,
+                      lineColor: AppColor.primary,
+                      lineLength: AppSize.width * 0.3,
+                      scrollingDisabled: true,
+                      stepReachedAnimationEffect: Curves.bounceIn,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
