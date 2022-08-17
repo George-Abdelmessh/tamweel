@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../style/app_color.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onTap,
     this.titleColor = AppColor.primary,
-  }) : super(key: key);
+  });
   final title;
   final onTap;
   final titleColor;
@@ -16,7 +16,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () => onTap(),
+      onPressed: () => onTap,
       child: Text(
         title,
         style: TextStyle(

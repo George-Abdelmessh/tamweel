@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum authState {
+enum AuthState {
   guest,
   loggedIn,
 }
@@ -8,11 +8,12 @@ enum authState {
 @immutable
 class AppUser {
   ///Immutable Constructor
-  const AppUser(
-      {this.accessToken,
-      this.refreshToken,
-      this.userId,
-      required this.userState});
+  const AppUser({
+    this.accessToken,
+    this.refreshToken,
+    this.userId,
+    required this.userState,
+  });
 
   /// The user's Access Token used for Requests.
   final String? accessToken;
@@ -24,14 +25,14 @@ class AppUser {
   final String? userId;
 
   /// The User's Authentication state
-  final authState userState;
+  final AuthState userState;
 
   /// Returns a copy of the current AppUser with the given values.
   AppUser copyWith({
     String? accessToken,
     String? refreshToken,
     String? userId,
-    required authState userState,
+    required AuthState userState,
   }) {
     return AppUser(
       accessToken: accessToken ?? this.accessToken,

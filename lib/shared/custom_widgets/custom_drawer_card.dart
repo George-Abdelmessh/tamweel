@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-
-import '../style/app_color.dart';
-import '../style/app_decoration.dart';
-import '../style/app_padding.dart';
-import '../style/app_radius.dart';
-import 'custom_sized_box_width.dart';
+import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
+import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_decoration.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class CustomDrawerCard extends StatelessWidget {
   const CustomDrawerCard({
-    Key? key,
+    super.key,
     required this.icon,
     required this.itemTitle,
     required this.onTap,
-  }) : super(key: key);
+  });
   final icon;
   final String itemTitle;
   final Function onTap;
@@ -34,18 +33,18 @@ class CustomDrawerCard extends StatelessWidget {
               size: 20,
               color: AppColor.black,
             ),
-            CustomSizedBoxWidth(),
+            const CustomSizedBoxWidth(),
             Expanded(
               child: Text(
                 itemTitle,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   color: AppColor.black,
                 ),
               ),
             ),
-            CustomSizedBoxWidth(),
-            Icon(
+            const CustomSizedBoxWidth(),
+            const Icon(
               Icons.arrow_forward_ios,
               size: 10,
               color: AppColor.black,

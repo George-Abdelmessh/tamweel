@@ -14,6 +14,8 @@ class AppImage {
   ///Image displayed in login screen
   static String loginWelcomeImage = 'assets/images/login_welcome.png';
 
+  ///Image displayed in signup screen
+  static String signupWelcomeImage = 'assets/images/signup_welcome.png';
   // ///background displayed in login screen
   // static String loginBackgroundImage = 'assets/images/login_background.png';
 }

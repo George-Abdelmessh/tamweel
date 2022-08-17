@@ -25,10 +25,10 @@ class AppValidators {
     }
     //contains at least one number, one uppercase letter, and one special character
 
-    if (!password.contains(RegExp(r'[0-9]'))) {
+    if (!password.contains(RegExp('[0-9]'))) {
       return 'Validators.PasswordContainNumber'.tr();
     }
-    if (!password.contains(RegExp(r'[A-Z]'))) {
+    if (!password.contains(RegExp('[A-Z]'))) {
       return 'Validators.PasswordContainUpperCase'.tr();
     }
     if (!password

@@ -10,8 +10,7 @@ class CacheHelper {
   static Future<bool> putBoolean({
     required String key,
     required bool value,
-  }) async
-  {
+  }) async {
     return await sharedPreferences.setBool(key, value);
   }
 
@@ -34,8 +33,7 @@ class CacheHelper {
 
   static Future<bool> removeData({
     required String key,
-  }) async
-  {
+  }) async {
     return await sharedPreferences.remove(key);
   }
 }

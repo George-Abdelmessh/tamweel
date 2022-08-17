@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../style/app_color.dart';
-import '../style/app_padding.dart';
-import '../style/app_radius.dart';
+import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
-    Key? key,
+  const CustomTextFormField({
+    super.key,
     required this.controller,
     this.type = TextInputType.text,
     this.onSubmit,
@@ -24,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixPressed,
     this.minLines = 1,
     this.maxLines = 1,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final TextInputType type;
@@ -89,7 +89,7 @@ class CustomTextFormField extends StatelessWidget {
           contentPadding: AppPadding.paddingTextFormField,
           focusedBorder: OutlineInputBorder(
             borderRadius: AppRadius.radius20,
-            borderSide: BorderSide(color: AppColor.primary),
+            borderSide: const BorderSide(color: AppColor.primary),
           ),
           border: OutlineInputBorder(
             borderRadius: AppRadius.radius20,

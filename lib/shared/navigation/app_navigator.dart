@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:tamweel/layout/auth/login_options_screen.dart';
 
 class AppNavigator {
   /// NAVIGATOR PUSH

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../style/app_color.dart';
-import 'custom_sized_box_width.dart';
+import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 
 class CustomIconWithText extends StatelessWidget {
   const CustomIconWithText({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
-  }) : super(key: key);
+  });
 
   final icon;
   final text;
@@ -18,7 +17,7 @@ class CustomIconWithText extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, color: AppColor.primary, size: 15.0),
-        CustomSizedBoxWidth(width: 5.0),
+        const CustomSizedBoxWidth(width: 5.0),
         Expanded(
           child: Text(
             '$text',

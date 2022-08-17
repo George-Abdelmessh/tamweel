@@ -14,7 +14,7 @@ class AppHelper {
       // ignore: deprecated_member_use
       await launch(url);
     } else {
-      SnackBar(
+      const SnackBar(
         content: Text('يوجد خطأ في الرابط'),
       );
 

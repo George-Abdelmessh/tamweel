@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
-import '../style/app_color.dart';
-
 class CustomWideButton extends StatelessWidget {
-  CustomWideButton({
-    Key? key,
+  const CustomWideButton({
+    super.key,
     this.height,
     required this.title,
     required this.onTap,
     this.textColor = AppColor.white,
     this.background = AppColor.primary,
-  }) : super(key: key);
+  });
   final String title;
   final double? height;
   final Function onTap;
@@ -24,13 +23,7 @@ class CustomWideButton extends StatelessWidget {
     return SizedBox(
       height: height ?? AppSize.height * 0.05,
       child: ElevatedButton(
-        onPressed: () => onTap(),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontSize: 18.0, fontWeight: FontWeight.bold, color: textColor),
-          textAlign: TextAlign.center,
-        ),
+        onPressed: () => onTap,
         style: ElevatedButton.styleFrom(
           primary: background,
           elevation: 0.0,
@@ -40,6 +33,15 @@ class CustomWideButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: AppRadius.radius20,
           ),
+        ),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: textColor,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
     );
