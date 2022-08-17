@@ -11,19 +11,18 @@ class SignUpFormNotifier extends StateNotifier<int> {
 
   ///Next Step method
   void nextStep() {
-    if (state == 0) state++;
+    if (state != 2) state++;
   }
 
   ///Previous Step method
   void previousStep() {
-    if (state == 1) state--;
+    if (state != 0) state--;
   }
 
   ///Sign Up method, Takes 9 strings, a boolean, and a MaritalStatus.
   Future<void> signUp({
     required String email,
     required String password,
-    required String confirmPassword,
     required String name,
     required String phone,
     required String address,
@@ -48,6 +47,6 @@ class SignUpFormNotifier extends StateNotifier<int> {
 /// Provider that provides the AuthNotifier.
 /// This is used to notify the UI of the user's authentication state.
 final signupFormNotifierProvider =
-    StateNotifierProvider<SignUpFormNotifier, int>(
+    StateNotifierProvider.autoDispose<SignUpFormNotifier, int>(
   (ref) => SignUpFormNotifier(),
 );

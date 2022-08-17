@@ -4,15 +4,39 @@
       "ContinueAsGuest":"Continue as a Guest",
       "SignUp":"Sign Up",
       "Email":"Email",
-      "Password":"Password"
+      "Password":"Password",
+      "Name":"Name(As in National Id Card)",
+      "NationalId":"National Id",
+      "ConfirmPassword":"Confirm Password",
+      "Gender":"Gender",
+      "Phone":"Phone",
+      "MaritalStatus":"Marital Status",
+      "Address":"Address(As in National Id Card)",
+      "Governorate":"Governorate",
+      "City":"City",
+      "Married":"Married",
+      "Single":"Single",
+      "Divorced" :"Divorced",
+      "Widowed" :"Widowed",
+      "Male":"Male",
+      "Female":"Female"
     },
     "Validators":{
+      "Required":"Required",
       "EmailRequired":"Email is required",
       "EmailPattern":"Email is not valid",
       "PasswordRequired":"Password is required",
       "PasswordMinLength":"Password must be at least 8 characters long",
       "PasswordContainNumber" : "Password must contain at least one number",
       "PasswordContainUpperCase" : "Password must contain at least one upper case letter",
-      "PasswordContainSpecialChar" : "Password must contain at least one special character"
+      "PasswordContainSpecialChar" : "Password must contain at least one special character",
+      "ExactLength":"This Field's Length Should be ",
+      "NationalIdPattern":"National Id is not valid",
+      "PhonePattern":"Phone is not valid",
+      "Identical": "Must be identical"
+    },
+    "Navigation":{
+      "Next":"Next",
+      "Back":"Back"
     }
   }
