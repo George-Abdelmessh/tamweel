@@ -10,7 +10,7 @@ class CustomIconWithText extends StatelessWidget {
     required this.text,
   }) : super(key: key);
 
-  final icon;
+  final IconData icon;
   final text;
 
   @override

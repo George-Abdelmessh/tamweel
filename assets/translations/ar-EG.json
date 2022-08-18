@@ -22,5 +22,10 @@
     "CategoryTitle" : "برامج التمويل",
     "SearchTitle" : "البحث",
     "SettingTitle" : "الاعدادات"
-  }
+  },
+  "ShowMore" : "عرض المزيد",
+  "MostLoans" : "الاكثر طلبا",
+  "ReachTo" : "يصل الي",
+  "RepaymentPeriod": "مدة السداد",
+  "Apply" : "تقديم الطلب"
 }

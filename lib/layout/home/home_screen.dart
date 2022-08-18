@@ -19,7 +19,7 @@ class HomeScreen extends HookConsumerWidget {
     'AppBarTitle.SettingTitle'.tr(),
   ];
 
-  final List listOfScreens = [
+  final List<Widget> listOfScreens = [
     HomeBody(),
     CategoryBody(),
     SearchBody(),

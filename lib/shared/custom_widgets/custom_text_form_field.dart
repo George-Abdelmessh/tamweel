@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 import '../style/app_color.dart';
 import '../style/app_padding.dart';
 import '../style/app_radius.dart';
@@ -18,7 +19,7 @@ class CustomTextFormField extends StatelessWidget {
     this.isFocus = false,
     this.obscureText = false,
     this.textColor = AppColor.black,
-    this.textDirection = TextDirection.rtl,
+    this.textDirection = ui.TextDirection.rtl,
     this.prefix,
     this.suffix,
     this.suffixPressed,
@@ -36,16 +37,16 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? suffix;
   final String labelText;
 
-  final minLines;
-  final maxLines;
+  final int minLines;
+  final int maxLines;
 
-  final isValidate;
-  final isPhone;
-  final obscureText;
-  final textColor;
-  final textDirection;
-  final enabled;
-  final isFocus;
+  final bool isValidate;
+  final bool isPhone;
+  final bool obscureText;
+  final Color textColor;
+  final ui.TextDirection textDirection;
+  final bool enabled;
+  final bool isFocus;
 
   @override
   Widget build(BuildContext context) {

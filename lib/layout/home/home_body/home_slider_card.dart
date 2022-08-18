@@ -6,7 +6,6 @@ import '../../../shared/style/app_decoration.dart';
 import '../../../shared/style/app_padding.dart';
 import '../../../shared/style/app_radius.dart';
 
-
 class HomeSliderCard extends StatelessWidget {
   const HomeSliderCard({
     Key? key,
@@ -14,13 +13,13 @@ class HomeSliderCard extends StatelessWidget {
     required this.imgUrl,
   }) : super(key: key);
 
-  final name;
-  final imgUrl;
+  final String name;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.paddingH20,
+      padding: EdgeInsets.all(5),
       child: Container(
         decoration: AppDecoration.decorationGrey,
         child: Stack(
@@ -29,23 +28,19 @@ class HomeSliderCard extends StatelessWidget {
               borderRadius: AppRadius.radius20,
               child: CachedNetworkImage(
                 imageUrl: imgUrl,
-                errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
-                //placeholderFadeInDuration: Duration(seconds: 1),
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) =>
+                    Center(child: Icon(Icons.error)),
+                placeholderFadeInDuration: Duration(seconds: 1),
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(value: downloadProgress.progress),
+                    Center(
+                  child: CircularProgressIndicator(
+                      value: downloadProgress.progress),
+                ),
               ),
-              // child: FadeInImage(
-              //   placeholder: ,
-              //   image: CachedNetworkImageProvider(
-              //     imgUrl,
-              //   ),
-              //   height: double.infinity,
-              //   width: double.infinity,
-              //   fit: BoxFit.cover,
-              //   placeholderFit: BoxFit.none,
-              // ),
             ),
-
             Container(
               decoration: AppDecoration.decorationOverlay,
               width: double.infinity,
@@ -54,10 +49,11 @@ class HomeSliderCard extends StatelessWidget {
                 padding: AppPadding.padding15,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       decoration: AppDecoration.decorationOverlay,
-                      padding: AppPadding.padding10 ,
+                      padding: AppPadding.padding10,
                       child: Text(
                         name,
                         style: TextStyle(

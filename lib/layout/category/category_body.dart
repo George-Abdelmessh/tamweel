@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryBody extends StatelessWidget {
-  const CategoryBody({Key? key}) : super(key: key);
+  const CategoryBody({super.key});
 
   @override
   Widget build(BuildContext context) {

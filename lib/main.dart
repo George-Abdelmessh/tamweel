@@ -28,7 +28,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) ?? true;
+  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) as bool? ?? true;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -9,9 +9,9 @@ class CustomTextButton extends StatelessWidget {
     required this.onTap,
     this.titleColor = AppColor.primary,
   }) : super(key: key);
-  final title;
+  final String title;
   final onTap;
-  final titleColor;
+  final Color titleColor;
 
   @override
   Widget build(BuildContext context) {
