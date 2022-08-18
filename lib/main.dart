@@ -6,6 +6,7 @@ import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 
 void main() async {
@@ -24,8 +25,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) ?? false;
+  MyApp({Key? key}) : super(key: key);
+  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) ?? true;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -36,13 +37,12 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
+        title: 'Tamweel',
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: firstUse ? OnBoardingScreen() : const LoginOptionsScreen(),
-        // routes: AppNavigator.routes,
+        home: firstUse ? OnBoardingScreen() : HomeScreen(),
       ),
     );
   }

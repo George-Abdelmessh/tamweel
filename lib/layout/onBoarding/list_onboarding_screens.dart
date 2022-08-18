@@ -7,12 +7,11 @@ import 'package:tamweel/shared/constants/app_image.dart';
 class ListOnBoardingScreen {
   static final List<PageViewModel> pages = [
     PageViewModel(
-      titleWidget: const Text(
-        'سجل دخول اولاً',
+      titleWidget: Text(
+        'OnBoarding.LoginFirst'.tr(),
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body:
-          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
+      body:'OnBoarding.LoginFirstBody'.tr(),
       image: Image.asset(AppImage.firstPage),
       decoration: const PageDecoration(
         titleTextStyle: TextStyle(
@@ -22,12 +21,11 @@ class ListOnBoardingScreen {
       ),
     ),
     PageViewModel(
-      titleWidget: const Text(
-        'اختار الخطة المناسبة',
+      titleWidget: Text(
+        'OnBoarding.ChosePlan'.tr(),
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body:
-          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
+      body: 'OnBoarding.ChosePlanBody'.tr(),
       image: Image.asset(
         AppImage.secondPage,
       ),
@@ -39,12 +37,11 @@ class ListOnBoardingScreen {
       ),
     ),
     PageViewModel(
-      titleWidget: const Text(
-        'املاء البيانات',
+      titleWidget: Text(
+        'OnBoarding.FillData'.tr(),
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body:
-          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
+      body: 'OnBoarding.FillDataBody'.tr(),
       image: Image.asset(AppImage.firstPage),
       decoration: const PageDecoration(
         titleTextStyle: TextStyle(
@@ -58,8 +55,7 @@ class ListOnBoardingScreen {
         'OnBoarding.Done'.tr(),
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body:
-          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
+      body: 'OnBoarding.DoneBody'.tr(),
       image: Image.asset(AppImage.secondPage),
       decoration: const PageDecoration(
         titleTextStyle: TextStyle(
