@@ -11,8 +11,8 @@ class CustomDrawerCard extends StatelessWidget {
     required this.icon,
     required this.itemTitle,
     required this.onTap,
-  }) : super(key: key);
-  final icon;
+  });
+  final IconData icon;
   final String itemTitle;
   final Function onTap;
 

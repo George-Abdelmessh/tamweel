@@ -9,9 +9,9 @@ class ListOnBoardingScreen {
     PageViewModel(
       titleWidget: Text(
         'OnBoarding.LoginFirst'.tr(),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body:'OnBoarding.LoginFirstBody'.tr(),
+      body: 'OnBoarding.LoginFirstBody'.tr(),
       image: Image.asset(AppImage.firstPage),
       decoration: const PageDecoration(
         titleTextStyle: TextStyle(
@@ -23,7 +23,7 @@ class ListOnBoardingScreen {
     PageViewModel(
       titleWidget: Text(
         'OnBoarding.ChosePlan'.tr(),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
       body: 'OnBoarding.ChosePlanBody'.tr(),
       image: Image.asset(
@@ -39,7 +39,7 @@ class ListOnBoardingScreen {
     PageViewModel(
       titleWidget: Text(
         'OnBoarding.FillData'.tr(),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
       body: 'OnBoarding.FillDataBody'.tr(),
       image: Image.asset(AppImage.firstPage),

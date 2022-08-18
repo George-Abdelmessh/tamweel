@@ -1,11 +1,13 @@
-/// this for api end points
-/// examples
-const LOGIN = 'login';
+class AppEndPoints {
+  /// this for api end points
+  /// examples
+  static const login = 'login';
 
-const HOME = 'home';
+  static const home = 'home';
 
-const GET_CATEGORIES = 'categories';
+  static const getCategories = 'categories';
 
-const FAVORITES = 'favorites';
+  static const favourites = 'favorites';
 
-const PROFILE = 'profile';
+  static const profile = 'profile';
+}

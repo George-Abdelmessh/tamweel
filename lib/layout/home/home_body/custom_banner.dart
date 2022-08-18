@@ -8,19 +8,19 @@ import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
-import '../../../shared/style/app_radius.dart';
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class CustomBanner extends StatelessWidget {
   const CustomBanner({
-    Key? key,
+    super.key,
     required this.imgUlr,
     required this.text,
     this.loanData,
-  }) : super(key: key);
+  });
 
   final String imgUlr;
   final String text;
-  final loanData;
+  final dynamic loanData;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class CustomBanner extends StatelessWidget {
           Positioned(
             left: 10,
             top: 10,
-            child: Container(
+            child: SizedBox(
               width: AppSize.width * 0.35,
               height: AppSize.height * 0.12,
               child: AutoSizeText(
@@ -56,17 +56,18 @@ class CustomBanner extends StatelessWidget {
                 maxFontSize: 35,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.white),
+                style: const TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.white,
+                ),
               ),
             ),
           ),
           Positioned(
             left: 10,
             bottom: 10,
-            child: Container(
+            child: SizedBox(
               width: AppSize.width * 0.3,
               child: CustomWideButton(
                 title: 'ShowMore'.tr(),

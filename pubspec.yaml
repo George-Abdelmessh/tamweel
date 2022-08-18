@@ -46,7 +46,6 @@ dependencies:
   hooks_riverpod: ^1.0.4
   # used for change app language
   easy_localization: ^3.0.1
-  lint: ^1.10.0
 
   # Widgets
   introduction_screen: ^3.0.2

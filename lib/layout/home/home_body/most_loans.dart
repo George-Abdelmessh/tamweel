@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:tamweel/layout/home/home_body/loan_card.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
-import 'loan_card.dart';
-
 class MostLoans extends StatelessWidget {
-  const MostLoans({Key? key}) : super(key: key);
+  const MostLoans({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +23,16 @@ class MostLoans extends StatelessWidget {
             children: [
               Text(
                 'MostLoans'.tr(),
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColor.secondary,
                   fontSize: 30,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
-              Expanded(
+              const Expanded(
                 child: Divider(
                   color: AppColor.secondary,
                 ),
@@ -43,8 +42,8 @@ class MostLoans extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => LoanCard(),
-              separatorBuilder: (context, index) => SizedBox(
+              itemBuilder: (context, index) => const LoanCard(),
+              separatorBuilder: (context, index) => const SizedBox(
                 width: 10,
               ),
               itemCount: 10,

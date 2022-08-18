@@ -34,13 +34,13 @@ class SignUpFormNotifier extends StateNotifier<int> {
   }) async {
     //Todo: Sign Up the user using Auth repository.
     await Future.delayed(const Duration(seconds: 2));
-    print('User signed up with email: $email and password: $password');
-    print('User signed up with name: $name and phone: $phone');
-    print('User signed up with address: $address and personalId: $personalId');
-    print('User signed up with governorate: $governorate and city: $city');
-    print(
-      'User signed up with isMale: $isMale and userMaritalStatus: $userMaritalStatus',
-    );
+    // print('User signed up with email: $email and password: $password');
+    // print('User signed up with name: $name and phone: $phone');
+    // print('User signed up with address: $address and personalId: $personalId');
+    // print('User signed up with governorate: $governorate and city: $city');
+    // print(
+    //   'User signed up with isMale: $isMale and userMaritalStatus: $userMaritalStatus',
+    // );
   }
 }
 

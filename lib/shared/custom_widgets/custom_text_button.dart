@@ -8,7 +8,7 @@ class CustomTextButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.titleColor = AppColor.primary,
-  }) : super(key: key);
+  });
   final String title;
   final onTap;
   final Color titleColor;

@@ -2,14 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
-import '../../../shared/style/app_radius.dart';
-
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class CustomInkwellBanner extends StatelessWidget {
   const CustomInkwellBanner({
-    Key? key,
-     required this.imgUlr,
-  }) : super(key: key);
+    super.key,
+    required this.imgUlr,
+  });
 
   final String imgUlr;
 

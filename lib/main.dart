@@ -6,7 +6,6 @@ import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 import 'package:tamweel/shared/style/app_theme.dart';
 
@@ -28,8 +27,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  final bool firstUse = CacheHelper.getData(key: AppConst.firstUse) as bool? ?? true;
+  MyApp({super.key});
+  final bool firstUse =
+      CacheHelper.getData(key: AppConst.firstUse) as bool? ?? true;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

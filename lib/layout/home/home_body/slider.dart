@@ -1,35 +1,32 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:tamweel/layout/home/home_body/home_slider_card.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 
-import 'home_slider_card.dart';
-
 class HomeSlider extends StatelessWidget {
-  const HomeSlider({Key? key, this.viewportFraction = 1.0}) : super(key: key);
+  const HomeSlider({super.key, this.viewportFraction = 1.0});
 
-  final viewportFraction;
+  final double viewportFraction;
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        initialPage: 0,
         height: AppSize.height * 0.3,
         autoPlay: true,
         viewportFraction: 1,
         enableInfiniteScroll: false,
         autoPlayCurve: Curves.linearToEaseOut,
-        autoPlayAnimationDuration: Duration(seconds: 2),
-        scrollPhysics: BouncingScrollPhysics(),
-        pauseAutoPlayOnTouch: true,
-        pauseAutoPlayOnManualNavigate: true,
+        autoPlayAnimationDuration: const Duration(seconds: 2),
+        scrollPhysics: const BouncingScrollPhysics(),
         onPageChanged: (index, r) {},
       ),
       itemCount: 3,
       itemBuilder: (context, index, any) {
-        return HomeSliderCard(
-          name: "برامج التمويل",
-          imgUrl: 'https://land8.com/wp-content/uploads/2016/12/83-CopyofLand8Cover1.png',
+        return const HomeSliderCard(
+          name: 'برامج التمويل',
+          imgUrl:
+              'https://land8.com/wp-content/uploads/2016/12/83-CopyofLand8Cover1.png',
         );
       },
     );

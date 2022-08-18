@@ -22,16 +22,15 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           child: IntroductionScreen(
             pages: ListOnBoardingScreen.pages,
-            dotsDecorator: DotsDecorator(
+            dotsDecorator: const DotsDecorator(
               size: Size(10, 10),
               color: AppColor.grey,
               activeSize: Size.square(15.0),
               activeColor: AppColor.primary,
             ),
-            showDoneButton: true,
             done: Text(
               'OnBoarding.OnDone'.tr(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 color: AppColor.primary,
               ),
@@ -39,13 +38,12 @@ class OnBoardingScreen extends StatelessWidget {
             showSkipButton: true,
             skip: Text(
               'OnBoarding.OnSkip'.tr(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 color: AppColor.primary,
               ),
             ),
-            showNextButton: true,
-            next: Icon(
+            next: const Icon(
               Icons.arrow_forward,
               size: 20.0,
               color: AppColor.primary,
@@ -68,7 +66,7 @@ class OnBoardingScreen extends StatelessWidget {
       type: PageTransitionType.leftToRight,
 
       /// Navigate to login Screen
-      screen: const HomeScreen(),
+      screen: HomeScreen(),
     );
   }
 }

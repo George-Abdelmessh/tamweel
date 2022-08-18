@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/style/app_color.dart';
-import '../../../shared/style/app_decoration.dart';
-import '../../../shared/style/app_padding.dart';
-import '../../../shared/style/app_radius.dart';
+import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_decoration.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class HomeSliderCard extends StatelessWidget {
   const HomeSliderCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.imgUrl,
-  }) : super(key: key);
+  });
 
   final String name;
   final String imgUrl;
@@ -19,8 +19,8 @@ class HomeSliderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5),
-      child: Container(
+      padding: const EdgeInsets.all(5),
+      child: DecoratedBox(
         decoration: AppDecoration.decorationGrey,
         child: Stack(
           children: [
@@ -32,12 +32,13 @@ class HomeSliderCard extends StatelessWidget {
                 height: double.infinity,
                 fit: BoxFit.cover,
                 errorWidget: (context, url, error) =>
-                    Center(child: Icon(Icons.error)),
-                placeholderFadeInDuration: Duration(seconds: 1),
+                    const Center(child: Icon(Icons.error)),
+                placeholderFadeInDuration: const Duration(seconds: 1),
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     Center(
                   child: CircularProgressIndicator(
-                      value: downloadProgress.progress),
+                    value: downloadProgress.progress,
+                  ),
                 ),
               ),
             ),
@@ -56,7 +57,7 @@ class HomeSliderCard extends StatelessWidget {
                       padding: AppPadding.padding10,
                       child: Text(
                         name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20.0,
                           color: AppColor.white,
                           fontWeight: FontWeight.bold,

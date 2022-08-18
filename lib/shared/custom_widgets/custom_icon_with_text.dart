@@ -10,7 +10,7 @@ class CustomIconWithText extends StatelessWidget {
   });
 
   final IconData icon;
-  final text;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CustomIconWithText extends StatelessWidget {
         const CustomSizedBoxWidth(width: 5.0),
         Expanded(
           child: Text(
-            '$text',
+            text,
             style: TextStyle(
               fontSize: 12.0,
               fontWeight: FontWeight.bold,
