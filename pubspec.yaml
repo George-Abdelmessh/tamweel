@@ -48,8 +48,15 @@ dependencies:
   hooks_riverpod: ^1.0.4
   # used for change app language
   easy_localization: ^3.0.1
-  # used for OnBoarding screen
+  lint: ^1.10.0
+
+  # Widgets
   introduction_screen: ^3.0.2
+  bottom_navy_bar: ^6.0.0
+  carousel_slider: ^4.1.1
+  cached_network_image: ^3.2.1
+  flutter_rating_bar: ^4.0.1
+  auto_size_text: ^3.0.0
 
 
 dev_dependencies:
