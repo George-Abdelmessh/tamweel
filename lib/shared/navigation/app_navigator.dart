@@ -20,7 +20,12 @@ class AppNavigator {
     Navigator.pushAndRemoveUntil(
       context,
       PageTransition(type: type, child: screen),
-          (route) => false,
+      (route) => false,
     );
   }
+
+  // /// App Routes to be used in the Material App routes, used for named navigation
+  // static Map<String, Widget Function(BuildContext)> routes = {
+  //   LoginOptionsScreen.routeName: (context) => LoginOptionsScreen(),
+  // };
 }

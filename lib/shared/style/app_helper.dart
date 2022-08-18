@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class AppHelper {
   /// Physics list view
   static BouncingScrollPhysics scroll = const BouncingScrollPhysics();
-
+  static NeverScrollableScrollPhysics neverScroll =
+      const NeverScrollableScrollPhysics();
 
   /// OPEN URL
   static Future openUrl({required String url}) async {
@@ -14,7 +14,10 @@ class AppHelper {
       // ignore: deprecated_member_use
       await launch(url);
     } else {
-      SnackBar(content: Text('يوجد خطأ في الرابط'),);
+      const SnackBar(
+        content: Text('يوجد خطأ في الرابط'),
+      );
+
       ///AppDialog.toast(msg: 'يوجد خطأ في الرابط');
     }
   }

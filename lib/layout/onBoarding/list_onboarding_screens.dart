@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import '../../shared/constants/app_image.dart';
+import 'package:tamweel/shared/constants/app_image.dart';
 
 class ListOnBoardingScreen {
   static final List<PageViewModel> pages = [
@@ -13,7 +13,7 @@ class ListOnBoardingScreen {
       ),
       body:'OnBoarding.LoginFirstBody'.tr(),
       image: Image.asset(AppImage.firstPage),
-      decoration: PageDecoration(
+      decoration: const PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -29,7 +29,7 @@ class ListOnBoardingScreen {
       image: Image.asset(
         AppImage.secondPage,
       ),
-      decoration: PageDecoration(
+      decoration: const PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class ListOnBoardingScreen {
       ),
       body: 'OnBoarding.FillDataBody'.tr(),
       image: Image.asset(AppImage.firstPage),
-      decoration: PageDecoration(
+      decoration: const PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -53,11 +53,11 @@ class ListOnBoardingScreen {
     PageViewModel(
       titleWidget: Text(
         'OnBoarding.Done'.tr(),
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
       body: 'OnBoarding.DoneBody'.tr(),
       image: Image.asset(AppImage.secondPage),
-      decoration: PageDecoration(
+      decoration: const PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-
 class CustomLoading extends StatelessWidget {
-  const CustomLoading({Key? key}) : super(key: key);
+  const CustomLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-     /// child: Image.asset(AppImage.loading),
-    );
+    return const Center(
+
+        /// child: Image.asset(AppImage.loading),
+        );
   }
 }
