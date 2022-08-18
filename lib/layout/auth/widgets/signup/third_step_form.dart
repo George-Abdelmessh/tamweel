@@ -44,16 +44,61 @@ class ThirdStepForm extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _ThirdStepFormState();
 }
 
-class _ThirdStepFormState extends ConsumerState<ThirdStepForm> {
+class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
+    with TickerProviderStateMixin {
   // MaritalStatus? maritalStatus;
   final genderController = GroupButtonController();
   final maritalStatusController = GroupButtonController();
+
+  late final AnimationController _controllerGov = AnimationController(
+    duration: const Duration(milliseconds: 250),
+    vsync: this,
+  );
+  late final Animation<Offset> _offsetAnimationGov = Tween<Offset>(
+    begin: Offset.zero,
+    end: const Offset(0.1, 0),
+  ).animate(
+    CurvedAnimation(
+      parent: _controllerGov,
+      curve: Curves.elasticIn,
+    ),
+  );
+
+  late final AnimationController _controllerCity = AnimationController(
+    duration: const Duration(milliseconds: 250),
+    vsync: this,
+  );
+  late final Animation<Offset> _offsetAnimationCity = Tween<Offset>(
+    begin: Offset.zero,
+    end: const Offset(0.1, 0),
+  ).animate(
+    CurvedAnimation(
+      parent: _controllerCity,
+      curve: Curves.elasticIn,
+    ),
+  );
+
+  @override
+  void dispose() {
+    _controllerGov.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
     genderController.selectIndex(0);
     maritalStatusController.selectIndex(0);
+  }
+
+  Future<void> repeatOnceGov() async {
+    await _controllerGov.forward();
+    await _controllerGov.reverse();
+  }
+
+  Future<void> repeatOnceCity() async {
+    await _controllerCity.forward();
+    await _controllerCity.reverse();
   }
 
   @override
@@ -208,60 +253,66 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm> {
                 },
               ),
               SizedBox(height: AppSize.height * 0.02),
-              DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  isExpanded: true,
-                  value: ref.watch(governorateProvider),
-                  items: [
-                    DropdownMenuItem(
-                      value: 'Auth.Governorate'.tr(),
-                      child: Text('Auth.Governorate'.tr()),
-                    ),
-                    const DropdownMenuItem(
-                      value: 'القاهرة',
-                      child: Text('القاهرة'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'الجيزة' * 10,
-                      child: FittedBox(
-                        child: Text(
-                          'الجيزة' * 10,
+              SlideTransition(
+                position: _offsetAnimationGov,
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2(
+                    isExpanded: true,
+                    value: ref.watch(governorateProvider),
+                    items: [
+                      DropdownMenuItem(
+                        value: 'Auth.Governorate'.tr(),
+                        child: Text('Auth.Governorate'.tr()),
+                      ),
+                      const DropdownMenuItem(
+                        value: 'القاهرة',
+                        child: Text('القاهرة'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'الجيزة' * 10,
+                        child: FittedBox(
+                          child: Text(
+                            'الجيزة' * 10,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    ref.read(governorateProvider.notifier).state =
-                        value!.toString();
-                  },
+                    ],
+                    onChanged: (value) {
+                      ref.read(governorateProvider.notifier).state =
+                          value!.toString();
+                    },
+                  ),
                 ),
               ),
               SizedBox(height: AppSize.height * 0.02),
-              DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  isExpanded: true,
-                  value: ref.watch(cityProvider),
-                  items: [
-                    DropdownMenuItem(
-                      value: 'Auth.City'.tr(),
-                      child: Text('Auth.City'.tr()),
-                    ),
-                    const DropdownMenuItem(
-                      value: 'القاهرة الجديدة',
-                      child: Text('القاهرة الجديدة'),
-                    ),
-                    DropdownMenuItem(
-                      value: 'اكتوبر' * 10,
-                      child: FittedBox(
-                        child: Text(
-                          'اكتوبر' * 10,
+              SlideTransition(
+                position: _offsetAnimationCity,
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2(
+                    isExpanded: true,
+                    value: ref.watch(cityProvider),
+                    items: [
+                      DropdownMenuItem(
+                        value: 'Auth.City'.tr(),
+                        child: Text('Auth.City'.tr()),
+                      ),
+                      const DropdownMenuItem(
+                        value: 'القاهرة الجديدة',
+                        child: Text('القاهرة الجديدة'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'اكتوبر' * 10,
+                        child: FittedBox(
+                          child: Text(
+                            'اكتوبر' * 10,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    ref.read(cityProvider.notifier).state = value!.toString();
-                  },
+                    ],
+                    onChanged: (value) {
+                      ref.read(cityProvider.notifier).state = value!.toString();
+                    },
+                  ),
                 ),
               ),
               SizedBox(height: AppSize.height * 0.04),
@@ -282,9 +333,20 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm> {
                   Expanded(
                     child: CustomWideButton(
                       title: 'Auth.SignUp'.tr(),
-                      onTap: () {
+                      onTap: () async {
                         //form is valid, perform login
                         if (formKey.currentState!.validate()) {
+                          if (ref.read(governorateProvider.notifier).state ==
+                              'Auth.Governorate'.tr()) {
+                            await repeatOnceGov();
+                            return;
+                          }
+
+                          if (ref.read(cityProvider.notifier).state ==
+                              'Auth.City'.tr()) {
+                            await repeatOnceCity();
+                            return;
+                          }
                           signup();
                         }
                       },
