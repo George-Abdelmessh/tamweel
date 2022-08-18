@@ -265,16 +265,33 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm> {
                 ),
               ),
               SizedBox(height: AppSize.height * 0.04),
-              CustomWideButton(
-                title: 'Auth.SignUp'.tr(),
-                background: AppColor.secondary,
-                onTap: () {
-                  //form is valid, perform login
-                  if (formKey.currentState!.validate()) {
-                    signup();
-                  }
-                },
-              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomWideButton(
+                      title: 'Navigation.Back'.tr(),
+                      background: AppColor.secondary,
+                      onTap: () {
+                        authProvider.previousStep();
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: AppSize.width * 0.05,
+                  ),
+                  Expanded(
+                    child: CustomWideButton(
+                      title: 'Auth.SignUp'.tr(),
+                      onTap: () {
+                        //form is valid, perform login
+                        if (formKey.currentState!.validate()) {
+                          signup();
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

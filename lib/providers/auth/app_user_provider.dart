@@ -12,7 +12,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
     //TODO: Login the user using Auth repository.
     try {
       await Future.delayed(const Duration(seconds: 1));
-      // print('User logged in with email: $email and password: $password');
+      print('User logged in with email: $email and password: $password');
       state = state.copyWith(
         userState: AuthState.loggedIn,
         accessToken: 'accessToken',

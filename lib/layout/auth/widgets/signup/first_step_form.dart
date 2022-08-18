@@ -43,7 +43,7 @@ class FirstStepForm extends ConsumerWidget {
                 contentPadding: AppPaddingCopy.paddingH005,
                 validator: (value) => AppValidators.required(value),
               ),
-              SizedBox(height: AppSize.height * 0.01),
+              SizedBox(height: AppSize.height * 0.025),
               customTextFormFieldWithValidator(
                 context,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -53,7 +53,7 @@ class FirstStepForm extends ConsumerWidget {
                 contentPadding: AppPaddingCopy.paddingH005,
                 validator: (value) => AppValidators.email(value),
               ),
-              SizedBox(height: AppSize.height * 0.01),
+              SizedBox(height: AppSize.height * 0.025),
               customTextFormFieldWithValidator(
                 context,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -64,7 +64,7 @@ class FirstStepForm extends ConsumerWidget {
                 validator: (value) =>
                     AppValidators.numbersExactLength(value, 14),
               ),
-              SizedBox(height: AppSize.height * 0.01),
+              SizedBox(height: AppSize.height * 0.025),
               customTextFormFieldWithValidator(
                 context,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -74,7 +74,7 @@ class FirstStepForm extends ConsumerWidget {
                 contentPadding: AppPaddingCopy.paddingH005,
                 validator: (value) => AppValidators.phoneNumber(value),
               ),
-              SizedBox(height: AppSize.height * 0.02),
+              SizedBox(height: AppSize.height * 0.04),
               CustomWideButton(
                 title: 'Navigation.Next'.tr(),
                 onTap: () {

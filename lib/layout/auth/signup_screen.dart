@@ -2,17 +2,15 @@ import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:im_stepper/stepper.dart';
-import 'package:tamweel/layout/auth/widgets/first_step_form.dart';
-import 'package:tamweel/layout/auth/widgets/second_step_form.dart';
-import 'package:tamweel/layout/auth/widgets/signup_welcome.dart';
-import 'package:tamweel/layout/auth/widgets/third_step_form.dart';
+import 'package:tamweel/layout/auth/widgets/signup/first_step_form.dart';
+import 'package:tamweel/layout/auth/widgets/signup/second_step_form.dart';
+import 'package:tamweel/layout/auth/widgets/signup/signup_welcome.dart';
+import 'package:tamweel/layout/auth/widgets/signup/third_step_form.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
-import 'package:tamweel/shared/style/app_padding.dart';
-import 'package:tamweel/shared/style/app_padding_copy.dart';
 
 class SignupScreen extends StatefulHookConsumerWidget {
   const SignupScreen({super.key});
@@ -32,26 +30,10 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     final addressController = useTextEditingController();
     final personalIdController = useTextEditingController();
 
-    final authProvider = ref.watch(signupFormNotifierProvider.notifier);
-
-    final activeStep = ref.watch(signupFormNotifierProvider);
-
+    final step = ref.watch(signupFormNotifierProvider);
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: Padding(
-          padding: AppPadding.paddingV20,
-          child: FloatingActionButton(
-            backgroundColor: AppColor.transparent,
-            elevation: 0,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColor.secondary,
-            ),
-          ),
-        ),
+        floatingActionButton: const CustomFloatingBackButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         backgroundColor: AppColor.white,
         //welcome image then login form
@@ -63,43 +45,10 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
             child: Column(
               children: [
                 const SignUpWelcome(),
-                Padding(
-                  padding: AppPaddingCopy.paddingH005,
-                  child: IconStepper(
-                    icons: const [
-                      Icon(
-                        Icons.person_outline_rounded,
-                        color: AppColor.white,
-                      ),
-                      Icon(
-                        Icons.lock_outline,
-                        color: AppColor.white,
-                      ),
-                      Icon(
-                        Icons.flag_outlined,
-                        color: AppColor.white,
-                      ),
-                    ],
-                    // activeStep property set to activeStep variable defined above.
-                    activeStep: activeStep,
-                    activeStepBorderColor: AppColor.transparent,
-                    activeStepColor: AppColor.secondary,
-                    activeStepBorderWidth: 2,
-                    enableNextPreviousButtons: false,
-                    enableStepTapping: false,
-                    // onStepReached: (index) {
-                    //   authProvider.state = index;
-                    // },
-                    lineColor: AppColor.primary,
-                    lineLength: AppSize.width * 0.1,
-                    scrollingDisabled: true,
-                    stepReachedAnimationEffect: Curves.easeIn,
-                  ),
-                ),
                 AnimatedSwitcherTranslation.right(
                   switchOutCurve: Curves.easeOut,
                   duration: const Duration(seconds: 1),
-                  child: authProvider.step == 0
+                  child: step == 0
                       ? FirstStepForm(
                           key: UniqueKey(),
                           emailController: emailController,
@@ -107,7 +56,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                           nationalIdController: personalIdController,
                           phoneController: phoneController,
                         )
-                      : authProvider.step == 1
+                      : step == 1
                           ? SecondStepForm(
                               key: UniqueKey(),
                               passwordController: passwordController,

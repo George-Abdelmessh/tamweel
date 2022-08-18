@@ -4,10 +4,8 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/constants/app_image.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 
-class SignUpWelcome extends StatelessWidget {
-  const SignUpWelcome({
-    super.key,
-  });
+class LoginScreenPreForm extends StatelessWidget {
+  const LoginScreenPreForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +23,14 @@ class SignUpWelcome extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: AppSize.height * 0.02,
+          height: AppSize.height * 0.08,
         ),
         Image.asset(
-          AppImage.signupWelcomeImage,
+          AppImage.loginWelcomeImage,
           fit: BoxFit.cover,
-          height: AppSize.height * 0.25,
+          height: AppSize.height * 0.3,
         ),
+        SizedBox(height: AppSize.height * 0.05),
       ],
     );
   }

@@ -5,6 +5,7 @@ import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
@@ -23,7 +24,7 @@ class SecondStepForm extends ConsumerWidget {
     final authProvider = ref.watch(signupFormNotifierProvider.notifier);
     final formKey = GlobalKey<FormState>();
     return SizedBox(
-      height: AppSize.height ,
+      height: AppSize.height,
       child: Padding(
         padding: AppPaddingCopy.paddingH01,
         child: Form(
@@ -53,13 +54,31 @@ class SecondStepForm extends ConsumerWidget {
                     AppValidators.identical(value, passwordController.text),
               ),
               SizedBox(height: AppSize.height * 0.02),
-              CustomWideButton(
-                title: 'Navigation.Next'.tr(),
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    authProvider.nextStep();
-                  }
-                },
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomWideButton(
+                      title: 'Navigation.Back'.tr(),
+                      background: AppColor.secondary,
+                      onTap: () {
+                        authProvider.previousStep();
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: AppSize.width * 0.05,
+                  ),
+                  Expanded(
+                    child: CustomWideButton(
+                      title: 'Navigation.Next'.tr(),
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          authProvider.nextStep();
+                        }
+                      },
+                    ),
+                  ),
+                ],
               )
             ],
           ),
