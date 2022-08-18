@@ -4,8 +4,8 @@ class CustomSizedBoxWidth extends StatelessWidget {
   const CustomSizedBoxWidth({
     super.key,
     this.width = 20.0,
-  });
-  final width;
+  }) : super(key: key);
+  final double width;
 
   @override
   Widget build(BuildContext context) {

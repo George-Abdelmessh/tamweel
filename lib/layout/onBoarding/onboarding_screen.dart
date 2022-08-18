@@ -58,7 +58,7 @@ class OnBoardingScreen extends StatelessWidget {
     );
   }
 
-  void onDone(context) {
+  void onDone(BuildContext context) {
     CacheHelper.saveData(
       key: AppConst.firstUse,
       value: firstUse,

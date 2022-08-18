@@ -8,7 +8,7 @@ class AppHelper {
       const NeverScrollableScrollPhysics();
 
   /// OPEN URL
-  static Future openUrl({required url}) async {
+  static Future openUrl({required String url}) async {
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use

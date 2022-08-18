@@ -13,7 +13,7 @@ class AppColor {
   static Color overlay = black.withOpacity(0.3);
 
   /// GREY COLOR
-  static const Color grey = Color(0xffE0E0E0);
+  static const Color grey = Color(0xffF4F4F4);
 
   /// PRIMARY COLOR IN APP
   static const Color primary = Color(0xffB68922);
