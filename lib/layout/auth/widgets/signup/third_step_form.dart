@@ -13,6 +13,10 @@ import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
+import 'package:vibration/vibration.dart';
+
+final canvibrateProvider = StateProvider((ref) => false);
+final hasVibrationController = StateProvider((ref) => false);
 
 final genderProvider = StateProvider.autoDispose((ref) => 'Auth.Male'.tr());
 // String? gender;
@@ -89,6 +93,14 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
     super.initState();
     genderController.selectIndex(0);
     maritalStatusController.selectIndex(0);
+    initVibrations();
+  }
+
+  Future<void> initVibrations() async {
+    final canVibrate = await Vibration.hasVibrator();
+    ref.read(canvibrateProvider.notifier).state = canVibrate ?? false;
+    final hasController = await Vibration.hasCustomVibrationsSupport();
+    ref.read(hasVibrationController.notifier).state = hasController ?? false;
   }
 
   Future<void> repeatOnceGov() async {
@@ -334,16 +346,31 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
                     child: CustomWideButton(
                       title: 'Auth.SignUp'.tr(),
                       onTap: () async {
+                        final hasVibrator = ref.read(canvibrateProvider);
+                        final hasController = ref.read(hasVibrationController);
                         //form is valid, perform login
                         if (formKey.currentState!.validate()) {
                           if (ref.read(governorateProvider.notifier).state ==
                               'Auth.Governorate'.tr()) {
+                            if (hasVibrator) {
+                              if (hasController) {
+                                Vibration.vibrate(amplitude: 50, duration: 400);
+                              } else {
+                                Vibration.vibrate();
+                              }
+                            }
                             await repeatOnceGov();
                             return;
                           }
-
                           if (ref.read(cityProvider.notifier).state ==
                               'Auth.City'.tr()) {
+                            if (hasVibrator) {
+                              if (hasController) {
+                                Vibration.vibrate(amplitude: 50, duration: 400);
+                              } else {
+                                Vibration.vibrate();
+                              }
+                            }
                             await repeatOnceCity();
                             return;
                           }
