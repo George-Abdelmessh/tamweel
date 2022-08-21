@@ -6,10 +6,11 @@ import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 class AdNotifier extends StateNotifier<List<AdData>> {
   AdNotifier() : super([]);
 
-  Future<void> getData (BuildContext context) async{
+  Future<List<AdData>> getData(BuildContext context) async {
     print('provider');
     state = await ApiRepo.getAds(context);
-    print(state);
+    print(state[0].image);
+    return state;
   }
 }
 
