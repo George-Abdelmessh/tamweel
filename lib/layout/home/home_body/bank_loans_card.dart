@@ -18,19 +18,23 @@ class BankLoansCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: AppDecoration.decorationGrey,
       width: double.infinity,
-      height: AppSize.height * 0.55,
+      height: AppSize.height * 0.46,
       child: Column(
         children: [
-          const AutoSizeText(
-            'قروض البنك الزراعي المصري',
-            maxFontSize: 28,
-            maxLines: 1,
-            minFontSize: 18,
-            style: TextStyle(
-              color: AppColor.secondary,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            children: const [
+              AutoSizeText(
+                'قروض البنك الزراعي المصري',
+                maxFontSize: 28,
+                maxLines: 1,
+                minFontSize: 18,
+                style: TextStyle(
+                  color: AppColor.secondary,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -39,7 +43,7 @@ class BankLoansCard extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: AppSize.width * 0.35,
-                    height: AppSize.height * 0.5,
+                    height: AppSize.height * 0.365,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20),

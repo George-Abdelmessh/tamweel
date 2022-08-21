@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
-
 
 class LoanCard extends StatelessWidget {
   const LoanCard({super.key});
@@ -43,7 +43,15 @@ class LoanCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Text('قرض مستورة'),
+              const AutoSizeText(
+                'قرض مستورة',
+                maxFontSize: 18,
+                minFontSize: 16,
+                maxLines: 1,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
               CustomSizedBoxHeight(
                 height: AppSize.height * 0.01,
               ),
@@ -66,18 +74,54 @@ class LoanCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Expanded(child: Text('ReachTo'.tr())),
-                  const Text('40000 الف'),
+                  Expanded(
+                    child: AutoSizeText(
+                      'ReachTo'.tr(),
+                      maxFontSize: 16,
+                      minFontSize: 16,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  const AutoSizeText(
+                    '40000 الف',
+                    maxFontSize: 16,
+                    minFontSize: 16,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  Expanded(child: Text('RepaymentPeriod'.tr())),
-                  const Text('4 سنوات'),
+                  Expanded(
+                    child: AutoSizeText(
+                      'RepaymentPeriod'.tr(),
+                      maxFontSize: 16,
+                      minFontSize: 16,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  const AutoSizeText(
+                    '4 سنوات',
+                    maxFontSize: 16,
+                    minFontSize: 16,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                 ],
               ),
               CustomSizedBoxHeight(
-                height: AppSize.height * 0.035,
+                height: AppSize.height * 0.025,
               ),
               CustomWideButton(
                 title: 'Apply'.tr(),
