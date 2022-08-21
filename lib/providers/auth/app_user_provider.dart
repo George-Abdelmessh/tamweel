@@ -8,7 +8,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
   AuthNotifier() : super(const AppUser(userState: AuthState.guest));
 
   /// Login the user with the given email and password.
-  Future<void> login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     //TODO: Login the user using Auth repository.
     try {
       await Future.delayed(const Duration(seconds: 1));
@@ -19,8 +19,10 @@ class AuthNotifier extends StateNotifier<AppUser> {
         refreshToken: 'refreshToken',
         userId: 'userId',
       );
+      return true;
     } catch (e) {
       state = const AppUser(userState: AuthState.guest);
+      return false;
     }
   }
 
