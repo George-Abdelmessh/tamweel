@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
@@ -11,6 +12,8 @@ import 'package:tamweel/shared/style/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //TODO: IOS Orientation in XCode
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await EasyLocalization.ensureInitialized();
   await CacheHelper.init();
   runApp(
