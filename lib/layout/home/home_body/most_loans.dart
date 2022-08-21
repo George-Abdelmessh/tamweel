@@ -17,7 +17,7 @@ class MostLoans extends StatelessWidget {
       margin: AppPadding.paddingH15,
       decoration: AppDecoration.decorationGrey,
       width: double.infinity,
-      height: AppSize.height * 0.47,
+      height: AppSize.width * 0.98,
       child: Column(
         children: [
           Row(

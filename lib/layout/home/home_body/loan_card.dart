@@ -19,8 +19,7 @@ class LoanCard extends StatelessWidget {
       padding: AppPadding.padding20,
       child: Container(
         width: AppSize.width * 0.4,
-        //height: AppSize.height * 0.5,
-
+        // height: AppSize.height * 0.5,
         decoration: AppDecoration.decorationWhite,
         child: Padding(
           padding: AppPadding.paddingH10,

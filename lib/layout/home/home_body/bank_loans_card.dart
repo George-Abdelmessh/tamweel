@@ -18,7 +18,7 @@ class BankLoansCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: AppDecoration.decorationGrey,
       width: double.infinity,
-      height: AppSize.height * 0.46,
+      height: AppSize.width * 0.98,
       child: Column(
         children: [
           Row(
@@ -43,7 +43,7 @@ class BankLoansCard extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: AppSize.width * 0.35,
-                    height: AppSize.height * 0.365,
+                    height: AppSize.height * 0.375,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20),
