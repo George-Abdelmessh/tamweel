@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tamweel/layout/home/home_screen.dart';
+import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         title: 'Tamweel',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.appLightTheme,
-        home: firstUse ? OnBoardingScreen() : HomeScreen(),
+        home: firstUse ? OnBoardingScreen() : const LoginOptionsScreen(),
       ),
     );
   }

@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tamweel/layout/auth/login_screen.dart';
 import 'package:tamweel/layout/auth/signup_screen.dart';
+import 'package:tamweel/layout/home/home_screen.dart';
+import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
@@ -10,13 +13,13 @@ import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 
-class LoginOptionsButtons extends StatelessWidget {
+class LoginOptionsButtons extends ConsumerWidget {
   const LoginOptionsButtons({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Positioned(
       bottom: AppSize.height * 0.1,
       left: 0,
@@ -70,7 +73,13 @@ class LoginOptionsButtons extends StatelessWidget {
             child: CustomWideButton(
               title: 'Auth.ContinueAsGuest'.tr(),
               background: AppColor.secondary,
-              onTap: () {},
+              onTap: () {
+                ref.read(authNotifierProvider.notifier).guest();
+                AppNavigator.pushAndRemove(
+                  context: context,
+                  screen: HomeScreen(),
+                );
+              },
             ),
           ),
         ],
