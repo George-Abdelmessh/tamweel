@@ -3,10 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
+
 
 class LoanCard extends StatelessWidget {
   const LoanCard({super.key});
@@ -42,8 +44,8 @@ class LoanCard extends StatelessWidget {
                 ],
               ),
               const Text('قرض مستورة'),
-              const SizedBox(
-                height: 10,
+              CustomSizedBoxHeight(
+                height: AppSize.height * 0.01,
               ),
               RatingBar.builder(
                 ignoreGestures: true,
@@ -59,8 +61,8 @@ class LoanCard extends StatelessWidget {
                   // print(rating);
                 },
               ),
-              const SizedBox(
-                height: 10,
+              CustomSizedBoxHeight(
+                height: AppSize.height * 0.01,
               ),
               Row(
                 children: [
@@ -74,8 +76,8 @@ class LoanCard extends StatelessWidget {
                   const Text('4 سنوات'),
                 ],
               ),
-              const SizedBox(
-                height: 15,
+              CustomSizedBoxHeight(
+                height: AppSize.height * 0.035,
               ),
               CustomWideButton(
                 title: 'Apply'.tr(),

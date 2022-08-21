@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
 class FinancingPlansCard extends StatelessWidget {
@@ -48,8 +49,8 @@ class FinancingPlansCard extends StatelessWidget {
             ),
           ),
         ),
-        separatorBuilder: (context, index) => const SizedBox(
-          width: 10,
+        separatorBuilder: (context, index) => CustomSizedBoxWidth(
+          width: AppSize.width * 0.015,
         ),
         itemCount: 5,
       ),

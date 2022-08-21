@@ -27,6 +27,9 @@ class AppPadding {
   static EdgeInsets paddingH005 =
       EdgeInsets.symmetric(horizontal: AppSize.width * 0.05);
 
+  static EdgeInsets paddingH002 =
+  EdgeInsets.symmetric(horizontal: AppSize.width * 0.02);
+
   /// 10 0 10 0
   static EdgeInsets paddingV10 =
       EdgeInsets.symmetric(vertical: AppSize.width * 0.01);
