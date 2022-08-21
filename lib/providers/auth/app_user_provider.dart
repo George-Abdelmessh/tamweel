@@ -36,6 +36,10 @@ class AuthNotifier extends StateNotifier<AppUser> {
       // print(e);
     }
   }
+
+  void guest() {
+    state = const AppUser(userState: AuthState.guest);
+  }
 }
 
 /// Provider that provides the AuthNotifier.

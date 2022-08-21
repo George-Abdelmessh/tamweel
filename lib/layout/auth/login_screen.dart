@@ -40,7 +40,9 @@ class LoginScreen extends HookConsumerWidget {
             .login(emailController.text, passwordController.text)
             .then((value) {
           Navigator.of(context).pop();
-          if (value) AppNavigator.push(context: context, screen: HomeScreen());
+          if (value) {
+            AppNavigator.pushAndRemove(context: context, screen: HomeScreen());
+          }
         });
       }
     }
