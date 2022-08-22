@@ -1,13 +1,7 @@
 class AppEndPoints {
+  static const baseUrl = 'https://evening-badlands-73488.herokuapp.com';
+
   /// this for api end points
   /// examples
-  static const login = 'login';
-
-  static const home = 'home';
-
-  static const getCategories = 'categories';
-
-  static const favourites = 'favorites';
-
-  static const profile = 'profile';
+  static const ads = 'get/ads';
 }

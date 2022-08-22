@@ -6,6 +6,7 @@ import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
+import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 import 'package:tamweel/shared/style/app_theme.dart';
@@ -15,6 +16,7 @@ void main() async {
   //TODO: IOS Orientation in XCode
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await EasyLocalization.ensureInitialized();
+  DioHelper.init();
   await CacheHelper.init();
   runApp(
     EasyLocalization(

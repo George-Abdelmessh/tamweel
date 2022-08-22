@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tamweel/layout/home/home_body/loan_card.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
@@ -16,7 +17,7 @@ class MostLoans extends StatelessWidget {
       margin: AppPadding.paddingH15,
       decoration: AppDecoration.decorationGrey,
       width: double.infinity,
-      height: AppSize.height * 0.55,
+      height: AppSize.width * 0.98,
       child: Column(
         children: [
           Row(
@@ -29,8 +30,8 @@ class MostLoans extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                width: 10,
+              CustomSizedBoxWidth(
+                width: AppSize.width * 0.015,
               ),
               const Expanded(
                 child: Divider(
@@ -43,8 +44,8 @@ class MostLoans extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => const LoanCard(),
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 10,
+              separatorBuilder: (context, index) => CustomSizedBoxWidth(
+                width: AppSize.width * 0.005,
               ),
               itemCount: 10,
             ),
