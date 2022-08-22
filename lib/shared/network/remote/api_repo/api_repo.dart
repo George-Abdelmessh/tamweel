@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
+import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/network/remote/dio_helper.dart';
+import 'package:tuple/tuple.dart';
 
 class ApiRepo {
   static Future<List<AdData>> getAds() async {
@@ -26,5 +28,53 @@ class ApiRepo {
       ).data;
     });
     return programs!;
+  }
+
+  ///User Details API Get Request
+  static Future<UserDetails> getUserDetails(int id) async {
+    final response =
+        await DioHelper.getDate(url: '${AppEndPoints.getUserDetails}$id');
+
+    return UserDetails.fromJson(response.data['data'] as Map<String, dynamic>);
+  }
+
+  ///User Sign Up Method
+  static Future<Tuple2<bool, String>> signup({
+    required String email,
+    required String password,
+    required String name,
+    required String nationalId,
+    required String phone,
+    required String address,
+    required int country,
+    required int city,
+    required int maritalStatus,
+    required int gender,
+  }) async {
+    final data = {
+      'email': email,
+      'password': password,
+      'name': name,
+      'national_id': nationalId,
+      'mobile': phone,
+      'address': address,
+      'country': country,
+      'area': city,
+      'marital_status': maritalStatus,
+      'gender': gender,
+    };
+    print(data);
+    Response? response;
+    try {
+      response = await DioHelper.dio!.post(AppEndPoints.signup, data: data);
+    } on DioError catch (e) {
+      print(e.response);
+    }
+    print(response!.data);
+    final status = response.data['status'] == 'true' ? true : false;
+    return Tuple2(
+      status,
+      response.data['message'] as String,
+    );
   }
 }

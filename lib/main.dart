@@ -11,6 +11,9 @@ import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 import 'package:tamweel/shared/style/app_theme.dart';
 
+///Used to access context to show Alerts
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: IOS Orientation in XCode
@@ -24,6 +27,7 @@ void main() async {
       path:
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: AppLocales.supportedLocales[0],
+      startLocale: AppLocales.supportedLocales[0],
       child: ProviderScope(
         child: MyApp(),
       ),

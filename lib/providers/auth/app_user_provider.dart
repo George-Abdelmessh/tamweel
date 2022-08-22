@@ -1,14 +1,22 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/app_user_model.dart';
+import 'package:tamweel/models/user/user_details.dart';
+import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
+import 'package:tuple/tuple.dart';
 
-enum MaritalStatus { single, married, divorced, widowed }
+enum MaritalStatus {
+  married,
+  divorced,
+  widowed,
+  single,
+}
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class AuthNotifier extends StateNotifier<AppUser> {
   AuthNotifier() : super(const AppUser(userState: AuthState.guest));
 
   /// Login the user with the given email and password.
-  Future<bool> login(String email, String password) async {
+  Future<Tuple2<bool, String>> login(String email, String password) async {
     //TODO: Login the user using Auth repository.
     try {
       await Future.delayed(const Duration(seconds: 1));
@@ -19,10 +27,10 @@ class AuthNotifier extends StateNotifier<AppUser> {
         refreshToken: 'refreshToken',
         userId: 'userId',
       );
-      return true;
+      return const Tuple2(true, 'success');
     } catch (e) {
       state = const AppUser(userState: AuthState.guest);
-      return false;
+      return const Tuple2(false, 'Wrong email or password');
     }
   }
 
@@ -30,6 +38,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
   /// Clears all tokens and sets the user state to guest.
   Future<void> logout() async {
     try {
+      //TODO: Log out the user using Auth repository.
       await Future.delayed(const Duration(seconds: 1));
       state = const AppUser(userState: AuthState.guest);
     } catch (e) {
@@ -39,6 +48,11 @@ class AuthNotifier extends StateNotifier<AppUser> {
 
   void guest() {
     state = const AppUser(userState: AuthState.guest);
+  }
+
+  Future<UserDetails> getUserDetails() async {
+    // return ApiRepo.getUserDetails(1);
+    return ApiRepo.getUserDetails(int.parse(state.userId!));
   }
 }
 

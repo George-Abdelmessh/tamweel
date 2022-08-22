@@ -22,7 +22,7 @@ class SignUpWelcome extends ConsumerWidget {
           height: AppSize.height * 0.018,
         ),
         Text(
-          'Auth.Login'.tr(),
+          'Auth.SignUp'.tr(),
           style: TextStyle(
             fontSize: AppSize.width * 0.075,
             fontWeight: FontWeight.bold,

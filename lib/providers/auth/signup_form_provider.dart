@@ -1,6 +1,13 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
+import 'package:tuple/tuple.dart';
 
-enum MaritalStatus { single, married, divorced, widowed }
+enum MaritalStatus {
+  single,
+  married,
+  divorced,
+  widowed,
+}
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class SignUpFormNotifier extends StateNotifier<int> {
@@ -20,27 +27,36 @@ class SignUpFormNotifier extends StateNotifier<int> {
   }
 
   ///Sign Up method, Takes 9 strings, a boolean, and a MaritalStatus.
-  Future<void> signUp({
+  Future<Tuple2<bool, String>> signUp({
     required String email,
     required String password,
     required String name,
     required String phone,
     required String address,
-    required String personalId,
+    required String nationalId,
     required String governorate,
     required String city,
     required bool isMale,
     required MaritalStatus userMaritalStatus,
   }) async {
-    //Todo: Sign Up the user using Auth repository.
-    await Future.delayed(const Duration(seconds: 2));
-    // print('User signed up with email: $email and password: $password');
-    // print('User signed up with name: $name and phone: $phone');
-    // print('User signed up with address: $address and personalId: $personalId');
-    // print('User signed up with governorate: $governorate and city: $city');
-    // print(
-    //   'User signed up with isMale: $isMale and userMaritalStatus: $userMaritalStatus',
-    // );
+    final gender = isMale ? 1 : 2;
+    final maritalStatus = userMaritalStatus.index + 1;
+    //TODO: Use user selected values
+    const country = 1;
+    const city = 1;
+
+    return ApiRepo.signup(
+      email: email,
+      password: password,
+      name: name,
+      nationalId: nationalId,
+      phone: phone,
+      address: address,
+      country: country,
+      city: city,
+      maritalStatus: maritalStatus,
+      gender: gender,
+    );
   }
 }
 
