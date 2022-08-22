@@ -40,13 +40,6 @@ class FinancingPlansCard extends StatelessWidget {
                 'https://img.rawpixel.com/private/static/images/website/2022-05/px142077-image-kwvvvktc.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=0cfd8aa6e66ad55612f900d479a9d0de',
             errorWidget: (context, url, error) =>
                 const Center(child: Icon(Icons.error)),
-            placeholderFadeInDuration: const Duration(seconds: 1),
-            progressIndicatorBuilder: (context, url, downloadProgress) =>
-                Center(
-              child: CircularProgressIndicator(
-                value: downloadProgress.progress,
-              ),
-            ),
           ),
         ),
         separatorBuilder: (context, index) => CustomSizedBoxWidth(

@@ -30,7 +30,7 @@ class _HomeSliderState extends ConsumerState<HomeSlider> {
 
     Future<Object> _fetchData() async {
       return _memoizer.runOnce(() async {
-        return adProvider.getData(context);
+        return adProvider.getData();
       });
     }
 
@@ -43,7 +43,7 @@ class _HomeSliderState extends ConsumerState<HomeSlider> {
               )
             : CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: AppSize.height * 0.3,
+                  height: AppSize.height * 0.2,
                   autoPlay: true,
                   viewportFraction: 1,
                   enableInfiniteScroll: false,
