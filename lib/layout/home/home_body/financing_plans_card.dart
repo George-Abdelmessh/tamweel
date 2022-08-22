@@ -1,51 +1,59 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import 'package:tamweel/shared/constants/app_constants.dart';
-import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
+import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_decoration.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
 class FinancingPlansCard extends StatelessWidget {
-  FinancingPlansCard({super.key});
-  final ScrollController _scrollController = ScrollController();
+  const FinancingPlansCard(
+      {super.key, required this.name, required this.image});
 
-  /// auto scroll function
-  // void animateToMaxMin(double min, double max, double direction, int second) {
-  //   _scrollController
-  //       .animateTo(max, duration: Duration(seconds: second), curve: Curves.linear)
-  //       .then((value) {
-  //     direction = direction == max ? min : max;
-  //     animateToMaxMin(max, min, direction, second);
-  //   });
-  // }
-  /// calling function
-  // animateToMaxMin(
-  // _scrollController.position.minScrollExtent,
-  // _scrollController.position.maxScrollExtent,
-  // _scrollController.position.maxScrollExtent,
-  // 10);
+  final String name;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.height * 0.3,
-      child: ListView.separated(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (context, index) => ClipRRect(
-          borderRadius: AppRadius.radius20,
-          child: CachedNetworkImage(
-            imageUrl:
-                'https://img.rawpixel.com/private/static/images/website/2022-05/px142077-image-kwvvvktc.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=0cfd8aa6e66ad55612f900d479a9d0de',
-            errorWidget: (context, url, error) =>
-                const Center(child: Icon(Icons.error)),
+      width: AppSize.width * 0.35,
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: AppRadius.radius20,
+            child: CachedNetworkImage(
+              imageUrl: image,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+              errorWidget: (context, url, error) =>
+                  const Center(child: Icon(Icons.error)),
+            ),
           ),
-        ),
-        separatorBuilder: (context, index) => CustomSizedBoxWidth(
-          width: AppSize.width * 0.015,
-        ),
-        itemCount: 5,
+          Container(
+            decoration: AppDecoration.decorationOverlay,
+            height: double.infinity,
+          ),
+          Positioned(
+            bottom: 10,
+            child: Container(
+              width: AppSize.width * 0.35,
+              padding: AppPadding.paddingH20,
+              child: AutoSizeText(
+                name,
+                minFontSize: 18,
+                maxFontSize: 25,
+                maxLines: 2,
+                style: const TextStyle(
+                  color: AppColor.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
