@@ -6,7 +6,7 @@ class DioHelper {
   static void init() {
     dio = Dio(
       BaseOptions(
-        ///baseUrl: 'https://student.valuxapps.com/api/',
+        baseUrl: 'https://evening-badlands-73488.herokuapp.com/api/',
         receiveDataWhenStatusError: true,
       ),
     );
