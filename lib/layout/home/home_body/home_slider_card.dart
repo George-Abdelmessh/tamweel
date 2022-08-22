@@ -30,7 +30,7 @@ class HomeSliderCard extends StatelessWidget {
                 imageUrl: imgUrl,
                 width: double.infinity,
                 height: double.infinity,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 errorWidget: (context, url, error) =>
                     const Center(child: Icon(Icons.error)),
                 placeholderFadeInDuration: const Duration(seconds: 1),
@@ -52,16 +52,12 @@ class HomeSliderCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      decoration: AppDecoration.decorationOverlay,
-                      padding: AppPadding.padding10,
-                      child: Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          color: AppColor.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        color: AppColor.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
