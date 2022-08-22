@@ -57,7 +57,7 @@ class _HomeSliderState extends ConsumerState<HomeSlider> {
                   return HomeSliderCard(
                     name: ads[index].title!,
                     //TODO: correct Base url
-                    imgUrl: '${AppEndPoints.ads}/${ads[index].image!}',
+                    imgUrl: '${AppEndPoints.baseUrl}/${ads[index].image!}',
                   );
                 },
               );
