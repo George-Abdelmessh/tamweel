@@ -28,13 +28,15 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final int index = ref.watch(indexProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(titleAppBar[index]),
-        centerTitle: true,
+    return SafeArea(
+      child: Scaffold(
+        // appBar: AppBar(
+        //   title: Text(titleAppBar[index]),
+        //   centerTitle: true,
+        // ),
+        body: listOfScreens[index],
+        bottomNavigationBar: BottomNavBarItems(),
       ),
-      body: listOfScreens[index],
-      bottomNavigationBar: BottomNavBarItems(),
     );
   }
 }

@@ -22,6 +22,7 @@ void main() async {
       path:
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: AppLocales.supportedLocales[0],
+      startLocale: AppLocales.supportedLocales[0],
       child: ProviderScope(
         child: MyApp(),
       ),

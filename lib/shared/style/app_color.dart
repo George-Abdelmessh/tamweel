@@ -9,6 +9,8 @@ class AppColor {
   /// BLACK COLOR
   static const Color black = Color(0xff000000);
 
+  static const Color container = Color.fromARGB(255, 44, 44, 51);
+
   /// OVER LAY COLOR [ BLACK WITH OPACITY 0.3 ]
   static Color overlay = black.withOpacity(0.3);
 
