@@ -6,7 +6,9 @@ import 'package:tamweel/layout/auth/login_screen.dart';
 import 'package:tamweel/layout/auth/signup_screen.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
+import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
@@ -20,78 +22,87 @@ class LoginOptionsButtons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Positioned(
-      bottom: AppSize.height * 0.1,
-      left: 0,
-      right: 0,
-      child: ListView(
-        shrinkWrap: true,
-        physics: AppHelper.neverScroll,
-        children: [
-          SizedBox(
-            height: AppSize.height * 0.05,
-            width: AppSize.width,
-            child: Row(
-              children: [
-                SizedBox(width: AppSize.width * 0.05),
-                SizedBox(
-                  width: AppSize.width * 0.425,
-                  child: CustomWideButton(
-                    title: 'Auth.Login'.tr(),
-                    onTap: () {
-                      AppNavigator.push(
-                        context: context,
-                        screen: const LoginScreen(),
-                        type: PageTransitionType.bottomToTop,
-                      );
-                    },
+    return CustomHudWidget(
+      child: Positioned(
+        bottom: AppSize.height * 0.1,
+        left: 0,
+        right: 0,
+        child: ListView(
+          shrinkWrap: true,
+          physics: AppHelper.neverScroll,
+          children: [
+            SizedBox(
+              height: AppSize.height * 0.05,
+              width: AppSize.width,
+              child: Row(
+                children: [
+                  SizedBox(width: AppSize.width * 0.05),
+                  SizedBox(
+                    width: AppSize.width * 0.425,
+                    child: CustomWideButton(
+                      title: 'Auth.Login'.tr(),
+                      onTap: () {
+                        AppNavigator.push(
+                          context: context,
+                          screen: const LoginScreen(),
+                          type: PageTransitionType.bottomToTop,
+                        );
+                      },
+                    ),
                   ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: AppSize.width * 0.425,
-                  child: CustomWideButton(
-                    title: 'Auth.SignUp'.tr(),
-                    onTap: () {
-                      AppNavigator.push(
-                        context: context,
-                        screen: const SignupScreen(),
-                        type: PageTransitionType.bottomToTop,
-                      );
-                    },
+                  const Spacer(),
+                  SizedBox(
+                    width: AppSize.width * 0.425,
+                    child: CustomWideButton(
+                      title: 'Auth.SignUp'.tr(),
+                      onTap: () async {
+                        await ref
+                            .read(signupFormNotifierProvider.notifier)
+                            .loadData(context)
+                            .then(
+                              (value) => {
+                                AppNavigator.push(
+                                  context: context,
+                                  screen: const SignupScreen(),
+                                  type: PageTransitionType.bottomToTop,
+                                )
+                              },
+                            );
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(width: AppSize.width * 0.05),
-              ],
+                  SizedBox(width: AppSize.width * 0.05),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: AppSize.height * 0.035,
-          ),
-          Padding(
-            padding: AppPaddingCopy.paddingH005,
-            child: CustomWideButton(
-              title: 'Auth.ContinueAsGuest'.tr(),
-              background: AppColor.secondary,
-              onTap: () async {
-                ref.read(authNotifierProvider.notifier).guest();
-
-                AppNavigator.pushAndRemove(
-                  context: context,
-                  screen: HomeScreen(),
-                );
-
-                // final isLoading = ref.watch(isLoadingProvider.notifier);
-                // isLoading.show();
-                // await Future.delayed(const Duration(seconds: 2));
-                // isLoading.hide();
-                // final response =
-                //     await DioHelper.dio!.get('${AppEndPoints.getUserDetails}1');
-                // print(response.data);
-              },
+            SizedBox(
+              height: AppSize.height * 0.035,
             ),
-          ),
-        ],
+            Padding(
+              padding: AppPaddingCopy.paddingH005,
+              child: CustomWideButton(
+                title: 'Auth.ContinueAsGuest'.tr(),
+                background: AppColor.secondary,
+                onTap: () async {
+                  ref.read(authNotifierProvider.notifier).guest();
+
+                  AppNavigator.pushAndRemove(
+                    context: context,
+                    screen: HomeScreen(),
+                  );
+
+                  // final isLoading = ref.watch(isLoadingProvider.notifier);
+                  // isLoading.show();
+                  // await Future.delayed(const Duration(seconds: 2));
+                  // isLoading.hide();
+                  // final response =
+                  //     await DioHelper.dio!.get('${AppEndPoints.getUserDetails}1');
+                  // print(response.data);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

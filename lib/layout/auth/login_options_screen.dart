@@ -15,17 +15,15 @@ class LoginOptionsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.white,
-        body: CustomHudWidget(
-          child: Stack(
-            children: const [
-              //The Logo and the image in the background
-              LoginOptionsImages(),
-              //The Wave effect Displayed at the bottom of the screen
-              LoginOptionsBottomWave(),
-              //The Buttons displayed at the bottom part of the screen
-              LoginOptionsButtons(),
-            ],
-          ),
+        body: Stack(
+          children: const [
+            //The Logo and the image in the background
+            LoginOptionsImages(),
+            //The Wave effect Displayed at the bottom of the screen
+            LoginOptionsBottomWave(),
+            //The Buttons displayed at the bottom part of the screen
+            LoginOptionsButtons(),
+          ],
         ),
       ),
     );

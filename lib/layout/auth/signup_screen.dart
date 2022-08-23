@@ -32,6 +32,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     final personalIdController = useTextEditingController();
 
     final step = ref.watch(signupFormNotifierProvider);
+
     return SafeArea(
       child: CustomHudWidget(
         child: Scaffold(
