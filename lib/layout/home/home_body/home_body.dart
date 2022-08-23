@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/home/home_body/bank_loans_card.dart';
 import 'package:tamweel/layout/home/home_body/banners_handel.dart';
-import 'package:tamweel/layout/home/home_body/custom_banner.dart';
 import 'package:tamweel/layout/home/home_body/custom_inkwell_banner.dart';
 import 'package:tamweel/layout/home/home_body/financing_plans.dart';
 import 'package:tamweel/layout/home/home_body/most_loans.dart';
 import 'package:tamweel/layout/home/home_body/slider.dart';
-import 'package:tamweel/providers/bannners/banners_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 

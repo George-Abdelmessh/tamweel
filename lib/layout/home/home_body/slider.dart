@@ -18,9 +18,7 @@ class HomeSlider extends ConsumerWidget {
       ),
       error: (error, stack) => Center(child: Text('Error: $error')),
       data: (snapshot) {
-        if (snapshot.isEmpty) {
-          return Container();
-        } else {
+        if (snapshot.isNotEmpty) {
           return CarouselSlider.builder(
             options: CarouselOptions(
               height: AppSize.height * 0.2,
@@ -41,6 +39,8 @@ class HomeSlider extends ConsumerWidget {
               );
             },
           );
+        } else {
+          return Container();
         }
       },
     );

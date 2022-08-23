@@ -6,4 +6,5 @@ class AppEndPoints {
   static const ads = 'get/ads';
   static const getFinancingProgram = 'getfinancingprogram';
   static const banners = 'banners';
+  static const mostWantedLoans = 'getloansmostwanted';
 }

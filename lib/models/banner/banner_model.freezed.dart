@@ -115,7 +115,8 @@ class __$$_BannerModelCopyWithImpl<$Res> extends _$BannerModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BannerModel implements _BannerModel {
-  const _$_BannerModel({this.status, this.message, final List<BannerData>? data})
+  const _$_BannerModel(
+      {this.status, this.message, final List<BannerData>? data})
       : _data = data;
 
   factory _$_BannerModel.fromJson(Map<String, dynamic> json) =>
@@ -191,7 +192,7 @@ abstract class _BannerModel implements BannerModel {
       throw _privateConstructorUsedError;
 }
 
-BannerData _$DatumFromJson(Map<String, dynamic> json) {
+BannerData _$BannerDataFromJson(Map<String, dynamic> json) {
   return _Datum.fromJson(json);
 }
 
@@ -208,13 +209,15 @@ mixin _$BannerData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DatumCopyWith<BannerData> get copyWith => throw _privateConstructorUsedError;
+  $BannerDataCopyWith<BannerData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DatumCopyWith<$Res> {
-  factory $DatumCopyWith(BannerData value, $Res Function(BannerData) then) =
-      _$DatumCopyWithImpl<$Res>;
+abstract class $BannerDataCopyWith<$Res> {
+  factory $BannerDataCopyWith(
+          BannerData value, $Res Function(BannerData) then) =
+      _$BannerDataCopyWithImpl<$Res>;
   $Res call(
       {int? id,
       String? title,
@@ -225,8 +228,8 @@ abstract class $DatumCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DatumCopyWithImpl<$Res> implements $DatumCopyWith<$Res> {
-  _$DatumCopyWithImpl(this._value, this._then);
+class _$BannerDataCopyWithImpl<$Res> implements $BannerDataCopyWith<$Res> {
+  _$BannerDataCopyWithImpl(this._value, this._then);
 
   final BannerData _value;
   // ignore: unused_field
@@ -271,7 +274,7 @@ class _$DatumCopyWithImpl<$Res> implements $DatumCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_DatumCopyWith<$Res> implements $DatumCopyWith<$Res> {
+abstract class _$$_DatumCopyWith<$Res> implements $BannerDataCopyWith<$Res> {
   factory _$$_DatumCopyWith(_$_Datum value, $Res Function(_$_Datum) then) =
       __$$_DatumCopyWithImpl<$Res>;
   @override
@@ -285,7 +288,7 @@ abstract class _$$_DatumCopyWith<$Res> implements $DatumCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DatumCopyWithImpl<$Res> extends _$DatumCopyWithImpl<$Res>
+class __$$_DatumCopyWithImpl<$Res> extends _$BannerDataCopyWithImpl<$Res>
     implements _$$_DatumCopyWith<$Res> {
   __$$_DatumCopyWithImpl(_$_Datum _value, $Res Function(_$_Datum) _then)
       : super(_value, (v) => _then(v as _$_Datum));
@@ -362,7 +365,7 @@ class _$_Datum implements _Datum {
 
   @override
   String toString() {
-    return 'Datum(id: $id, title: $title, image: $image, createdAt: $createdAt, updatedAt: $updatedAt, loanId: $loanId)';
+    return 'BannerData(id: $id, title: $title, image: $image, createdAt: $createdAt, updatedAt: $updatedAt, loanId: $loanId)';
   }
 
   @override

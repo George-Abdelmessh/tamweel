@@ -69,7 +69,9 @@ class BankLoansCard extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => const LoanCard(),
+                    // itemBuilder: (context, index) => LoanCard(),
+                    // ToDo: Build Loan Widget
+                    itemBuilder: (context, index) => Container(),
                     separatorBuilder: (context, index) => CustomSizedBoxWidth(
                       width: AppSize.width * 0.015,
                     ),

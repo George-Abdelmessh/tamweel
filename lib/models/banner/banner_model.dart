@@ -26,5 +26,5 @@ class BannerData with _$BannerData {
     int? loanId,
   }) = _Datum;
 
-  factory BannerData.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
+  factory BannerData.fromJson(Map<String, dynamic> json) => _$BannerDataFromJson(json);
 }
