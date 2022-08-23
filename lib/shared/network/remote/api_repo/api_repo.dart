@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
+import 'package:tamweel/models/category/loans_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
 import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/shared/network/end_points.dart';
@@ -7,6 +8,14 @@ import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tuple/tuple.dart';
 
 class ApiRepo {
+  static Future<List<Data>> getLoans() async {
+    List<Data>? loans;
+    await DioHelper.getDate(url: AppEndPoints.getloans).then((response) {
+      loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
+    });
+    return loans!;
+  }
+
   static Future<List<AdData>> getAds() async {
     List<AdData>? ads;
 
