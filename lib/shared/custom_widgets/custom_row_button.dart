@@ -22,23 +22,24 @@ class CustomRowButton extends StatelessWidget {
     return Material(
       color: AppColor.transparent,
       child: InkWell(
-          splashColor: AppColor.primary.withOpacity(0.5),
-          onTap: () => onTap,
-          child: SizedBox(
-            width: AppSize.width * 0.8,
-            child: Row(
-              children: [
-                Icon(icon, color: AppColor.secondary),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: titleSize,
-                    color: titleColor,
-                  ),
-                )
-              ],
-            ),
-          )),
+        splashColor: AppColor.primary.withOpacity(0.5),
+        onTap: () => onTap,
+        child: SizedBox(
+          width: AppSize.width * 0.8,
+          child: Row(
+            children: [
+              Icon(icon, color: AppColor.secondary),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: titleSize,
+                  color: titleColor,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

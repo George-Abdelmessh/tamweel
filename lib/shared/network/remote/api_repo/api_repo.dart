@@ -63,15 +63,15 @@ class ApiRepo {
       'marital_status': maritalStatus,
       'gender': gender,
     };
-    print(data);
+    // print(data);
     Response? response;
     try {
       response = await DioHelper.dio!.post(AppEndPoints.signup, data: data);
-    } on DioError catch (e) {
-      print(e.response);
+    } on DioError {
+      // print(e.response);
     }
-    print(response!.data);
-    final status = response.data['status'] == 'true' ? true : false;
+    // print(response!.data);
+    final status = response!.data['status'] == 'true' ? true : false;
     return Tuple2(
       status,
       response.data['message'] as String,
