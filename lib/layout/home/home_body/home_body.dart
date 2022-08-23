@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tamweel/layout/home/home_body/bank_loans_card.dart';
 import 'package:tamweel/layout/home/home_body/custom_banner.dart';
 import 'package:tamweel/layout/home/home_body/custom_inkwell_banner.dart';
-import 'package:tamweel/layout/home/home_body/financing_plans_card.dart';
+import 'package:tamweel/layout/home/home_body/financing_plans.dart';
 import 'package:tamweel/layout/home/home_body/most_loans.dart';
 import 'package:tamweel/layout/home/home_body/slider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
@@ -20,7 +20,7 @@ class HomeBody extends StatelessWidget {
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
-          FinancingPlansCard(),
+          FinancingPlans(),
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
