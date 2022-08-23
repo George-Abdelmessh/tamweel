@@ -4,12 +4,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tamweel/layout/auth/login_screen.dart';
 import 'package:tamweel/layout/auth/signup_screen.dart';
+import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
-import 'package:tamweel/shared/network/end_points.dart';
-import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
@@ -77,18 +76,18 @@ class LoginOptionsButtons extends ConsumerWidget {
               onTap: () async {
                 ref.read(authNotifierProvider.notifier).guest();
 
-                // AppNavigator.pushAndRemove(
-                //   context: context,
-                //   screen: HomeScreen(),
-                // );
+                AppNavigator.pushAndRemove(
+                  context: context,
+                  screen: HomeScreen(),
+                );
 
                 // final isLoading = ref.watch(isLoadingProvider.notifier);
                 // isLoading.show();
                 // await Future.delayed(const Duration(seconds: 2));
                 // isLoading.hide();
-                final response =
-                    await DioHelper.dio!.get('${AppEndPoints.getUserDetails}1');
-                print(response.data);
+                // final response =
+                //     await DioHelper.dio!.get('${AppEndPoints.getUserDetails}1');
+                // print(response.data);
               },
             ),
           ),
