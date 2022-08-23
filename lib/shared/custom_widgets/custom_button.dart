@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:tamweel/shared/style/app_color.dart';
-import 'package:tamweel/shared/style/app_padding.dart';
-import 'package:tamweel/shared/style/app_radius.dart';
+import '../style/app_color.dart';
+import '../style/app_padding.dart';
+import '../style/app_radius.dart';
+
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
+  CustomButton({
+    Key? key,
     this.height = 50.0,
     required this.title,
     required this.onTap,
     this.textColor = AppColor.white,
     this.background = AppColor.primary,
     this.borderColor = AppColor.primary,
-  });
+  }) : super(key: key);
   final String title;
   final double height;
   final Function onTap;
@@ -25,9 +26,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       height: height,
-      onPressed: () {
-        onTap();
-      },
+      onPressed: () => onTap(),
       minWidth: double.infinity,
       padding: AppPadding.paddingV10,
       shape: RoundedRectangleBorder(
@@ -46,7 +45,7 @@ class CustomButton extends StatelessWidget {
       textColor: textColor,
       child: Text(
         title,
-        style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
     );

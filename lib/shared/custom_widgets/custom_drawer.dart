@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:tamweel/shared/style/app_helper.dart';
-import 'package:tamweel/shared/style/app_padding.dart';
+import '../style/app_helper.dart';
+import '../style/app_padding.dart';
+
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
-    super.key,
+    Key? key,
     required this.children,
-  });
+  }) : super(key: key);
 
   final List<Widget> children;
 

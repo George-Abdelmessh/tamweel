@@ -9,7 +9,7 @@ class AppRadius {
   static BorderRadius radius20 = BorderRadius.circular(20.0);
 
   /// TOP 30
-  static BorderRadius radiusTop30 = const BorderRadius.only(
+  static BorderRadius radiusTop30 = BorderRadius.only(
     topLeft: Radius.circular(30),
     topRight: Radius.circular(30),
   );

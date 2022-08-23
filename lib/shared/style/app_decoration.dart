@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:tamweel/shared/style/app_color.dart';
-import 'package:tamweel/shared/style/app_radius.dart';
+import 'app_color.dart';
+import 'app_radius.dart';
 
 class AppDecoration {
   /// DECORATION CONTAINER GREY
@@ -24,7 +24,7 @@ class AppDecoration {
 
   /// DECORATION BORDER PRIMARY
   static BoxDecoration decorationBorderPrimary = BoxDecoration(
-    border: Border.all(color: AppColor.primary),
+    border: Border.all(width: 1, color: AppColor.primary),
     borderRadius: AppRadius.radius20,
   );
 }

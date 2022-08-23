@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomSizedBoxWidth extends StatelessWidget {
   const CustomSizedBoxWidth({
-    super.key,
+    Key? key,
     this.width = 20.0,
-  });
-  final double width;
+  }) : super(key: key);
+  final width;
 
   @override
   Widget build(BuildContext context) {

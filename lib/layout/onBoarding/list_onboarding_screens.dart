@@ -2,18 +2,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-import 'package:tamweel/shared/constants/app_image.dart';
+import '../../shared/constants/app_image.dart';
 
 class ListOnBoardingScreen {
   static final List<PageViewModel> pages = [
     PageViewModel(
       titleWidget: Text(
-        'OnBoarding.LoginFirst'.tr(),
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'سجل دخول اولاً',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body: 'OnBoarding.LoginFirstBody'.tr(),
+      body:
+          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
       image: Image.asset(AppImage.firstPage),
-      decoration: const PageDecoration(
+      decoration: PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -22,14 +23,15 @@ class ListOnBoardingScreen {
     ),
     PageViewModel(
       titleWidget: Text(
-        'OnBoarding.ChosePlan'.tr(),
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'اختار الخطة المناسبة',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body: 'OnBoarding.ChosePlanBody'.tr(),
+      body:
+          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
       image: Image.asset(
         AppImage.secondPage,
       ),
-      decoration: const PageDecoration(
+      decoration: PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -38,12 +40,12 @@ class ListOnBoardingScreen {
     ),
     PageViewModel(
       titleWidget: Text(
-        'OnBoarding.FillData'.tr(),
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'املاء البيانات',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body: 'OnBoarding.FillDataBody'.tr(),
+      body: 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
       image: Image.asset(AppImage.firstPage),
-      decoration: const PageDecoration(
+      decoration: PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
@@ -53,11 +55,11 @@ class ListOnBoardingScreen {
     PageViewModel(
       titleWidget: Text(
         'OnBoarding.Done'.tr(),
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      body: 'OnBoarding.DoneBody'.tr(),
+      body: 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.',
       image: Image.asset(AppImage.secondPage),
-      decoration: const PageDecoration(
+      decoration: PageDecoration(
         titleTextStyle: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,

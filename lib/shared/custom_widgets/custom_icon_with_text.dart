@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:tamweel/shared/custom_widgets/custom_sized_box_width.dart';
-import 'package:tamweel/shared/style/app_color.dart';
+
+import '../style/app_color.dart';
+import 'custom_sized_box_width.dart';
 
 class CustomIconWithText extends StatelessWidget {
   const CustomIconWithText({
-    super.key,
+    Key? key,
     required this.icon,
     required this.text,
-  });
+  }) : super(key: key);
 
-  final IconData icon;
-  final String text;
+  final icon;
+  final text;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Icon(icon, color: AppColor.primary, size: 15.0),
-        const CustomSizedBoxWidth(width: 5.0),
+        CustomSizedBoxWidth(width: 5.0),
         Expanded(
           child: Text(
-            text,
+            '$text',
             style: TextStyle(
               fontSize: 12.0,
               fontWeight: FontWeight.bold,
