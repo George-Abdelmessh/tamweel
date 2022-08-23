@@ -33,13 +33,13 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     final step = ref.watch(signupFormNotifierProvider);
     return SafeArea(
-      child: Scaffold(
-        floatingActionButton: const CustomFloatingBackButton(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-        backgroundColor: AppColor.white,
-        //welcome image then login form
-        body: CustomHudWidget(
-          child: SingleChildScrollView(
+      child: CustomHudWidget(
+        child: Scaffold(
+          floatingActionButton: const CustomFloatingBackButton(),
+          floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+          backgroundColor: AppColor.white,
+          //welcome image then login form
+          body: SingleChildScrollView(
             physics: AppHelper.scroll,
             child: SizedBox(
               height: AppSize.height * 1.5,

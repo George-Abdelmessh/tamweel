@@ -77,4 +77,26 @@ class ApiRepo {
       response.data['message'] as String,
     );
   }
+
+  ///User Login Method
+  static Future<Tuple2<bool, String>> login(
+      {required String email, required String password}) async {
+    final data = {
+      'email': email,
+      'password': password,
+    };
+    // print(data);
+    Response? response;
+    try {
+      response = await DioHelper.dio!.post(AppEndPoints.login, data: data);
+    } on DioError {
+      // print(e.response);
+    }
+    // print(response!.data);
+    final status = response!.data['status'] == 'true' ? true : false;
+    return Tuple2(
+      status,
+      response.data['message'] as String,
+    );
+  }
 }

@@ -9,15 +9,23 @@ class SearchBody extends StatefulWidget {
   State<SearchBody> createState() => _SearchBodyState();
 }
 
-class _SearchBodyState extends State<SearchBody> with TickerProviderStateMixin {
+class _SearchBodyState extends State<SearchBody>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 2),
+    lowerBound: 0.5,
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<double> _animation = CurvedAnimation(
     parent: _controller,
-    curve: Curves.fastOutSlowIn,
+    curve: Curves.easeIn,
   );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   final searchController = TextEditingController();
   @override
