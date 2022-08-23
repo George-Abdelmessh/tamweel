@@ -5,4 +5,7 @@ class AppEndPoints {
   /// examples
   static const ads = 'get/ads';
   static const getFinancingProgram = 'getfinancingprogram';
+
+  static const getUserDetails = 'user/';
+  static const signup = 'register';
 }

@@ -11,6 +11,9 @@ import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 import 'package:tamweel/shared/style/app_theme.dart';
 
+///Used to access context to show Alerts
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: IOS Orientation in XCode
@@ -25,17 +28,31 @@ void main() async {
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: AppLocales.supportedLocales[0],
       startLocale: AppLocales.supportedLocales[0],
-      child: ProviderScope(
-        child: MyApp(),
+      child: UncontrolledProviderScope(
+        container: DioHelper.providerContainer!,
+        child: const MyApp(),
       ),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final bool firstUse =
       CacheHelper.getData(key: AppConst.firstUse) as bool? ?? true;
+
+  @override
+  void dispose() {
+    DioHelper.providerContainer!.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

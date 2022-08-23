@@ -13,17 +13,17 @@ class UserDetails with _$UserDetails {
   const factory UserDetails({
     required int id,
     required String name,
-    required String nationalId,
+    @JsonKey(name: 'national_id') required String nationalId,
     required String mobile,
     required String email,
-    required dynamic emailVerifiedAt,
+    @JsonKey(name: 'email_verified_at') required dynamic emailVerifiedAt,
     required int gender,
-    required int maritalStatus,
+    @JsonKey(name: 'marital_status') required int maritalStatus,
     required int country,
     required int area,
     required String address,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    @JsonKey(name: 'created_at') required DateTime createdAt,
+    @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _UserDetails;
 
   factory UserDetails.fromJson(Map<String, dynamic> json) =>

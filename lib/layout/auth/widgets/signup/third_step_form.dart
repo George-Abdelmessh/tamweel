@@ -5,10 +5,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
@@ -121,33 +123,28 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
 
     Future<void> signup() async {
       //show a loading indicator dialog
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(
-          child: CircularProgressIndicator(
-            color: AppColor.secondary,
-          ),
-        ),
-      );
-      //login
+
       await authProvider
           .signUp(
-            email: widget.emailController.text,
-            password: widget.passwordController.text,
-            name: widget.nameController.text,
-            phone: widget.phoneController.text,
-            address: addressController.text,
-            personalId: widget.nationalIdController.text,
-            isMale: ref.read(genderProvider.notifier).state == 'Auth.Male'.tr(),
-            userMaritalStatus: ref.read(maritalStatusProvider.notifier).state,
-            governorate: ref.read(governorateProvider.notifier).state,
-            city: ref.read(cityProvider.notifier).state,
-          )
-          .then(
-            (value) => //hide the loading indicator dialog
-                Navigator.of(context).pop(),
+        email: widget.emailController.text,
+        password: widget.passwordController.text,
+        name: widget.nameController.text,
+        phone: widget.phoneController.text,
+        address: addressController.text,
+        nationalId: widget.nationalIdController.text,
+        isMale: ref.read(genderProvider.notifier).state == 'Auth.Male'.tr(),
+        userMaritalStatus: ref.read(maritalStatusProvider.notifier).state,
+        governorate: ref.read(governorateProvider.notifier).state,
+        city: ref.read(cityProvider.notifier).state,
+      )
+          .then((value) {
+        if (value.item1) {
+          AppNavigator.pushAndRemove(
+            context: context,
+            screen: const LoginOptionsScreen(),
           );
+        }
+      });
     }
 
     return SizedBox(

@@ -3,11 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/widgets/login/login_screen_form.dart';
 import 'package:tamweel/layout/auth/widgets/login/login_screen_pre_form.dart';
-import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
-import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
@@ -40,8 +38,8 @@ class LoginScreen extends HookConsumerWidget {
             .login(emailController.text, passwordController.text)
             .then((value) {
           Navigator.of(context).pop();
-          if (value) {
-            AppNavigator.pushAndRemove(context: context, screen: HomeScreen());
+          if (value.item1) {
+            // AppNavigator.pushAndRemove(context: context, screen: HomeScreen());
           }
         });
       }

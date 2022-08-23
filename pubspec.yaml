@@ -71,6 +71,8 @@ dependencies:
   async: ^2.8.2
   freezed_annotation: ^2.1.0
   json_annotation: ^4.6.0
+  tuple: ^2.0.0
+  modal_progress_hud_nsn: ^0.3.0
   font_awesome_flutter: ^10.1.0
 dev_dependencies:
   flutter_test:
