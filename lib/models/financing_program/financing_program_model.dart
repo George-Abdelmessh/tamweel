@@ -12,8 +12,8 @@ class FinancingProgramsModel {
         status: json['status'] as String,
         message: json['message'] as String,
         data: List<FinancingProgramData>.from(
-          //ignore: argument_type_not_assignable
-            json['data'].map((x) => FinancingProgramData.fromJson(x)),)
+        //ignore: argument_type_not_assignable, avoid_dynamic_calls
+            json['data'].map((x) => FinancingProgramData.fromJson(x)),),
       );
 
   factory FinancingProgramsModel.fromRawJson(String str) =>
