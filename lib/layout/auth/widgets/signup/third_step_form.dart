@@ -123,16 +123,7 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
 
     Future<void> signup() async {
       //show a loading indicator dialog
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(
-          child: CircularProgressIndicator(
-            color: AppColor.secondary,
-          ),
-        ),
-      );
-      //login
+
       await authProvider
           .signUp(
         email: widget.emailController.text,
@@ -147,29 +138,10 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
         city: ref.read(cityProvider.notifier).state,
       )
           .then((value) {
-        Navigator.of(context).pop();
         if (value.item1) {
           AppNavigator.pushAndRemove(
             context: context,
             screen: const LoginOptionsScreen(),
-          );
-        } else {
-          //show message dialog
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Error'),
-              content: Text(value.item2),
-              actions: <Widget>[
-                TextButton(
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: AppColor.secondary,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ],
-            ),
           );
         }
       });
