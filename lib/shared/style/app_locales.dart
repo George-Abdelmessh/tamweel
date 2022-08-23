@@ -41,7 +41,7 @@ class AppLocales {
   ];
 
   /// current app locale
-  var currentLocale = supportedLocales[0];
+  Locale currentLocale = supportedLocales[0];
 
   /// updates device locale, takes [context] and [index] of supported locales as parameters
   ///

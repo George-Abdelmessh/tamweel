@@ -1,11 +1,13 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
-import '../style/app_color.dart';
-import '../style/app_padding.dart';
-import '../style/app_radius.dart';
+import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/style/app_radius.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
-    Key? key,
+  const CustomTextFormField({
+    super.key,
     required this.controller,
     this.type = TextInputType.text,
     this.onSubmit,
@@ -18,13 +20,13 @@ class CustomTextFormField extends StatelessWidget {
     this.isFocus = false,
     this.obscureText = false,
     this.textColor = AppColor.black,
-    this.textDirection = TextDirection.rtl,
+    this.textDirection = ui.TextDirection.rtl,
     this.prefix,
     this.suffix,
     this.suffixPressed,
     this.minLines = 1,
     this.maxLines = 1,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final TextInputType type;
@@ -36,16 +38,16 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? suffix;
   final String labelText;
 
-  final minLines;
-  final maxLines;
+  final int minLines;
+  final int maxLines;
 
-  final isValidate;
-  final isPhone;
-  final obscureText;
-  final textColor;
-  final textDirection;
-  final enabled;
-  final isFocus;
+  final bool isValidate;
+  final bool isPhone;
+  final bool obscureText;
+  final Color textColor;
+  final ui.TextDirection textDirection;
+  final bool enabled;
+  final bool isFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,7 @@ class CustomTextFormField extends StatelessWidget {
           contentPadding: AppPadding.paddingTextFormField,
           focusedBorder: OutlineInputBorder(
             borderRadius: AppRadius.radius20,
-            borderSide: BorderSide(color: AppColor.primary),
+            borderSide: const BorderSide(color: AppColor.primary),
           ),
           border: OutlineInputBorder(
             borderRadius: AppRadius.radius20,
