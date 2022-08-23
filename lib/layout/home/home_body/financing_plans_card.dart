@@ -9,7 +9,7 @@ import 'package:tamweel/shared/style/app_radius.dart';
 
 class FinancingPlansCard extends StatelessWidget {
   const FinancingPlansCard(
-      {super.key, required this.name, required this.image});
+      {super.key, required this.name, required this.image,});
 
   final String name;
   final String image;

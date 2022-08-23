@@ -7,7 +7,6 @@ import 'package:tamweel/layout/home/home_body/home_body.dart';
 import 'package:tamweel/layout/search/search_body.dart';
 import 'package:tamweel/layout/setting/setting_body.dart';
 import 'package:tamweel/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
-import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
 class HomeScreen extends HookConsumerWidget {

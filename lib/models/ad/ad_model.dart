@@ -32,7 +32,7 @@ class AdModel {
   factory AdModel.fromJson(Map<String, dynamic> json) => AdModel(
         status: json['status'] as String,
         message: json['message'] as String,
-        //ignore: argument_type_not_assignable
+        //ignore: argument_type_not_assignable, avoid_dynamic_calls
         data: List<AdData>.from(json['data'].map((x) => AdData.fromJson(x))),
       );
 
