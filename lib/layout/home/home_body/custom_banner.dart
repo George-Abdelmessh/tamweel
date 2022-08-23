@@ -15,12 +15,12 @@ class CustomBanner extends StatelessWidget {
     super.key,
     required this.imgUlr,
     required this.text,
-    this.loanData,
+    required this.loanID,
   });
 
   final String imgUlr;
   final String text;
-  final dynamic loanData;
+  final dynamic loanID;
 
   @override
   Widget build(BuildContext context) {

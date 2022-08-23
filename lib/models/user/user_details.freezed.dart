@@ -22,16 +22,21 @@ UserDetails _$UserDetailsFromJson(Map<String, dynamic> json) {
 mixin _$UserDetails {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'national_id')
   String get nationalId => throw _privateConstructorUsedError;
   String get mobile => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email_verified_at')
   dynamic get emailVerifiedAt => throw _privateConstructorUsedError;
   int get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: 'marital_status')
   int get maritalStatus => throw _privateConstructorUsedError;
   int get country => throw _privateConstructorUsedError;
   int get area => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,17 +53,17 @@ abstract class $UserDetailsCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String nationalId,
+      @JsonKey(name: 'national_id') String nationalId,
       String mobile,
       String email,
-      dynamic emailVerifiedAt,
+      @JsonKey(name: 'email_verified_at') dynamic emailVerifiedAt,
       int gender,
-      int maritalStatus,
+      @JsonKey(name: 'marital_status') int maritalStatus,
       int country,
       int area,
       String address,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      @JsonKey(name: 'updated_at') DateTime updatedAt});
 }
 
 /// @nodoc
@@ -152,17 +157,17 @@ abstract class _$$_UserDetailsCopyWith<$Res>
   $Res call(
       {int id,
       String name,
-      String nationalId,
+      @JsonKey(name: 'national_id') String nationalId,
       String mobile,
       String email,
-      dynamic emailVerifiedAt,
+      @JsonKey(name: 'email_verified_at') dynamic emailVerifiedAt,
       int gender,
-      int maritalStatus,
+      @JsonKey(name: 'marital_status') int maritalStatus,
       int country,
       int area,
       String address,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @JsonKey(name: 'created_at') DateTime createdAt,
+      @JsonKey(name: 'updated_at') DateTime updatedAt});
 }
 
 /// @nodoc
@@ -254,17 +259,17 @@ class _$_UserDetails with DiagnosticableTreeMixin implements _UserDetails {
   const _$_UserDetails(
       {required this.id,
       required this.name,
-      required this.nationalId,
+      @JsonKey(name: 'national_id') required this.nationalId,
       required this.mobile,
       required this.email,
-      required this.emailVerifiedAt,
+      @JsonKey(name: 'email_verified_at') required this.emailVerifiedAt,
       required this.gender,
-      required this.maritalStatus,
+      @JsonKey(name: 'marital_status') required this.maritalStatus,
       required this.country,
       required this.area,
       required this.address,
-      required this.createdAt,
-      required this.updatedAt});
+      @JsonKey(name: 'created_at') required this.createdAt,
+      @JsonKey(name: 'updated_at') required this.updatedAt});
 
   factory _$_UserDetails.fromJson(Map<String, dynamic> json) =>
       _$$_UserDetailsFromJson(json);
@@ -274,16 +279,19 @@ class _$_UserDetails with DiagnosticableTreeMixin implements _UserDetails {
   @override
   final String name;
   @override
+  @JsonKey(name: 'national_id')
   final String nationalId;
   @override
   final String mobile;
   @override
   final String email;
   @override
+  @JsonKey(name: 'email_verified_at')
   final dynamic emailVerifiedAt;
   @override
   final int gender;
   @override
+  @JsonKey(name: 'marital_status')
   final int maritalStatus;
   @override
   final int country;
@@ -292,8 +300,10 @@ class _$_UserDetails with DiagnosticableTreeMixin implements _UserDetails {
   @override
   final String address;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
 
   @override
@@ -379,17 +389,22 @@ abstract class _UserDetails implements UserDetails {
   const factory _UserDetails(
       {required final int id,
       required final String name,
-      required final String nationalId,
+      @JsonKey(name: 'national_id')
+          required final String nationalId,
       required final String mobile,
       required final String email,
-      required final dynamic emailVerifiedAt,
+      @JsonKey(name: 'email_verified_at')
+          required final dynamic emailVerifiedAt,
       required final int gender,
-      required final int maritalStatus,
+      @JsonKey(name: 'marital_status')
+          required final int maritalStatus,
       required final int country,
       required final int area,
       required final String address,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$_UserDetails;
+      @JsonKey(name: 'created_at')
+          required final DateTime createdAt,
+      @JsonKey(name: 'updated_at')
+          required final DateTime updatedAt}) = _$_UserDetails;
 
   factory _UserDetails.fromJson(Map<String, dynamic> json) =
       _$_UserDetails.fromJson;
@@ -399,16 +414,19 @@ abstract class _UserDetails implements UserDetails {
   @override
   String get name;
   @override
+  @JsonKey(name: 'national_id')
   String get nationalId;
   @override
   String get mobile;
   @override
   String get email;
   @override
+  @JsonKey(name: 'email_verified_at')
   dynamic get emailVerifiedAt;
   @override
   int get gender;
   @override
+  @JsonKey(name: 'marital_status')
   int get maritalStatus;
   @override
   int get country;
@@ -417,8 +435,10 @@ abstract class _UserDetails implements UserDetails {
   @override
   String get address;
   @override
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
+  @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)

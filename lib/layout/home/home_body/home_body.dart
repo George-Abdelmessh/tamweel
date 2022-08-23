@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/home/home_body/bank_loans_card.dart';
+import 'package:tamweel/layout/home/home_body/banners_handel.dart';
 import 'package:tamweel/layout/home/home_body/custom_banner.dart';
 import 'package:tamweel/layout/home/home_body/custom_inkwell_banner.dart';
 import 'package:tamweel/layout/home/home_body/financing_plans.dart';
 import 'package:tamweel/layout/home/home_body/most_loans.dart';
 import 'package:tamweel/layout/home/home_body/slider.dart';
+import 'package:tamweel/providers/bannners/banners_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 
@@ -24,12 +27,7 @@ class HomeBody extends StatelessWidget {
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
-          const CustomBanner(
-            loanData: '',
-            text: 'قرض شــــــــراء الجرار الزراعي',
-            imgUlr:
-                'https://thumbs.dreamstime.com/b/photo-gold-bitcoin-cryptocurrency-coin-moving-along-black-banner-digital-pcb-tech-pattern-ideal-text-etc-bitcoin-154826691.jpg',
-          ),
+          const HomeBanners(index: 0),
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
@@ -37,21 +35,11 @@ class HomeBody extends StatelessWidget {
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
-          const CustomBanner(
-            loanData: '',
-            text: 'قــرض بـــــاب رزق',
-            imgUlr:
-                'https://thumbs.dreamstime.com/b/fruits-vegetables-advertising-sign-store-dark-background-name-english-205506033.jpg',
-          ),
+          const HomeBanners(index: 1),
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
-          const CustomBanner(
-            loanData: '',
-            text: 'قرض تمويل وحدات الغاز والسماد العضوي بالريف',
-            imgUlr:
-                'https://www.lbcgroup.tv/newsimages/News-P-642485-637861980130826864.jpg',
-          ),
+          const HomeBanners(index: 2),
           CustomSizedBoxHeight(
             height: AppSize.height * 0.015,
           ),
