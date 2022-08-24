@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
-import 'package:tamweel/models/category/loans_model.dart';
+// import 'package:tamweel/models/category/loans_model.dart';
 import 'package:tamweel/models/banner/banner_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
