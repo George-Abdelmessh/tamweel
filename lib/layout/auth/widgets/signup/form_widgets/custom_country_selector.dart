@@ -58,7 +58,7 @@ class CustomCountrySelector extends ConsumerWidget {
                 //map govs to dropdown menu items
                 if (EasyLocalization.of(context)!.currentLocale!.languageCode ==
                     'ar')
-                  ...govs
+                  ...govs!
                       .map(
                         (e) => DropdownMenuItem(
                           value: e.governorateNameAr,
@@ -67,7 +67,7 @@ class CustomCountrySelector extends ConsumerWidget {
                       )
                       .toList()
                 else
-                  ...govs.map(
+                  ...govs!.map(
                     (e) => DropdownMenuItem(
                       value: e.governorateNameEn,
                       child: Text(e.governorateNameEn),
@@ -128,7 +128,7 @@ class CustomCountrySelector extends ConsumerWidget {
                           .currentLocale!
                           .languageCode ==
                       'ar')
-                    ...cities[ref.watch(govIdProvider)]!
+                    ...cities![ref.watch(govIdProvider)]!
                         .map(
                           (e) => DropdownMenuItem(
                             value: e.cityNameAr,
@@ -137,7 +137,7 @@ class CustomCountrySelector extends ConsumerWidget {
                         )
                         .toList()
                   else
-                    ...cities[ref.watch(govIdProvider)]!
+                    ...cities![ref.watch(govIdProvider)]!
                         .map(
                           (e) => DropdownMenuItem(
                             value: e.cityNameEn,

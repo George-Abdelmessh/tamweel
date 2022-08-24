@@ -23,11 +23,11 @@ class SignUpFormNotifier extends StateNotifier<int> {
   final ref;
   //state getter
   int get step => state;
-  late final String _govs;
-  late final String _cities;
-  late final List<Gov> govsList;
-  late final List<City> _citiesList;
-  late final Map<String, List<City>> citiesMap;
+  String? _govs;
+  String? _cities;
+  List<Gov>? govsList;
+  List<City>? _citiesList;
+  Map<String, List<City>>? citiesMap;
 
   ///Called in Login Options Screen when user presses on signup button
   Future<void> loadData(BuildContext context) async {
@@ -43,22 +43,22 @@ class SignUpFormNotifier extends StateNotifier<int> {
         _cities = value;
         govsList = List<Gov>.from(
           //ignore: argument_type_not_assignable , avoid_dynamic_calls
-          json.decode(_govs).map((x) => Gov.fromJson(x)),
+          json.decode(_govs!).map((x) => Gov.fromJson(x)),
         );
         _citiesList = List<City>.from(
           //ignore: argument_type_not_assignable , avoid_dynamic_calls
-          json.decode(_cities).map((x) => City.fromJson(x)),
+          json.decode(_cities!).map((x) => City.fromJson(x)),
         );
       });
     });
 
     //Create a Map of govs and cities where each key is the gov id and the value is the list of cities in that gov
     citiesMap = {};
-    for (final city in _citiesList) {
-      if (citiesMap.containsKey(city.governorateId)) {
-        citiesMap[city.governorateId]!.add(city);
+    for (final city in _citiesList!) {
+      if (citiesMap!.containsKey(city.governorateId)) {
+        citiesMap![city.governorateId]!.add(city);
       } else {
-        citiesMap[city.governorateId] = [city];
+        citiesMap![city.governorateId] = [city];
       }
     }
     ref.read(isLoadingProvider.notifier).hide();
@@ -90,14 +90,14 @@ class SignUpFormNotifier extends StateNotifier<int> {
     final gender = isMale ? 1 : 2;
     final maritalStatus = userMaritalStatus.index + 1;
     //TODO: Use user selected values
-    final country = govsList
+    final country = govsList!
         .firstWhere(
           (element) =>
               element.governorateNameAr == governorate ||
               element.governorateNameEn == governorate,
         )
         .id;
-    final userCity = citiesMap[country]!
+    final userCity = citiesMap![country]!
         .firstWhere(
           (element) => element.cityNameAr == city || element.cityNameEn == city,
         )
