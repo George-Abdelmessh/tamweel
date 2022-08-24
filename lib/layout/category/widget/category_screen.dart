@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tamweel/layout/category/widget/categry_tile.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
-// import 'package:tamweel/models/category/loans_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
-import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
 class CategoryScreen extends StatelessWidget {

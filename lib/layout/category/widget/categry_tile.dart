@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
-// import 'package:tamweel/models/category/loans_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';

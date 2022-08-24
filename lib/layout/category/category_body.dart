@@ -15,14 +15,13 @@ class CategoryBody extends ConsumerWidget {
       child: Scaffold(
         backgroundColor: AppColor.grey,
         body: loanProvider.when(
-            data: (data) =>
-            CategoryScreen(loandata: data),
+            data: (data) => CategoryScreen(loandata: data),
             error: (error, stack) => Container(
                   color: AppColor.error,
                   width: 100,
                   height: 100,
                 ),
-            loading: () => SizedBox.shrink()),
+            loading: () => const SizedBox.shrink(),),
       ),
     );
   }

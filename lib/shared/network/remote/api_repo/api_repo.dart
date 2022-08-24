@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_dynamic_calls, avoid_bool_literals_in_conditional_expressions
+
 import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
-// import 'package:tamweel/models/category/loans_model.dart';
 import 'package:tamweel/models/banner/banner_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
@@ -15,6 +16,7 @@ class ApiRepo {
     await DioHelper.getDate(url: AppEndPoints.getloans).then((response) {
       loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
     });
+    // ignore: avoid_print
     print(loans);
     return loans!;
   }
@@ -92,7 +94,7 @@ class ApiRepo {
 
   ///User Login Method
   static Future<Tuple2<bool, String>> login(
-      {required String email, required String password}) async {
+      {required String email, required String password,}) async {
     final data = {
       'email': email,
       'password': password,
