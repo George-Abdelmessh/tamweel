@@ -17,7 +17,10 @@ class DioHelper {
 
     dio!.interceptors.addAll({
       AppInterceptors(dio!, providerContainer!),
-      LogInterceptor(),
+      LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+      ),
     });
 
     return;

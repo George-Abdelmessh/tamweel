@@ -1,20 +1,68 @@
+import 'dart:convert';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/models/auth/city.dart';
+import 'package:tamweel/models/auth/gov.dart';
+import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
 enum MaritalStatus {
-  single,
   married,
   divorced,
   widowed,
+  single,
 }
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class SignUpFormNotifier extends StateNotifier<int> {
-  SignUpFormNotifier() : super(0);
+  SignUpFormNotifier(this.ref) : super(0);
 
+  final ref;
   //state getter
   int get step => state;
+  String? _govs;
+  String? _cities;
+  List<Gov>? govsList;
+  List<City>? _citiesList;
+  Map<String, List<City>>? citiesMap;
+
+  ///Called in Login Options Screen when user presses on signup button
+  Future<void> loadData(BuildContext context) async {
+    ref.read(isLoadingProvider.notifier).show();
+
+    await DefaultAssetBundle.of(context)
+        .loadString('assets/data/govs.json')
+        .then((value) async {
+      _govs = value;
+      await DefaultAssetBundle.of(context)
+          .loadString('assets/data/cities.json')
+          .then((value) {
+        _cities = value;
+        govsList = List<Gov>.from(
+          //ignore: argument_type_not_assignable , avoid_dynamic_calls
+          json.decode(_govs!).map((x) => Gov.fromJson(x)),
+        );
+        _citiesList = List<City>.from(
+          //ignore: argument_type_not_assignable , avoid_dynamic_calls
+          json.decode(_cities!).map((x) => City.fromJson(x)),
+        );
+      });
+    });
+
+    //Create a Map of govs and cities where each key is the gov id and the value is the list of cities in that gov
+    citiesMap = {};
+    for (final city in _citiesList!) {
+      if (citiesMap!.containsKey(city.governorateId)) {
+        citiesMap![city.governorateId]!.add(city);
+      } else {
+        citiesMap![city.governorateId] = [city];
+      }
+    }
+    ref.read(isLoadingProvider.notifier).hide();
+  }
 
   ///Next Step method
   void nextStep() {
@@ -42,8 +90,18 @@ class SignUpFormNotifier extends StateNotifier<int> {
     final gender = isMale ? 1 : 2;
     final maritalStatus = userMaritalStatus.index + 1;
     //TODO: Use user selected values
-    const country = 1;
-    const city = 1;
+    final country = govsList!
+        .firstWhere(
+          (element) =>
+              element.governorateNameAr == governorate ||
+              element.governorateNameEn == governorate,
+        )
+        .id;
+    final userCity = citiesMap![country]!
+        .firstWhere(
+          (element) => element.cityNameAr == city || element.cityNameEn == city,
+        )
+        .id;
 
     return ApiRepo.signup(
       email: email,
@@ -52,8 +110,8 @@ class SignUpFormNotifier extends StateNotifier<int> {
       nationalId: nationalId,
       phone: phone,
       address: address,
-      country: country,
-      city: city,
+      country: int.parse(country),
+      city: int.parse(userCity),
       maritalStatus: maritalStatus,
       gender: gender,
     );
@@ -64,5 +122,21 @@ class SignUpFormNotifier extends StateNotifier<int> {
 /// This is used to notify the UI of the user's authentication state.
 final signupFormNotifierProvider =
     StateNotifierProvider.autoDispose<SignUpFormNotifier, int>(
-  (ref) => SignUpFormNotifier(),
+  (ref) => SignUpFormNotifier(ref),
 );
+
+final canvibrateProvider = StateProvider((ref) => false);
+final hasVibrationController = StateProvider((ref) => false);
+
+final genderProvider = StateProvider.autoDispose((ref) => 'Auth.Male'.tr());
+// String? gender;
+final maritalStatusProvider =
+    StateProvider.autoDispose((ref) => MaritalStatus.married);
+
+final governorateProvider =
+    StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
+final cityProvider = StateProvider.autoDispose((ref) => 'Auth.City'.tr());
+
+final govIdProvider = StateProvider<String>((ref) {
+  return '0';
+});

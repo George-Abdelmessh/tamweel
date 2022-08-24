@@ -5,6 +5,7 @@ import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
@@ -79,6 +80,7 @@ class FirstStepForm extends ConsumerWidget {
                 title: 'Navigation.Next'.tr(),
                 onTap: () {
                   if (formKey.currentState!.validate()) {
+                    AppHelper.closeKeyboard();
                     authProvider.nextStep();
                   }
                 },
