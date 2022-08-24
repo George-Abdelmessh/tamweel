@@ -8,11 +8,12 @@ import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tuple/tuple.dart';
 
 class ApiRepo {
-  static Future<List<Data>> getLoans() async {
-    List<Data>? loans;
+  static Future<List<LoanData>> getLoans() async {
+    List<LoanData>? loans;
     await DioHelper.getDate(url: AppEndPoints.getloans).then((response) {
       loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
     });
+    print(loans);
     return loans!;
   }
 

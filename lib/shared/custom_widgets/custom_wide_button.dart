@@ -36,14 +36,16 @@ class CustomWideButton extends StatelessWidget {
             borderRadius: AppRadius.radius20,
           ),
         ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: textColor,
+        child: FittedBox(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     );
