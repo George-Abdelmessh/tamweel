@@ -9,36 +9,6 @@ import 'package:tamweel/shared/network/end_points.dart';
 class HomeSlider extends ConsumerWidget {
   const HomeSlider({super.key});
 
-  // return FutureBuilder(
-  //   future: _fetchData(),
-  //   builder: (context, snapshot) {
-  //     return snapshot.connectionState == ConnectionState.waiting
-  //         ? const Center(
-  //             child: CircularProgressIndicator(),
-  //           )
-  //         : CarouselSlider.builder(
-  //             options: CarouselOptions(
-  //               height: AppSize.height * 0.2,
-  //               autoPlay: true,
-  //               viewportFraction: 1,
-  //               enableInfiniteScroll: false,
-  //               autoPlayCurve: Curves.linearToEaseOut,
-  //               autoPlayAnimationDuration: const Duration(seconds: 2),
-  //               scrollPhysics: const BouncingScrollPhysics(),
-  //               onPageChanged: (index, r) {},
-  //             ),
-  //             itemCount: ads.length,
-  //             itemBuilder: (context, index, any) {
-  //               return HomeSliderCard(
-  //                 name: ads[index].title!,
-  //                 //TODO: correct Base url
-  //                 imgUrl: '${AppEndPoints.baseUrl}/${ads[index].image!}',
-  //               );
-  //             },
-  //           );
-  //   },
-  // );
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ads = ref.watch(adsProvider);
@@ -48,9 +18,7 @@ class HomeSlider extends ConsumerWidget {
       ),
       error: (error, stack) => Center(child: Text('Error: $error')),
       data: (snapshot) {
-        if (snapshot.isEmpty) {
-          return Container();
-        } else {
+        if (snapshot.isNotEmpty) {
           return CarouselSlider.builder(
             options: CarouselOptions(
               height: AppSize.height * 0.2,
@@ -71,6 +39,8 @@ class HomeSlider extends ConsumerWidget {
               );
             },
           );
+        } else {
+          return Container();
         }
       },
     );

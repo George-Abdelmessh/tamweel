@@ -9,4 +9,6 @@ class AppEndPoints {
   static const getUserDetails = 'user/';
   static const signup = 'register';
   static const getloans = 'getloans';
+  static const banners = 'banners';
+  static const mostWantedLoans = 'getloansmostwanted';
 }
