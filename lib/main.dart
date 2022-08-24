@@ -60,6 +60,7 @@ class _MyAppState extends State<MyApp> {
         AppHelper.closeKeyboard();
       },
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,

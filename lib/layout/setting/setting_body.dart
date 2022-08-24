@@ -70,26 +70,30 @@ class SettingBody extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(
-                        child: MaterialButton(
-                          onPressed: () {},
-                          color: AppColor.primary,
-                          elevation: 0.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: AppRadius.radius10,
-                          ),
+                        child: InkWell(
+                          onTap: () {},
+                          // color: AppColor.transparent,
+                          // elevation: 0.0,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: AppRadius.radius10,
+                          // ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
+                            children: const [
+                              Icon(
                                 Icons.arrow_back_ios,
-                                color: AppColor.white,
+                                color: AppColor.primary,
                               ),
-                              SizedBox(
-                                width: AppSize.width * 0.01,
-                              ),
-                              const Text(
+                              // SizedBox(
+                              //   width: AppSize.width * 0.01,
+                              // ),
+                              Text(
                                 'تعديل البيانات',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                  color: AppColor.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ],
                           ),
