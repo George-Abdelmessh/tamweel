@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls, avoid_bool_literals_in_conditional_expressions
+
 import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
 import 'package:tamweel/models/banner/banner_model.dart';
@@ -9,6 +11,16 @@ import 'package:tamweel/shared/network/remote/dio_helper.dart';
 import 'package:tuple/tuple.dart';
 
 class ApiRepo {
+  static Future<List<LoanData>> getLoans() async {
+    List<LoanData>? loans;
+    await DioHelper.getDate(url: AppEndPoints.getloans).then((response) {
+      loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
+    });
+    // ignore: avoid_print
+    print(loans);
+    return loans!;
+  }
+
   static Future<List<AdData>> getAds() async {
     List<AdData>? ads;
 
@@ -65,15 +77,37 @@ class ApiRepo {
       'marital_status': maritalStatus,
       'gender': gender,
     };
-    print(data);
+    // print(data);
     Response? response;
     try {
       response = await DioHelper.dio!.post(AppEndPoints.signup, data: data);
-    } on DioError catch (e) {
-      print(e.response);
+    } on DioError {
+      // print(e.response);
     }
-    print(response!.data);
-    final status = response.data['status'] == 'true' ? true : false;
+    // print(response!.data);
+    final status = response!.data['status'] == 'true' ? true : false;
+    return Tuple2(
+      status,
+      response.data['message'] as String,
+    );
+  }
+
+  ///User Login Method
+  static Future<Tuple2<bool, String>> login(
+      {required String email, required String password,}) async {
+    final data = {
+      'email': email,
+      'password': password,
+    };
+    // print(data);
+    Response? response;
+    try {
+      response = await DioHelper.dio!.post(AppEndPoints.login, data: data);
+    } on DioError {
+      // print(e.response);
+    }
+    // print(response!.data);
+    final status = response!.data['status'] == 'true' ? true : false;
     return Tuple2(
       status,
       response.data['message'] as String,

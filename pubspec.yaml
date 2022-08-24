@@ -120,6 +120,7 @@ flutter:
     - assets/images/
     - assets/logos/
     - assets/translations/
+    - assets/data/
 
   # fonts:
   #   - family: Schyler
