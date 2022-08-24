@@ -19,15 +19,22 @@ class AuthNotifier extends StateNotifier<AppUser> {
   Future<Tuple2<bool, String>> login(String email, String password) async {
     //TODO: Login the user using Auth repository.
     try {
-      await Future.delayed(const Duration(seconds: 1));
-      print('User logged in with email: $email and password: $password');
-      state = state.copyWith(
-        userState: AuthState.loggedIn,
-        accessToken: 'accessToken',
-        refreshToken: 'refreshToken',
-        userId: 'userId',
-      );
-      return const Tuple2(true, 'success');
+      // await Future.delayed(const Duration(seconds: 1));
+      // print('User logged in with email: $email and password: $password');
+      final response = await ApiRepo.login(email: email, password: password);
+
+      if (response.item1) {
+        state = state.copyWith(
+          //TODO: Update user.
+          userState: AuthState.loggedIn,
+          accessToken: 'accessToken',
+          refreshToken: 'refreshToken',
+          userId: 'userId',
+        );
+      } else {
+        state = state.copyWith(userState: AuthState.guest);
+      }
+      return response;
     } catch (e) {
       state = const AppUser(userState: AuthState.guest);
       return const Tuple2(false, 'Wrong email or password');

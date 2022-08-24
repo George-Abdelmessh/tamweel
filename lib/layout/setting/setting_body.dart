@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
+import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_row_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
@@ -9,11 +11,11 @@ import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
-class SettingBody extends StatelessWidget {
+class SettingBody extends ConsumerWidget {
   const SettingBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -347,6 +349,7 @@ class SettingBody extends StatelessWidget {
                         Expanded(
                           child: MaterialButton(
                             onPressed: () {
+                              ref.read(authNotifierProvider.notifier).guest();
                               AppNavigator.pushAndRemove(
                                 context: context,
                                 screen: const LoginOptionsScreen(),
