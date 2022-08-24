@@ -20,7 +20,7 @@ class CustomBanner extends StatelessWidget {
 
   final String imgUlr;
   final String text;
-  final dynamic loanID;
+  final int loanID;
 
   @override
   Widget build(BuildContext context) {
