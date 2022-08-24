@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/city.dart';
 import 'package:tamweel/models/auth/gov.dart';
@@ -91,8 +90,18 @@ class SignUpFormNotifier extends StateNotifier<int> {
     final gender = isMale ? 1 : 2;
     final maritalStatus = userMaritalStatus.index + 1;
     //TODO: Use user selected values
-    const country = 1;
-    const city = 1;
+    final country = govsList
+        .firstWhere(
+          (element) =>
+              element.governorateNameAr == governorate ||
+              element.governorateNameEn == governorate,
+        )
+        .id;
+    final userCity = citiesMap[country]!
+        .firstWhere(
+          (element) => element.cityNameAr == city || element.cityNameEn == city,
+        )
+        .id;
 
     return ApiRepo.signup(
       email: email,
@@ -101,8 +110,8 @@ class SignUpFormNotifier extends StateNotifier<int> {
       nationalId: nationalId,
       phone: phone,
       address: address,
-      country: country,
-      city: city,
+      country: int.parse(country),
+      city: int.parse(userCity),
       maritalStatus: maritalStatus,
       gender: gender,
     );
@@ -127,3 +136,7 @@ final maritalStatusProvider =
 final governorateProvider =
     StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
 final cityProvider = StateProvider.autoDispose((ref) => 'Auth.City'.tr());
+
+final govIdProvider = StateProvider<String>((ref) {
+  return '0';
+});

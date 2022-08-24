@@ -73,10 +73,15 @@ class SecondStepForm extends ConsumerWidget {
                   Expanded(
                     child: CustomWideButton(
                       title: 'Navigation.Next'.tr(),
-                      onTap: () {
+                      onTap: () async {
                         if (formKey.currentState!.validate()) {
                           AppHelper.closeKeyboard();
-                          authProvider.nextStep();
+                          await ref
+                              .read(signupFormNotifierProvider.notifier)
+                              .loadData(context)
+                              .then(
+                                (value) => authProvider.nextStep(),
+                              );
                         }
                       },
                     ),
