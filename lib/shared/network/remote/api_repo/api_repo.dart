@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
+import 'package:tamweel/models/banner/banner_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
+import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/network/remote/dio_helper.dart';
@@ -76,5 +78,31 @@ class ApiRepo {
       status,
       response.data['message'] as String,
     );
+  }
+
+  static Future<List<BannerData>> getHomeBanners() async {
+    List<BannerData>? banners;
+
+    /// call get request
+    await DioHelper.getDate(url: AppEndPoints.banners)
+        .then((response) {
+      banners = BannerModel.fromJson(
+        response.data as Map<String, dynamic>,
+      ).data;
+    });
+    return banners!;
+  }
+
+  static Future<List<LoanData>> getMostWantedLoans() async {
+    List<LoanData>? mostWantedLoans;
+
+    /// call get request
+    await DioHelper.getDate(url: AppEndPoints.mostWantedLoans)
+        .then((response) {
+      mostWantedLoans = LoanModel.fromJson(
+        response.data as Map<String, dynamic>,
+      ).data;
+    });
+    return mostWantedLoans!;
   }
 }
