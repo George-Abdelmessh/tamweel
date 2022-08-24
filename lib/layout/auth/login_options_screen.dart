@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tamweel/layout/auth/widgets/login_options/login_options_bottom_wave.dart';
 import 'package:tamweel/layout/auth/widgets/login_options/login_options_buttons.dart';
 import 'package:tamweel/layout/auth/widgets/login_options/login_options_images.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 
 import 'package:tamweel/shared/style/app_color.dart';
 

@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/city.dart';
 import 'package:tamweel/models/auth/gov.dart';
@@ -9,10 +11,10 @@ import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
 enum MaritalStatus {
-  single,
   married,
   divorced,
   widowed,
+  single,
 }
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
@@ -22,7 +24,6 @@ class SignUpFormNotifier extends StateNotifier<int> {
   final ref;
   //state getter
   int get step => state;
-
   late final String _govs;
   late final String _cities;
   late final List<Gov> govsList;
@@ -114,3 +115,15 @@ final signupFormNotifierProvider =
     StateNotifierProvider.autoDispose<SignUpFormNotifier, int>(
   (ref) => SignUpFormNotifier(ref),
 );
+
+final canvibrateProvider = StateProvider((ref) => false);
+final hasVibrationController = StateProvider((ref) => false);
+
+final genderProvider = StateProvider.autoDispose((ref) => 'Auth.Male'.tr());
+// String? gender;
+final maritalStatusProvider =
+    StateProvider.autoDispose((ref) => MaritalStatus.married);
+
+final governorateProvider =
+    StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
+final cityProvider = StateProvider.autoDispose((ref) => 'Auth.City'.tr());

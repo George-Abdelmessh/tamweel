@@ -1,6 +1,7 @@
 import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/widgets/signup/first_step_form.dart';
 import 'package:tamweel/layout/auth/widgets/signup/second_step_form.dart';
@@ -21,6 +22,23 @@ class SignupScreen extends StatefulHookConsumerWidget {
 }
 
 class _SignupScreenState extends ConsumerState<SignupScreen> {
+// MaritalStatus? maritalStatus;
+  final genderController = GroupButtonController();
+  final maritalStatusController = GroupButtonController();
+  @override
+  void initState() {
+    super.initState();
+    genderController.selectIndex(0);
+    maritalStatusController.selectIndex(0);
+  }
+
+  @override
+  void dispose() {
+    genderController.dispose();
+    maritalStatusController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
@@ -33,8 +51,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     final step = ref.watch(signupFormNotifierProvider);
 
-    return SafeArea(
-      child: CustomHudWidget(
+    return CustomHudWidget(
+      child: SafeArea(
         child: Scaffold(
           floatingActionButton: const CustomFloatingBackButton(),
           floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
@@ -73,6 +91,9 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                 nationalIdController: personalIdController,
                                 phoneController: phoneController,
                                 passwordController: passwordController,
+                                genderController: genderController,
+                                maritalStatusController:
+                                    maritalStatusController,
                               ),
                   ),
                 ],
