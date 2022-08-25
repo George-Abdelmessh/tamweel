@@ -6,8 +6,8 @@ import 'package:tamweel/layout/auth/widgets/login/login_screen_pre_form.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_color.dart';
@@ -44,7 +44,7 @@ class LoginScreen extends HookConsumerWidget {
     }
 
     return SafeArea(
-      child: CustomHudWidget(
+      child: CustomSpinHudWidget(
         child: Scaffold(
           floatingActionButton: const CustomFloatingBackButton(),
           floatingActionButtonLocation: FloatingActionButtonLocation.startTop,

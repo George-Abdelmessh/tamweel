@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
+import 'package:tamweel/providers/hud/hud_provider.dart';
 import 'package:tamweel/shared/network/end_points.dart';
 
 class DioHelper {

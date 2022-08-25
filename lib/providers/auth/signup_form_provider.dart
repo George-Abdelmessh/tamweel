@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/city.dart';
 import 'package:tamweel/models/auth/gov.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
+import 'package:tamweel/providers/hud/hud_provider.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 

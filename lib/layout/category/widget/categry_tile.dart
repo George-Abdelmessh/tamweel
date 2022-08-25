@@ -9,7 +9,6 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
-import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
@@ -21,10 +20,10 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.padding10 ,
+      padding: AppPadding.padding10,
       child: Container(
         decoration: BoxDecoration(
-        color: AppColor.white,
+          color: AppColor.white,
           borderRadius: AppRadius.radius20,
         ),
         child: Padding(
@@ -39,7 +38,7 @@ class CategoryTile extends StatelessWidget {
                     imageUrl:
                         'https://images.akhbarelyom.com//images/images/medium/20210504102723802.jpg',
                     // '${AppEndPoints.baseUrl}/${loanData.image!}',
-                    width: AppSize.width ,
+                    width: AppSize.width,
                     // height: AppSize.height * 0.25,
                     fit: BoxFit.cover,
                   ),
@@ -60,8 +59,9 @@ class CategoryTile extends StatelessWidget {
               ),
               RatingBar.builder(
                 ignoreGestures: true,
-                initialRating:
-                    loanData.initRate == null ? 1 : loanData.initRate!.toDouble(),
+                initialRating: loanData.initRate == null
+                    ? 1
+                    : loanData.initRate!.toDouble(),
                 minRating: 1,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
                 itemSize: 20,
@@ -85,7 +85,9 @@ class CategoryTile extends StatelessWidget {
                       minFontSize: 16,
                       maxLines: 1,
                       style: const TextStyle(
-                          fontSize: 16, color: AppColor.secondary),
+                        fontSize: 16,
+                        color: AppColor.secondary,
+                      ),
                     ),
                   ),
                   AutoSizeText(
@@ -93,8 +95,10 @@ class CategoryTile extends StatelessWidget {
                     maxFontSize: 16,
                     minFontSize: 16,
                     maxLines: 1,
-                    style:
-                        const TextStyle(fontSize: 16, color: AppColor.secondary),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: AppColor.secondary,
+                    ),
                   ),
                 ],
               ),
@@ -107,7 +111,9 @@ class CategoryTile extends StatelessWidget {
                       minFontSize: 16,
                       maxLines: 1,
                       style: const TextStyle(
-                          fontSize: 16, color: AppColor.secondary),
+                        fontSize: 16,
+                        color: AppColor.secondary,
+                      ),
                     ),
                   ),
                   AutoSizeText(
@@ -115,8 +121,10 @@ class CategoryTile extends StatelessWidget {
                     maxFontSize: 16,
                     minFontSize: 16,
                     maxLines: 1,
-                    style:
-                        const TextStyle(fontSize: 16, color: AppColor.secondary),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: AppColor.secondary,
+                    ),
                   ),
                 ],
               ),
@@ -126,7 +134,10 @@ class CategoryTile extends StatelessWidget {
               CustomWideButton(
                 title: 'Apply'.tr(),
                 onTap: () {
-                  AppNavigator.push(context: context, screen: LoanDetailsScreen());
+                  AppNavigator.push(
+                    context: context,
+                    screen: LoanDetailsScreen(),
+                  );
                 },
               ),
             ],

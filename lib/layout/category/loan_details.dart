@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
-import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
 class LoanDetailsScreen extends StatelessWidget {
@@ -21,7 +20,7 @@ class LoanDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomHudWidget(
+    return CustomSpinHudWidget(
       child: Scaffold(
         floatingActionButton: const CustomFloatingBackButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
@@ -50,7 +49,9 @@ class LoanDetailsScreen extends StatelessWidget {
                       const Text(
                         'تمويل "مستورة" للمرأة المصرية',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const Text(
                         'إنطلاقًا من إهتمام وزارة التضامن الإجتماعي بالمرأة المصرية ومحاولاتها الدائمة لفهم وتلبية احتياجاتها ومساعدتها في تطوير مستواها المادي, تقدم الوزارة عن طريق بنك ناصر بالتعاون مع صندوق تحيا مصر برنامج تمويل المرأة المصرية المعيلة "مستورة", في ظل مبادرة تكافل وكرامة الموجهة من السيد الرئيس عبد الفتاح السيسي.',
@@ -58,7 +59,9 @@ class LoanDetailsScreen extends StatelessWidget {
                       const Text(
                         'تمويل مشروعك عندنا',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const Text(
                         'عملنالك برنامج تمويل خاص بيكي لمساعدتك في تحقيق طموحاتك عن طريق إنشاء مشروعك الخاص. دلوقتي تقدري تقدمي على طلب القرض لبدء مشروعك من خلال منصة تمويل مصر. حققي حلمك وقدمي على قرضك دلوقتي',
@@ -181,7 +184,6 @@ class LoanDetailsScreen extends StatelessWidget {
                         child: Padding(
                           padding: AppPadding.paddingH005,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
@@ -189,8 +191,9 @@ class LoanDetailsScreen extends StatelessWidget {
                                   Text(
                                     'هل انا مؤهله للحصول على القرض ؟ ',
                                     style: TextStyle(
-                                        fontSize: 25,
-                                        color: AppColor.secondary),
+                                      fontSize: 25,
+                                      color: AppColor.secondary,
+                                    ),
                                   ),
                                 ],
                               ),
