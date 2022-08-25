@@ -9,6 +9,7 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
 import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
+import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
@@ -31,6 +32,11 @@ class LoginScreen extends HookConsumerWidget {
             .login(emailController.text, passwordController.text)
             .then((value) {
           if (value.item1) {
+            CacheHelper.saveData(key: 'email', value: emailController.text);
+            CacheHelper.saveData(
+              key: 'password',
+              value: passwordController.text,
+            );
             AppNavigator.pushAndRemove(context: context, screen: HomeScreen());
           }
         });

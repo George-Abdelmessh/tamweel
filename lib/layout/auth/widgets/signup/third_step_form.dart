@@ -8,6 +8,7 @@ import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/auth/widgets/signup/form_widgets/custom_country_selector.dart';
 import 'package:tamweel/layout/auth/widgets/signup/form_widgets/third_form_group_btns.dart';
 import 'package:tamweel/layout/auth/widgets/signup/form_widgets/third_form_signup_btn.dart';
+import 'package:tamweel/main.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
@@ -125,7 +126,7 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
           .then((value) {
         if (value.item1) {
           AppNavigator.pushAndRemove(
-            context: context,
+            context: navigatorKey.currentContext!,
             screen: const LoginOptionsScreen(),
           );
         }

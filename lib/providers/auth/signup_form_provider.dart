@@ -9,6 +9,7 @@ import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
+/// the Marital Status of the user
 enum MaritalStatus {
   married,
   divorced,
@@ -16,7 +17,7 @@ enum MaritalStatus {
   single,
 }
 
-///Auth Notifier that allows UI to login, logout, and access user tokens.
+/// Signup Notifier that allows UI to signup.
 class SignUpFormNotifier extends StateNotifier<int> {
   SignUpFormNotifier(this.ref) : super(0);
 
@@ -29,7 +30,8 @@ class SignUpFormNotifier extends StateNotifier<int> {
   List<City>? _citiesList;
   Map<String, List<City>>? citiesMap;
 
-  ///Called in Login Options Screen when user presses on signup button
+  ///Called to load data from local json files, used when going to third step.
+  ///TODO: Test using this on main init
   Future<void> loadData(BuildContext context) async {
     ref.read(isLoadingProvider.notifier).show();
 
@@ -118,25 +120,33 @@ class SignUpFormNotifier extends StateNotifier<int> {
   }
 }
 
-/// Provider that provides the AuthNotifier.
-/// This is used to notify the UI of the user's authentication state.
+/// Provider signup notifier
+/// This is used to notify the UI of the user's signup step state.
 final signupFormNotifierProvider =
     StateNotifierProvider.autoDispose<SignUpFormNotifier, int>(
   (ref) => SignUpFormNotifier(ref),
 );
 
+/// Provides whether the phone has the ability to vibrate or not.
 final canvibrateProvider = StateProvider((ref) => false);
+
+/// Provides whether the phone has the ability to control vibrattion or not.
 final hasVibrationController = StateProvider((ref) => false);
 
+/// Provides user gender in signup process
 final genderProvider = StateProvider.autoDispose((ref) => 'Auth.Male'.tr());
-// String? gender;
+// Provides user marital status in signup process
 final maritalStatusProvider =
     StateProvider.autoDispose((ref) => MaritalStatus.married);
 
+/// Provides user selected governorate in signup process
 final governorateProvider =
     StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
+
+/// Provides user selected City in signup process
 final cityProvider = StateProvider.autoDispose((ref) => 'Auth.City'.tr());
 
+/// Provides the gov id that the user selected city belongs to
 final govIdProvider = StateProvider<String>((ref) {
   return '0';
 });
