@@ -4,13 +4,6 @@ import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
-enum MaritalStatus {
-  married,
-  divorced,
-  widowed,
-  single,
-}
-
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class AuthNotifier extends StateNotifier<AppUser> {
   AuthNotifier() : super(const AppUser(userState: AuthState.guest));
@@ -51,6 +44,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
 
   /// Logout the user.
   /// Clears all tokens and sets the user state to guest.
+  /// also clears shared preferences.
   Future<void> logout() async {
     try {
       //TODO: Log out the user using Auth repository.
@@ -61,10 +55,12 @@ class AuthNotifier extends StateNotifier<AppUser> {
     }
   }
 
+  /// The user is set to guest
   void guest() {
     state = const AppUser(userState: AuthState.guest);
   }
 
+  /// Get the details of the currently logged in user.
   Future<UserDetails> getUserDetails() async {
     // return ApiRepo.getUserDetails(1);
     return ApiRepo.getUserDetails(int.parse(state.userId!));

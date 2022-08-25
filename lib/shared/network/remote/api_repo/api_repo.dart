@@ -123,10 +123,10 @@ class ApiRepo {
     Response? response;
     try {
       response = await DioHelper.dio!.post(AppEndPoints.signup, data: data);
-    } on DioError {
+    } on DioError catch (e) {
       // print(e.response);
+      _showAlertDialog(e.toString());
     }
-    // print(response!.data);
     final status = response!.data['status'] == 'true' ? true : false;
     return Tuple2(
       status,
