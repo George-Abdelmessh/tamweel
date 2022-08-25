@@ -169,6 +169,12 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.banners).then((response) {
+      //Todo: Remove bellow for loob To get real images
+      //ignore: argument_type_not_assignable
+      for (var i = 0; i < response.data['data'].length; i++) {
+        response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
+      }
+
       banners = BannerModel.fromJson(
         response.data as Map<String, dynamic>,
       ).data;
@@ -181,6 +187,11 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.mostWantedLoans).then((response) {
+      //Todo: Remove bellow for loob To get real images
+      //ignore: argument_type_not_assignable
+      for (var i = 0; i < response.data['data'].length; i++) {
+        response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
+      }
       mostWantedLoans = LoanModel.fromJson(
         response.data as Map<String, dynamic>,
       ).data;

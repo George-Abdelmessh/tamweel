@@ -14,9 +14,8 @@
 // and your own todo list. 
 
 //TODO Zaka: > 
-// ! [Auto Login User] 
+// ? [Auth Flow] Documentation/refactoring
 // $ todo list:
-// ? [Auth Flow] Documentation
 // * [Application Screen] new feature
 // ^ [Get User ID,Access token, and info] missing api
 // ^ [logout] missing api

@@ -7,7 +7,6 @@ import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
-import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
@@ -40,7 +39,9 @@ class LoanCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: AppRadius.radius10,
                       child: CachedNetworkImage(
-                        imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
+                        //TODO: Replace with real data
+                        // imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
+                        imageUrl: loanData.image!,
                         width: AppSize.width * 0.25,
                         height: AppSize.width * 0.25,
                         fit: BoxFit.fill,
