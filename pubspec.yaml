@@ -35,7 +35,7 @@ dependencies:
   # used for cashing values
   shared_preferences: ^2.0.15
   # used for generate splash Screen
-  # flutter_native_splash: ^2.2.7
+  flutter_native_splash: ^2.2.8
   # used for handle api
   dio: ^4.0.6
   # used for launch all urls
@@ -106,7 +106,8 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logos/icon.png"
+  remove_alpha_ios: true
+  image_path: "assets/logos/startup_icon.png"
 
 
 flutter:

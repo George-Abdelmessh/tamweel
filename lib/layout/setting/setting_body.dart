@@ -7,6 +7,7 @@ import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_row_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
+import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
@@ -360,6 +361,8 @@ class SettingBody extends ConsumerWidget {
                           child: MaterialButton(
                             onPressed: () {
                               ref.read(authNotifierProvider.notifier).guest();
+                              CacheHelper.removeData(key: 'email');
+                              CacheHelper.removeData(key: 'password');
                               AppNavigator.pushAndRemove(
                                 context: context,
                                 screen: const LoginOptionsScreen(),

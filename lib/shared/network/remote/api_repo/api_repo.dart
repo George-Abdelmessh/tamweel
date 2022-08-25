@@ -135,9 +135,12 @@ class ApiRepo {
   }
 
   ///User Login Method
+  /// ? If Login Was Succesfull, Return True and success message
+  /// ? else shows a dialog with error message
   static Future<Tuple2<bool, String>> login({
     required String email,
     required String password,
+    bool? showAllert,
   }) async {
     final data = {
       'email': email,
@@ -150,7 +153,7 @@ class ApiRepo {
     } on DioError catch (e) {
       //show error message
       // print(e.toString());
-      _showAlertDialog(e.toString());
+      if (showAllert ?? true) _showAlertDialog(e.toString());
       return Tuple2(false, e.toString());
     }
     // print(response!.data);
