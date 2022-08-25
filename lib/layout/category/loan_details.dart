@@ -23,56 +23,65 @@ class LoanDetailsScreen extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: SafeArea(
-            child: Padding(
-              padding: AppPadding.padding20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: AppPadding.paddingH005,
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CachedNetworkImage(
-                        imageUrl:
-                            'https://tamweelmisr.com/assets/imges/loans/mastour.png',
+                      Padding(
+                        padding: AppPadding.padding20,
+                        child: Center(
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                'https://tamweelmisr.com/assets/imges/loans/mastour.png',
+                          ),
+                        ),
                       ),
+                      SizedBox(
+                        height: AppSize.height * 0.025,
+                      ),
+                      const Text(
+                        'تمويل "مستورة" للمرأة المصرية',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        'إنطلاقًا من إهتمام وزارة التضامن الإجتماعي بالمرأة المصرية ومحاولاتها الدائمة لفهم وتلبية احتياجاتها ومساعدتها في تطوير مستواها المادي, تقدم الوزارة عن طريق بنك ناصر بالتعاون مع صندوق تحيا مصر برنامج تمويل المرأة المصرية المعيلة "مستورة", في ظل مبادرة تكافل وكرامة الموجهة من السيد الرئيس عبد الفتاح السيسي.',
+                      ),
+                      const Text(
+                        'تمويل مشروعك عندنا',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        'عملنالك برنامج تمويل خاص بيكي لمساعدتك في تحقيق طموحاتك عن طريق إنشاء مشروعك الخاص. دلوقتي تقدري تقدمي على طلب القرض لبدء مشروعك من خلال منصة تمويل مصر. حققي حلمك وقدمي على قرضك دلوقتي',
+                      ),
+                      const Divider(
+                        thickness: 0,
+                        color: AppColor.white,
+                      ),
+                      CustomWideButton(
+                        title: 'حققي حلمك و قدمي علي قرضك دلوقتي ',
+                        onTap: () {},
+                      ),
+                      const Divider(
+                        thickness: 0,
+                        color: AppColor.white,
+                      )
                     ],
                   ),
-                  const Divider(
-                    thickness: 0,
-                  ),
-                  const Text(
-                    'تمويل "مستورة" للمرأة المصرية',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  const Text(
-                    'إنطلاقًا من إهتمام وزارة التضامن الإجتماعي بالمرأة المصرية ومحاولاتها الدائمة لفهم وتلبية احتياجاتها ومساعدتها في تطوير مستواها المادي, تقدم الوزارة عن طريق بنك ناصر بالتعاون مع صندوق تحيا مصر برنامج تمويل المرأة المصرية المعيلة "مستورة", في ظل مبادرة تكافل وكرامة الموجهة من السيد الرئيس عبد الفتاح السيسي.',
-                  ),
-                  const Text(
-                    'تمويل مشروعك عندنا',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  const Text(
-                    'عملنالك برنامج تمويل خاص بيكي لمساعدتك في تحقيق طموحاتك عن طريق إنشاء مشروعك الخاص. دلوقتي تقدري تقدمي على طلب القرض لبدء مشروعك من خلال منصة تمويل مصر. حققي حلمك وقدمي على قرضك دلوقتي',
-                  ),
-                  const Divider(
-                    thickness: 0,
-                    color: AppColor.white,
-                  ),
-                  CustomWideButton(
-                    title: 'حققي حلمك و قدمي علي قرضك دلوقتي ',
-                    onTap: () {},
-                  ),
-                  const Divider(
-                    thickness: 0,
-                    color: AppColor.white,
-                  ),
-                  SizedBox(
-                    height: AppSize.height * 0.2,
-                    child: Stack(
-                      children: [
-                        ColoredBox(
-                          color: AppColor.grey,
+                ),
+                SizedBox(
+                  height: AppSize.height * 0.2,
+                  child: Stack(
+                    children: [
+                      ColoredBox(
+                        color: AppColor.grey,
+                        child: Padding(
+                          padding: AppPadding.paddingH005,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,30 +149,33 @@ class LoanDetailsScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Positioned.directional(
-                          textDirection: Directionality.of(context),
-                          end: 1,
-                          bottom: 1,
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                'https://tamweelmisr.com/assets/imges/loan-details.png',
-                            width: AppSize.width * 0.35,
-                            height: AppSize.height * 0.1,
-                          ),
+                      ),
+                      Positioned.directional(
+                        textDirection: Directionality.of(context),
+                        end: 1,
+                        bottom: 1,
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://tamweelmisr.com/assets/imges/loan-details.png',
+                          width: AppSize.width * 0.35,
+                          height: AppSize.height * 0.1,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: AppPadding.padding10,
-                    child: Image.asset('assets/images/Screenshot (60).png'),
-                  ),
-                  SizedBox(
-                    height: AppSize.height * 0.07 * conditions.length,
-                    child: Stack(
-                      children: [
-                        ColoredBox(
-                          color: AppColor.grey,
+                ),
+                Padding(
+                  padding: AppPadding.paddingH005,
+                  child: Image.asset('assets/images/Screenshot (60).png'),
+                ),
+                SizedBox(
+                  height: AppSize.height * 0.07 * conditions.length,
+                  child: Stack(
+                    children: [
+                      ColoredBox(
+                        color: AppColor.grey,
+                        child: Padding(
+                          padding: AppPadding.paddingH005,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,22 +206,35 @@ class LoanDetailsScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Positioned.directional(
-                          textDirection: Directionality.of(context),
-                          end: 1,
-                          bottom: 1,
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                'https://tamweelmisr.com/assets/imges/lang/persons-available-mastoura-a.png',
-                            width: AppSize.width * 0.2,
-                            height: AppSize.height * 0.15,
-                          ),
+                      ),
+                      Positioned.directional(
+                        textDirection: Directionality.of(context),
+                        end: 0,
+                        bottom: 1,
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://tamweelmisr.com/assets/imges/lang/persons-available-mastoura-a.png',
+                          width: AppSize.width * 0.2,
+                          height: AppSize.height * 0.15,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: AppSize.height * 0.02,
+                ),
+                Padding(
+                  padding: AppPadding.paddingH005,
+                  child: CustomWideButton(
+                    title: 'حققي حلمك و قدمي علي قرضك دلوقتي ',
+                    onTap: () {},
+                  ),
+                ),
+                SizedBox(
+                  height: AppSize.height * 0.1,
+                ),
+              ],
             ),
           ),
         ),
