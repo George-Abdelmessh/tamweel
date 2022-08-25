@@ -24,7 +24,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
       final response = await ApiRepo.login(email: email, password: password);
 
       if (response.item1) {
-        state = state.copyWith(
+        state = const AppUser(
           //TODO: Update user.
           userState: AuthState.loggedIn,
           accessToken: 'accessToken',
@@ -32,7 +32,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
           userId: 'userId',
         );
       } else {
-        state = state.copyWith(userState: AuthState.guest);
+        state = const AppUser(userState: AuthState.guest);
       }
       return response;
     } catch (e) {
@@ -65,7 +65,6 @@ class AuthNotifier extends StateNotifier<AppUser> {
 
 /// Provider that provides the AuthNotifier.
 /// This is used to notify the UI of the user's authentication state.
-final authNotifierProvider =
-    StateNotifierProvider.autoDispose<AuthNotifier, AppUser>(
+final authNotifierProvider = StateNotifierProvider<AuthNotifier, AppUser>(
   (ref) => AuthNotifier(),
 );

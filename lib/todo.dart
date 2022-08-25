@@ -3,6 +3,7 @@
   /// - [abc] missing functionality             >- color code * green
   /// - [abc] missing documentation             >- color code ? blue
   /// - [abc] needed refactoring                >- color code ? blue
+  /// - [abc] missing Api                       >- color code ^ pinkish red
   /// - and so On ...
   /// [TODO: abc] Current Work in Progress/Highest Priority
   /// 
@@ -13,11 +14,12 @@
 // and your own todo list. 
 
 //TODO Zaka: > 
-// ! [Error Messages on Dio Response] missing functionality
+// ! [Auto Login User] 
 // $ todo list:
-// ! [Login Api Call] missing functionality
 // ? [Auth Flow] Documentation
 // * [Application Screen] new feature
+// ^ [Get User ID,Access token, and info] missing api
+// ^ [logout] missing api
 
 
 //Todo Kariim: > 

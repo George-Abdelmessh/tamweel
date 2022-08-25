@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
+import 'package:tamweel/models/auth/app_user_model.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_row_button.dart';
@@ -16,6 +17,8 @@ class SettingBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authProvider = ref.watch(authNotifierProvider);
+    print(authProvider.userState);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -33,30 +36,32 @@ class SettingBody extends ConsumerWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Kariim Reda',
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 25),
-                            ),
-                            Divider(height: 5),
-                            Text(
-                              'redakariim3@gmail.com',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Divider(height: 5),
-                            Text(
-                              '01027979893',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                        if (authProvider.userState == AuthState.loggedIn)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Kariim Reda',
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 25),
+                              ),
+                              Divider(height: 5),
+                              Text(
+                                'redakariim3@gmail.com',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Divider(height: 5),
+                              Text(
+                                '01027979893',
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         // const Spacer(),
-                        SizedBox(
-                          width: AppSize.width * 0.05,
-                        ),
+                        if (authProvider.userState == AuthState.loggedIn)
+                          SizedBox(
+                            width: AppSize.width * 0.05,
+                          ),
                         Expanded(
                           child: Image.asset(
                             'assets/logos/app_logo_icon_text.png',
@@ -69,36 +74,37 @@ class SettingBody extends ConsumerWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {},
-                          // color: AppColor.transparent,
-                          // elevation: 0.0,
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: AppRadius.radius10,
-                          // ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.arrow_back_ios,
-                                color: AppColor.primary,
-                              ),
-                              // SizedBox(
-                              //   width: AppSize.width * 0.01,
-                              // ),
-                              Text(
-                                'تعديل البيانات',
-                                style: TextStyle(
+                      if (authProvider.userState == AuthState.loggedIn)
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {},
+                            // color: AppColor.transparent,
+                            // elevation: 0.0,
+                            // shape: RoundedRectangleBorder(
+                            //   borderRadius: AppRadius.radius10,
+                            // ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.arrow_back_ios,
                                   color: AppColor.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
                                 ),
-                              ),
-                            ],
+                                // SizedBox(
+                                //   width: AppSize.width * 0.01,
+                                // ),
+                                Text(
+                                  'تعديل البيانات',
+                                  style: TextStyle(
+                                    color: AppColor.primary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                   Padding(
@@ -374,9 +380,11 @@ class SettingBody extends ConsumerWidget {
                                 SizedBox(
                                   width: AppSize.width * 0.01,
                                 ),
-                                const Text(
-                                  'تسجيل الخروج',
-                                  style: TextStyle(color: Colors.white),
+                                Text(
+                                  authProvider.userState == AuthState.loggedIn
+                                      ? 'تسجيل الخروج'
+                                      : 'تسجيل الدخول',
+                                  style: const TextStyle(color: Colors.white),
                                 ),
                               ],
                             ),
