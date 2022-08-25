@@ -2,6 +2,7 @@
     package="com.example.tamweel">
 
    <uses-permission android:name="android.permission.VIBRATE"/>
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="tamweel"
         android:name="${applicationName}"
