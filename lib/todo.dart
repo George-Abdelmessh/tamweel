@@ -14,11 +14,12 @@
 // and your own todo list. 
 
 //TODO Zaka: > 
-// ? [Auth Flow] Documentation/refactoring
+// * [Custom Shimmer Huds] new feature
 // $ todo list:
 // * [Application Screen] new feature
 // ^ [Get User ID,Access token, and info] missing api
 // ^ [logout] missing api
+// ? [Auth Flow] Documentation/refactoring
 
 
 //Todo Kariim: > 

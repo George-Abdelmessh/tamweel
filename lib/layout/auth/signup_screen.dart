@@ -9,8 +9,8 @@ import 'package:tamweel/layout/auth/widgets/signup/signup_welcome.dart';
 import 'package:tamweel/layout/auth/widgets/signup/third_step_form.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
-import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
@@ -51,7 +51,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
     final step = ref.watch(signupFormNotifierProvider);
 
-    return CustomHudWidget(
+    return CustomSpinHudWidget(
       child: SafeArea(
         child: Scaffold(
           floatingActionButton: const CustomFloatingBackButton(),

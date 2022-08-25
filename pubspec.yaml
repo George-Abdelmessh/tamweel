@@ -75,6 +75,7 @@ dependencies:
   tuple: ^2.0.0
   modal_progress_hud_nsn: ^0.3.0
   font_awesome_flutter: ^10.1.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
