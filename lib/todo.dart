@@ -12,17 +12,19 @@
 // feel free to add as many colors as you want in your own extension,
 // and your own todo list. 
 
-//TODO Zaka: > Making the Todo list
-// $ todo list:
+//TODO Zaka: > 
 // ! [Error Messages on Dio Response] missing functionality
+// $ todo list:
 // ! [Login Api Call] missing functionality
 // ? [Auth Flow] Documentation
 // * [Application Screen] new feature
 
 
-//Todo Kariim: > Adding to the Todo List
+//Todo Kariim: > 
+// * Adding to the Todo List
 // $ todo list:
 
 
-//Todo George: > Adding to the Todo List
+//Todo George: >
+// * Adding to the Todo List
 // $ todo list:
