@@ -15,7 +15,7 @@ class CategoryBody extends ConsumerWidget {
       child: Scaffold(
         backgroundColor: AppColor.grey,
         body: loanProvider.when(
-            data: (data) => CategoryScreen(loandata: data),
+            data: (data) => CategoryScreen(loanData: data),
             error: (error, stack) => Container(
                   color: AppColor.error,
                   width: 100,

@@ -47,4 +47,8 @@ class AppPadding {
     vertical: AppSize.width * 0.018,
     horizontal: AppSize.width * 0.006,
   );
+  // static EdgeInsets dropdown = EdgeInsets.only(
+  //   left: AppSize.width * 0.9,
+  //   right: AppSize.width * 3,
+  // );
 }
