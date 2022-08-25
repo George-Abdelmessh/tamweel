@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
+import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
 import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
 class LoanDetailsScreen extends StatelessWidget {
@@ -21,6 +23,8 @@ class LoanDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomHudWidget(
       child: Scaffold(
+        floatingActionButton: const CustomFloatingBackButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         body: SingleChildScrollView(
           child: SafeArea(
             child: Column(
