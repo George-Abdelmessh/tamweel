@@ -4,7 +4,7 @@ enum AuthState {
   guest,
   loggedIn,
 }
-
+/// The AppUser class is a model class that holds the current state of the user.
 @immutable
 class AppUser {
   ///Immutable Constructor

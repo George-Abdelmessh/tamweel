@@ -1,42 +1,52 @@
 {
-    "Auth":{
-      "Login":"Login",
-      "ContinueAsGuest":"Continue as a Guest",
-      "SignUp":"Sign Up",
-      "Email":"Email",
-      "Password":"Password",
-      "Name":"Name(As in National Id Card)",
-      "NationalId":"National Id",
-      "ConfirmPassword":"Confirm Password",
-      "Gender":"Gender",
-      "Phone":"Phone",
-      "MaritalStatus":"Marital Status",
-      "Address":"Address(As in National Id Card)",
-      "Governorate":"Governorate",
-      "City":"City",
-      "Married":"Married",
-      "Single":"Single",
-      "Divorced" :"Divorced",
-      "Widowed" :"Widowed",
-      "Male":"Male",
-      "Female":"Female"
+    "Auth": {
+        "Login": "Login",
+        "ContinueAsGuest": "Continue as a Guest",
+        "SignUp": "Sign Up",
+        "Email": "Email",
+        "Password": "Password",
+        "Name": "Name(As in National Id Card)",
+        "NationalId": "National Id",
+        "ConfirmPassword": "Confirm Password",
+        "Gender": "Gender",
+        "Phone": "Phone",
+        "MaritalStatus": "Marital Status",
+        "Address": "Address(As in National Id Card)",
+        "Governorate": "Governorate",
+        "City": "City",
+        "Married": "Married",
+        "Single": "Single",
+        "Divorced": "Divorced",
+        "Widowed": "Widowed",
+        "Male": "Male",
+        "Female": "Female"
     },
-    "Validators":{
-      "Required":"Required",
-      "EmailRequired":"Email is required",
-      "EmailPattern":"Email is not valid",
-      "PasswordRequired":"Password is required",
-      "PasswordMinLength":"Password must be at least 8 characters long",
-      "PasswordContainNumber" : "Password must contain at least one number",
-      "PasswordContainUpperCase" : "Password must contain at least one upper case letter",
-      "PasswordContainSpecialChar" : "Password must contain at least one special character",
-      "ExactLength":"This Field's Length Should be ",
-      "NationalIdPattern":"National Id is not valid",
-      "PhonePattern":"Phone is not valid",
-      "Identical": "Must be identical"
+    "Validators": {
+        "Required": "Required",
+        "EmailRequired": "Email is required",
+        "EmailPattern": "Email is not valid",
+        "PasswordRequired": "Password is required",
+        "PasswordMinLength": "Password must be at least 8 characters long",
+        "PasswordContainNumber": "Password must contain at least one number",
+        "PasswordContainUpperCase": "Password must contain at least one upper case letter",
+        "PasswordContainSpecialChar": "Password must contain at least one special character",
+        "ExactLength": "This Field's Length Should be ",
+        "NationalIdPattern": "National Id is not valid",
+        "PhonePattern": "Phone is not valid",
+        "Identical": "Must be identical"
     },
-    "Navigation":{
-      "Next":"Next",
-      "Back":"Back"
+    "Navigation": {
+        "Next": "Next",
+        "Back": "Back"
+    },
+    "DioErrors": {
+        "Error": "Error",
+        "invalid": "Invalid Request",
+        "Unknown": "Unknown Error Occured, please try again later",
+        "Conflict": "Conflict Occured",
+        "Timeout": "The connection has timed out, please try again",
+        "AccessDenied": "Access Denied",
+        "NotFound": "The requested information could not be found",
+        "NoInternet": "No internet connection detected, please try again."
     }
-  }
+}

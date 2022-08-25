@@ -67,7 +67,9 @@ class LoginForm extends StatelessWidget {
           padding: AppPaddingCopy.paddingH005,
           child: CustomWideButton(
             title: 'Auth.Login'.tr(),
-            onTap: login,
+            onTap: () {
+              login();
+            },
           ),
         ),
       ],

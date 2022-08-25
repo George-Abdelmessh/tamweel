@@ -7,6 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'gov.freezed.dart';
 part 'gov.g.dart';
 
+/// The Gov class is a model class that represents a governorate.
+///
+/// Each Gov has a name in Arabic and English, as well as a unique ID.
 @freezed
 class Gov with _$Gov {
   const factory Gov({

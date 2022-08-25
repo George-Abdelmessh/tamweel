@@ -8,6 +8,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_details.freezed.dart';
 part 'user_details.g.dart';
 
+/// The UserDetails class is a model class that holds the details of the user.
+///
+/// Each user has a name, email, phone number, national ID, and a unique ID, adress, city and governorate.
 @freezed
 class UserDetails with _$UserDetails {
   const factory UserDetails({

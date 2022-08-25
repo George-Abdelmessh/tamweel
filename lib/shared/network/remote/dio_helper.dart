@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/shared/custom_widgets/custom_hud.dart';
+import 'package:tamweel/shared/network/end_points.dart';
 
 class DioHelper {
   static Dio? dio;
@@ -9,7 +11,7 @@ class DioHelper {
   static void init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://evening-badlands-73488.herokuapp.com/api/',
+        baseUrl: '${AppEndPoints.baseUrl}/api/',
         receiveDataWhenStatusError: true,
       ),
     );
@@ -76,12 +78,10 @@ class AppInterceptors extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
+    //Show loading indicator
     final provider = providerContainer.read(isLoadingProvider.notifier);
-    // print(providerContainer.read(isLoadingProvider.notifier).state);
     provider.show();
-    // print(providerContainer.read(isLoadingProvider.notifier).state);
-    // providerContainer.read(isLoadingProvider.notifier).show();
-    //TODO: Access token here
+    //TODO: Manage Access token here
 
     // // var accessToken = await TokenRepository().getAccessToken();
 
@@ -111,18 +111,22 @@ class AppInterceptors extends Interceptor {
   ///On Response > hide Hud overlay
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
+    //hide loading indicator
     final provider = providerContainer.read(isLoadingProvider.notifier);
     provider.hide();
     // providerContainer.read(isLoadingProvider.notifier).hide();
     return handler.next(response);
   }
 
+  /// ? How to Show error message to user in case of error ?
+  /// in the try/catch clause, show alert with error message
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
+    //hide loading indicator
     final provider = providerContainer.read(isLoadingProvider.notifier);
     provider.hide();
-    // providerContainer.read(isLoadingProvider.notifier).hide();
-    // print(err.requestOptions.path);
+
+    //override the default error handling
     switch (err.type) {
       case DioErrorType.connectTimeout:
       case DioErrorType.sendTimeout:
@@ -157,7 +161,7 @@ class BadRequestException extends DioError {
 
   @override
   String toString() {
-    return 'Invalid request';
+    return 'DioErrors.Invalid'.tr();
   }
 }
 
@@ -166,7 +170,7 @@ class InternalServerErrorException extends DioError {
 
   @override
   String toString() {
-    return 'Unknown error occurred, please try again later.';
+    return 'DioErrors.Unknown'.tr();
   }
 }
 
@@ -175,7 +179,7 @@ class ConflictException extends DioError {
 
   @override
   String toString() {
-    return 'Conflict occurred';
+    return 'DioErrors.Conflict'.tr();
   }
 }
 
@@ -184,7 +188,7 @@ class UnauthorizedException extends DioError {
 
   @override
   String toString() {
-    return 'Access denied';
+    return 'DioErros.AccessDenied'.tr();
   }
 }
 
@@ -193,7 +197,7 @@ class NotFoundException extends DioError {
 
   @override
   String toString() {
-    return 'The requested information could not be found';
+    return 'DioErrors.NotFound'.tr();
   }
 }
 
@@ -201,7 +205,7 @@ class NoInternetConnectionException extends DioError {
   NoInternetConnectionException(RequestOptions r) : super(requestOptions: r);
   @override
   String toString() {
-    return 'No internet connection detected, please try again.';
+    return 'DioErrors.NoInternet'.tr();
   }
 }
 
@@ -210,6 +214,6 @@ class DeadlineExceededException extends DioError {
 
   @override
   String toString() {
-    return 'The connection has timed out, please try again.';
+    return 'DioErrors.Timeout'.tr();
   }
 }

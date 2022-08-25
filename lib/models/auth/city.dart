@@ -7,6 +7,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'city.freezed.dart';
 part 'city.g.dart';
 
+/// The City class is a model class that represents a city.
+///
+/// Each City has a name in Arabic and English, as well as a unique ID, and a governorate ID,
+/// which is the ID of the governorate that the city belongs to.
 @freezed
 class City with _$City {
   const factory City({

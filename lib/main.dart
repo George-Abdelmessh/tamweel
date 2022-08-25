@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
+import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
@@ -21,6 +22,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
+  await CacheHelper.tryLogin();
   runApp(
     EasyLocalization(
       supportedLocales: AppLocales.supportedLocales,
@@ -60,13 +62,18 @@ class _MyAppState extends State<MyApp> {
         AppHelper.closeKeyboard();
       },
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         title: 'Tamweel',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.appLightTheme,
-        home: firstUse ? OnBoardingScreen() : const LoginOptionsScreen(),
+        home: firstUse
+            ? OnBoardingScreen()
+            : CacheHelper.isLoggedIn
+                ? HomeScreen()
+                : const LoginOptionsScreen(),
       ),
     );
   }
