@@ -14,6 +14,7 @@ import 'package:tamweel/shared/custom_widgets/custom_row_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/network/local/cash_helper.dart';
 import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
@@ -28,6 +29,7 @@ class SettingBody extends ConsumerWidget {
       child: Scaffold(
         body: CustomSpinHudWidget(
           child: SingleChildScrollView(
+            physics: AppHelper.scroll,
             child: SizedBox(
               height: AppSize.height,
               child: Padding(
@@ -48,8 +50,10 @@ class SettingBody extends ConsumerWidget {
                               children: const [
                                 Text(
                                   'Kariim Reda',
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 25),
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 25,
+                                  ),
                                 ),
                                 Divider(height: 5),
                                 Text(
@@ -83,8 +87,10 @@ class SettingBody extends ConsumerWidget {
                         if (authProvider.userState == AuthState.loggedIn)
                           Expanded(
                             child: InkWell(
-                              onTap: () async{
-                                await ref.read(editProfileNotifierProvider.notifier).loadData(context);
+                              onTap: () async {
+                                await ref
+                                    .read(editProfileNotifierProvider.notifier)
+                                    .loadData(context);
                                 AppNavigator.push(
                                   context: context,
                                   screen: const EditProfileScreen(),
@@ -159,7 +165,7 @@ class SettingBody extends ConsumerWidget {
                                     CustomRowButton(
                                       title: 'خدمتنا',
                                       onTap: () {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -169,7 +175,7 @@ class SettingBody extends ConsumerWidget {
                                     const CustomRowButton(
                                       title: 'خريطة الموقع',
                                       onTap: {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -179,7 +185,7 @@ class SettingBody extends ConsumerWidget {
                                     const CustomRowButton(
                                       title: 'الشروط والاحكام',
                                       onTap: {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -189,7 +195,7 @@ class SettingBody extends ConsumerWidget {
                                     const CustomRowButton(
                                       title: 'سياسة الخصوصية',
                                       onTap: {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -199,20 +205,20 @@ class SettingBody extends ConsumerWidget {
                                     const CustomRowButton(
                                       title: 'الدعم',
                                       onTap: {},
-                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             Positioned(
-                              left:
-                                  Directionality.of(context) == TextDirection.ltr
-                                      ? AppSize.width * 0.1
-                                      : null,
-                              right:
-                                  Directionality.of(context) == TextDirection.ltr
-                                      ? null
-                                      : AppSize.width * 0.1,
+                              left: Directionality.of(context) ==
+                                      TextDirection.ltr
+                                  ? AppSize.width * 0.1
+                                  : null,
+                              right: Directionality.of(context) ==
+                                      TextDirection.ltr
+                                  ? null
+                                  : AppSize.width * 0.1,
                               child: Container(
                                 color: AppColor.white,
                                 height: AppSize.height * 0.04,
@@ -270,7 +276,7 @@ class SettingBody extends ConsumerWidget {
                                       icon: Icons.location_on_outlined,
                                       title: 'خدمتنا',
                                       onTap: () {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -281,7 +287,7 @@ class SettingBody extends ConsumerWidget {
                                       icon: Icons.phone,
                                       title: '15255',
                                       onTap: () {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -292,7 +298,7 @@ class SettingBody extends ConsumerWidget {
                                       icon: Icons.mail_outline,
                                       title: 'info@ayadymisr.com',
                                       onTap: () {},
-                                      ),
+                                    ),
                                     SizedBox(
                                       width: AppSize.width * 0.8,
                                       child: const Divider(
@@ -332,14 +338,14 @@ class SettingBody extends ConsumerWidget {
                               ),
                             ),
                             Positioned(
-                              left:
-                                  Directionality.of(context) == TextDirection.ltr
-                                      ? AppSize.width * 0.1
-                                      : null,
-                              right:
-                                  Directionality.of(context) == TextDirection.ltr
-                                      ? null
-                                      : AppSize.width * 0.1,
+                              left: Directionality.of(context) ==
+                                      TextDirection.ltr
+                                  ? AppSize.width * 0.1
+                                  : null,
+                              right: Directionality.of(context) ==
+                                      TextDirection.ltr
+                                  ? null
+                                  : AppSize.width * 0.1,
                               child: Container(
                                 color: AppColor.white,
                                 height: AppSize.height * 0.04,
@@ -359,7 +365,7 @@ class SettingBody extends ConsumerWidget {
                     Padding(
                       padding: AppPadding.paddingH20,
                       child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: MaterialButton(
