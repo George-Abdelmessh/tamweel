@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/app_user_model.dart';
 import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/providers/auth/user_details_provider.dart';
+import 'package:tamweel/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
@@ -64,6 +65,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
 
   /// The user is set to guest
   void guest() {
+    ref.read(indexProvider.notifier).state = 0;
     state = const AppUser(userState: AuthState.guest);
     ref.read(userDetailsProvider.notifier).state = null;
   }
