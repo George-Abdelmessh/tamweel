@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:tamweel/layout/category/widget/categry_tile.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
@@ -41,14 +40,14 @@ class CategoryScreen extends StatelessWidget {
               height: AppSize.height - 56,
               child: GridView.builder(
                 shrinkWrap: true,
-                itemCount: loanData.length * 3,
+                itemCount: loanData.length,
                 physics: AppHelper.scroll,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 0.6,
                 ),
                 itemBuilder: (context, index) =>
-                    CategoryTile(loanData: loanData[1]),
+                    CategoryTile(loanData: loanData[index]),
               ),
             ),
           ],

@@ -198,4 +198,23 @@ class ApiRepo {
     });
     return mostWantedLoans!;
   }
+
+  static Future<List<LoanData>> search({
+    required String query,
+  }) async {
+    if (query == '') {
+      return [];
+    }
+    List<LoanData>? loans;
+
+    final querydata = {'name': query};
+    await DioHelper.getDate(
+      url: AppEndPoints.search,
+      query: querydata,
+
+    ).then((response) {
+      loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
+    });
+    return loans!;
+  }
 }

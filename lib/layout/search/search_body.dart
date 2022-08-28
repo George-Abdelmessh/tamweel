@@ -1,35 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/category/widget/categry_tile.dart';
+import 'package:tamweel/layout/search/search_loading.dart';
+import 'package:tamweel/providers/search/search_loan_provider.dart';
+import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
+import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
-class SearchBody extends StatefulWidget {
-  const SearchBody({super.key});
-
-  @override
-  State<SearchBody> createState() => _SearchBodyState();
-}
-
-class _SearchBodyState extends State<SearchBody>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 2),
-    lowerBound: 0.5,
-    vsync: this,
-  )..repeat(reverse: true);
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
-    curve: Curves.easeIn,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class SearchBody extends ConsumerWidget {
+  SearchBody({super.key});
   final searchController = TextEditingController();
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final searchProvider = ref.watch(searchFutureProvider);
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -37,6 +23,9 @@ class _SearchBodyState extends State<SearchBody>
             Padding(
               padding: AppPadding.padding20 * 2,
               child: TextFormField(
+                onFieldSubmitted: (value) {
+                  ref.read(searchPhraseProvider.notifier).state = value;
+                },
                 cursorColor: AppColor.primary,
                 controller: searchController,
                 decoration: InputDecoration(
@@ -46,27 +35,47 @@ class _SearchBodyState extends State<SearchBody>
                     borderRadius: BorderRadius.circular(10),
                   ),
                   fillColor: AppColor.primary,
-                  suffixIcon: const Icon(
-                    Icons.search,
-                    color: AppColor.primary,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      ref.read(searchPhraseProvider.notifier).state =
+                          searchController.text;
+                    },
+                    child: Padding(
+                      padding: AppPadding.padding20,
+                      child: const Icon(
+                        Icons.search,
+                        color: AppColor.primary,
+                      ),
+                    ),
                   ),
                   hintText: 'بحث',
                 ),
               ),
             ),
             Expanded(
-              child: Center(
-                child: ScaleTransition(
-                  scale: _animation,
-                  child: Padding(
-                    padding: AppPadding.padding10,
-                    child: const Icon(
-                      Icons.search,
-                      size: 100,
-                      color: AppColor.primary,
+              child: searchProvider.when(
+                data: (loanData) => SizedBox(
+                  width: AppSize.width,
+                  height: AppSize.height - 56,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: loanData.length,
+                    physics: AppHelper.scroll,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.6,
                     ),
+                    itemBuilder: (context, index) =>
+                        CategoryTile(loanData: loanData[index]),
                   ),
                 ),
+                error: (error, stack) => Container(
+                  color: AppColor.error,
+                  width: 100,
+                  height: 100,
+                ),
+                loading: () => const SearchLoadingScreen(),
               ),
             ),
           ],
