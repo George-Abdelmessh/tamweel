@@ -90,11 +90,6 @@ class ApiRepo {
   static Future<UserDetails> getUserDetails(int id) async {
     final response =
         await DioHelper.getDate(url: '${AppEndPoints.getUserDetails}$id');
-
-    response.data['data']['country'] =
-        int.parse(response.data['data']['country'] as String);
-    response.data['data']['area'] =
-        int.parse(response.data['data']['area'] as String);
     return UserDetails.fromJson(response.data['data'] as Map<String, dynamic>);
   }
 
@@ -106,8 +101,8 @@ class ApiRepo {
     required String nationalId,
     required String phone,
     required String address,
-    required int country,
-    required int city,
+    required String country,
+    required String city,
     required int maritalStatus,
     required int gender,
   }) async {
@@ -182,11 +177,11 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.banners).then((response) {
-      //Todo: Remove bellow for loob To get real images
-      //ignore: argument_type_not_assignable
-      for (var i = 0; i < response.data['data'].length; i++) {
-        response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
-      }
+      // //Todo: Remove bellow for loob To get real images
+      // //ignore: argument_type_not_assignable
+      // for (var i = 0; i < response.data['data'].length; i++) {
+      //   response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
+      // }
 
       banners = BannerModel.fromJson(
         response.data as Map<String, dynamic>,
@@ -200,11 +195,11 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.mostWantedLoans).then((response) {
-      //Todo: Remove bellow for loob To get real images
-      //ignore: argument_type_not_assignable
-      for (var i = 0; i < response.data['data'].length; i++) {
-        response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
-      }
+      // //Todo: Remove bellow for loob To get real images
+      // //ignore: argument_type_not_assignable
+      // for (var i = 0; i < response.data['data'].length; i++) {
+      //   response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
+      // }
       mostWantedLoans = LoanModel.fromJson(
         response.data as Map<String, dynamic>,
       ).data;
@@ -224,7 +219,6 @@ class ApiRepo {
     await DioHelper.getDate(
       url: AppEndPoints.search,
       query: querydata,
-
     ).then((response) {
       loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
     });

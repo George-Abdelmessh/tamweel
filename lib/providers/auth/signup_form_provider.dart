@@ -92,18 +92,19 @@ class SignUpFormNotifier extends StateNotifier<int> {
     final gender = isMale ? 1 : 2;
     final maritalStatus = userMaritalStatus.index + 1;
     //TODO: Use user selected values
-    final country = govsList!
-        .firstWhere(
-          (element) =>
-              element.governorateNameAr == governorate ||
-              element.governorateNameEn == governorate,
-        )
-        .id;
-    final userCity = citiesMap![country]!
-        .firstWhere(
-          (element) => element.cityNameAr == city || element.cityNameEn == city,
-        )
-        .id;
+    // final country = govsList!
+    //     .firstWhere(
+    //       (element) =>
+    //           element.governorateNameAr == governorate ||
+    //           element.governorateNameEn == governorate,
+    //     )
+    //     .id;
+    // final userCityId = citiesMap![country]!.firstWhere(
+    //   (element) => element.cityNameAr == city || element.cityNameEn == city,
+    // );
+    // final userCity = AppLocales.currentLocale == AppLocales.supportedLocales[0]
+    //     ? userCityId.cityNameAr
+    //     : userCityId.cityNameEn;
 
     return ApiRepo.signup(
       email: email,
@@ -112,8 +113,8 @@ class SignUpFormNotifier extends StateNotifier<int> {
       nationalId: nationalId,
       phone: phone,
       address: address,
-      country: int.parse(country),
-      city: int.parse(userCity),
+      country: governorate,
+      city: city,
       maritalStatus: maritalStatus,
       gender: gender,
     );

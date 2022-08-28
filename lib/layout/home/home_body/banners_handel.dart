@@ -25,8 +25,8 @@ class HomeBanners extends ConsumerWidget {
             return CustomBanner(
               loanID: snapshot[index].id!,
               //TODO: Swap the image with the real image
-              // imgUlr: '${AppEndPoints.baseUrl}/${snapshot[index].image!}',
-              imgUlr: snapshot[index].image!,
+              imgUlr: '${AppEndPoints.baseUrl}/${snapshot[index].image!}',
+              // imgUlr: snapshot[index].image!,
               text: snapshot[index].title!,
             );
           } else {

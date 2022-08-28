@@ -27,7 +27,7 @@ class LoginScreen extends HookConsumerWidget {
     final authProvider = ref.watch(authNotifierProvider.notifier);
     Future<void> login() async {
       //form is valid, perform login
-      if (!formKey.currentState!.validate()) {
+      if (formKey.currentState!.validate()) {
         //login
         await authProvider
             .login(emailController.text, passwordController.text)

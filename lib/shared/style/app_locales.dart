@@ -41,7 +41,7 @@ class AppLocales {
   ];
 
   /// current app locale
-  Locale currentLocale = supportedLocales[0];
+  static Locale currentLocale = supportedLocales[0];
 
   /// updates device locale, takes [context] and [index] of supported locales as parameters
   ///
@@ -49,7 +49,7 @@ class AppLocales {
   ///
   /// * [context] is the current [BuildContext].
 
-  void setDeviceLocale(BuildContext context, int index) {
+  static void setDeviceLocale(BuildContext context, int index) {
     //make sure the index is in range
     if (index < 0 || index >= supportedLocales.length) {
       return;

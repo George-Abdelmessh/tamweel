@@ -31,8 +31,8 @@ mixin _$UserDetails {
   int get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'marital_status')
   int get maritalStatus => throw _privateConstructorUsedError;
-  int get country => throw _privateConstructorUsedError;
-  int get area => throw _privateConstructorUsedError;
+  String get country => throw _privateConstructorUsedError;
+  String get area => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -59,8 +59,8 @@ abstract class $UserDetailsCopyWith<$Res> {
       @JsonKey(name: 'email_verified_at') dynamic emailVerifiedAt,
       int gender,
       @JsonKey(name: 'marital_status') int maritalStatus,
-      int country,
-      int area,
+      String country,
+      String area,
       String address,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'updated_at') DateTime updatedAt});
@@ -126,11 +126,11 @@ class _$UserDetailsCopyWithImpl<$Res> implements $UserDetailsCopyWith<$Res> {
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       area: area == freezed
           ? _value.area
           : area // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ abstract class _$$_UserDetailsCopyWith<$Res>
       @JsonKey(name: 'email_verified_at') dynamic emailVerifiedAt,
       int gender,
       @JsonKey(name: 'marital_status') int maritalStatus,
-      int country,
-      int area,
+      String country,
+      String area,
       String address,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'updated_at') DateTime updatedAt});
@@ -232,11 +232,11 @@ class __$$_UserDetailsCopyWithImpl<$Res> extends _$UserDetailsCopyWithImpl<$Res>
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       area: area == freezed
           ? _value.area
           : area // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -294,9 +294,9 @@ class _$_UserDetails with DiagnosticableTreeMixin implements _UserDetails {
   @JsonKey(name: 'marital_status')
   final int maritalStatus;
   @override
-  final int country;
+  final String country;
   @override
-  final int area;
+  final String area;
   @override
   final String address;
   @override
@@ -398,8 +398,8 @@ abstract class _UserDetails implements UserDetails {
       required final int gender,
       @JsonKey(name: 'marital_status')
           required final int maritalStatus,
-      required final int country,
-      required final int area,
+      required final String country,
+      required final String area,
       required final String address,
       @JsonKey(name: 'created_at')
           required final DateTime createdAt,
@@ -429,9 +429,9 @@ abstract class _UserDetails implements UserDetails {
   @JsonKey(name: 'marital_status')
   int get maritalStatus;
   @override
-  int get country;
+  String get country;
   @override
-  int get area;
+  String get area;
   @override
   String get address;
   @override
