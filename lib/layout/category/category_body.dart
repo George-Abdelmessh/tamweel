@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/category/widget/category_screen.dart';
 import 'package:tamweel/providers/category/loan_provider.dart';
-import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
+import 'package:tamweel/shared/custom_widgets/Hud/custom_shimmer_hud.dart';
+import 'package:tamweel/shared/custom_widgets/Hud/shimmers/category_shimmer.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 
 class CategoryBody extends ConsumerWidget {
@@ -11,7 +12,8 @@ class CategoryBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loanProvider = ref.watch(LoanFutureProvider);
-    return CustomSpinHudWidget(
+    return CustomShimmerHudWidget(
+      shimmerWidget: const CategoryShimmer(),
       child: Scaffold(
         backgroundColor: AppColor.grey,
         body: loanProvider.when(
