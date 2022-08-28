@@ -19,7 +19,7 @@ import 'package:tuple/tuple.dart';
 class ApiRepo {
   static Future<List<LoanData>> getLoans() async {
     List<LoanData>? loans;
-    await DioHelper.getDate(url: AppEndPoints.getloans).then((response) {
+    await DioHelper.getDate(url: AppEndPoints.getLoans).then((response) {
       loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
     });
     // ignore: avoid_print

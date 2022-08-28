@@ -32,7 +32,7 @@ class CustomRowButton extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: titleSize,
+                  fontSize:AppSize.height*0.025,
                   color: titleColor,
                 ),
               )
