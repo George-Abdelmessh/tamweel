@@ -23,6 +23,7 @@ class SettingBody extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: SizedBox(
             height: AppSize.height,
             child: Padding(
@@ -148,7 +149,6 @@ class SettingBody extends ConsumerWidget {
                                   CustomRowButton(
                                     title: 'خدمتنا',
                                     onTap: () {},
-                                    titleSize: 19,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -159,7 +159,6 @@ class SettingBody extends ConsumerWidget {
                                   const CustomRowButton(
                                     title: 'خريطة الموقع',
                                     onTap: {},
-                                    titleSize: 19,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -170,7 +169,6 @@ class SettingBody extends ConsumerWidget {
                                   const CustomRowButton(
                                     title: 'الشروط والاحكام',
                                     onTap: {},
-                                    titleSize: 19,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -181,7 +179,6 @@ class SettingBody extends ConsumerWidget {
                                   const CustomRowButton(
                                     title: 'سياسة الخصوصية',
                                     onTap: {},
-                                    titleSize: 19,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -192,7 +189,6 @@ class SettingBody extends ConsumerWidget {
                                   const CustomRowButton(
                                     title: 'الدعم',
                                     onTap: {},
-                                    titleSize: 19,
                                   ),
                                 ],
                               ),
@@ -264,7 +260,6 @@ class SettingBody extends ConsumerWidget {
                                     icon: Icons.location_on_outlined,
                                     title: 'خدمتنا',
                                     onTap: () {},
-                                    titleSize: 16,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -276,7 +271,6 @@ class SettingBody extends ConsumerWidget {
                                     icon: Icons.phone,
                                     title: '15255',
                                     onTap: () {},
-                                    titleSize: 16,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -288,7 +282,6 @@ class SettingBody extends ConsumerWidget {
                                     icon: Icons.mail_outline,
                                     title: 'info@ayadymisr.com',
                                     onTap: () {},
-                                    titleSize: 16,
                                   ),
                                   SizedBox(
                                     width: AppSize.width * 0.8,
@@ -356,6 +349,7 @@ class SettingBody extends ConsumerWidget {
                   Padding(
                     padding: AppPadding.paddingH20,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: MaterialButton(

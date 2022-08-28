@@ -25,6 +25,7 @@ class LoanDetailsScreen extends StatelessWidget {
         floatingActionButton: const CustomFloatingBackButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
