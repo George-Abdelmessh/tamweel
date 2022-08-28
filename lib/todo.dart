@@ -14,17 +14,22 @@
 // and your own todo list. 
 
 //TODO Zaka: > 
-// ^ [Get User ID,Access token, and info] missing api
 // $ todo list:
 // * [Application Screen] new feature
+// ^ [Access & Refresh tokens] missing api
 // ? [Auth Flow] Documentation/refactoring
 
 
 //Todo Kariim: > 
 // * Adding to the Todo List
 // $ todo list:
+// * [Error Page] new feature
+// ? [Settings Screen containers] refactoring
+// ! [Loan Details dynamic data] make dynamic data  
 
 
 //Todo George: >
 // * Adding to the Todo List
 // $ todo list:
+// ! [Home Loading Hud] quick fix
+// * [Application Screen] new feature
