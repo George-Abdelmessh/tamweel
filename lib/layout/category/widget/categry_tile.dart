@@ -37,7 +37,7 @@ class CategoryTile extends StatelessWidget {
                   clipBehavior: Clip.hardEdge,
                   child: CachedNetworkImage(
                     imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
-                    width: AppSize.width,
+                    // width: AppSize.width,
                     // height: AppSize.height * 0.25,
                     fit: BoxFit.cover,
                   ),
