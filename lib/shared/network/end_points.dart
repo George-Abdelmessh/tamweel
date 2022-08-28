@@ -1,5 +1,5 @@
 class AppEndPoints {
-  static const baseUrl = 'http://206.81.3.106/tamweel';
+  static const baseUrl = 'http://206.81.3.106/tamweel/';
 
   /// this for api end points
   static const ads = 'get/ads';
@@ -11,4 +11,5 @@ class AppEndPoints {
   static const banners = 'banners';
   static const mostWantedLoans = 'getloansmostwanted';
   static const search = 'search';
+  static const bankLoans = 'get/loan/bank';
 }
