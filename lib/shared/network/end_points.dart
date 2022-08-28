@@ -1,5 +1,5 @@
 class AppEndPoints {
-  static const baseUrl = 'https://evening-badlands-73488.herokuapp.com';
+  static const baseUrl = 'http://206.81.3.106/tamweel';
 
   /// this for api end points
   /// examples

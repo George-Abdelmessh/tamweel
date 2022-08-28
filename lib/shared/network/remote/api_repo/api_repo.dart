@@ -91,6 +91,10 @@ class ApiRepo {
     final response =
         await DioHelper.getDate(url: '${AppEndPoints.getUserDetails}$id');
 
+    response.data['data']['country'] =
+        int.parse(response.data['data']['country'] as String);
+    response.data['data']['area'] =
+        int.parse(response.data['data']['area'] as String);
     return UserDetails.fromJson(response.data['data'] as Map<String, dynamic>);
   }
 
@@ -137,7 +141,7 @@ class ApiRepo {
   ///User Login Method
   /// ? If Login Was Succesfull, Return True and success message
   /// ? else shows a dialog with error message
-  static Future<Tuple2<bool, String>> login({
+  static Future<Tuple3<bool, String, int>> login({
     required String email,
     required String password,
     bool? showAllert,
@@ -154,13 +158,22 @@ class ApiRepo {
       //show error message
       // print(e.toString());
       if (showAllert ?? true) _showAlertDialog(e.toString());
-      return Tuple2(false, e.toString());
+      return Tuple3(
+        false,
+        e.toString(),
+        0,
+        // '',
+        // '',
+      );
     }
     // print(response!.data);
     final status = response.data['status'] == 'true' ? true : false;
-    return Tuple2(
+    return Tuple3(
       status,
       response.data['message'] as String,
+      response.data['user']['id'] as int,
+      // response.data['accessToken']as String,
+      // response.data['refreshToken']as String,
     );
   }
 

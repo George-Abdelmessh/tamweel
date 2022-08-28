@@ -1,15 +1,19 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/app_user_model.dart';
 import 'package:tamweel/models/user/user_details.dart';
+import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tuple/tuple.dart';
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class AuthNotifier extends StateNotifier<AppUser> {
-  AuthNotifier() : super(const AppUser(userState: AuthState.guest));
+  AuthNotifier({required this.ref})
+      : super(const AppUser(userState: AuthState.guest));
+
+  final Ref ref;
 
   /// Login the user with the given email and password.
-  Future<Tuple2<bool, String>> login(
+  Future<Tuple3<bool, String, int>> login(
     String email,
     String password, {
     bool? showAllert,
@@ -25,20 +29,23 @@ class AuthNotifier extends StateNotifier<AppUser> {
       );
 
       if (response.item1) {
-        state = const AppUser(
+        print('User logged in with email: $email and password: $password');
+        state = AppUser(
           //TODO: Update user.
           userState: AuthState.loggedIn,
           accessToken: 'accessToken',
           refreshToken: 'refreshToken',
-          userId: 'userId',
+          userId: response.item3.toString(),
         );
+        ref.read(userDetailsProvider.notifier).state =
+            await ApiRepo.getUserDetails(response.item3);
       } else {
         state = const AppUser(userState: AuthState.guest);
       }
       return response;
     } catch (e) {
       state = const AppUser(userState: AuthState.guest);
-      return const Tuple2(false, 'Wrong email or password');
+      return const Tuple3(false, 'Wrong email or password', 0);
     }
   }
 
@@ -58,6 +65,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
   /// The user is set to guest
   void guest() {
     state = const AppUser(userState: AuthState.guest);
+    ref.read(userDetailsProvider.notifier).state = null;
   }
 
   /// Get the details of the currently logged in user.
@@ -70,5 +78,5 @@ class AuthNotifier extends StateNotifier<AppUser> {
 /// Provider that provides the AuthNotifier.
 /// This is used to notify the UI of the user's authentication state.
 final authNotifierProvider = StateNotifierProvider<AuthNotifier, AppUser>(
-  (ref) => AuthNotifier(),
+  (ref) => AuthNotifier(ref: ref),
 );

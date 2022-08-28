@@ -5,6 +5,7 @@ import 'package:tamweel/layout/auth/widgets/login/login_screen_form.dart';
 import 'package:tamweel/layout/auth/widgets/login/login_screen_pre_form.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
+import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
@@ -32,6 +33,10 @@ class LoginScreen extends HookConsumerWidget {
             .login(emailController.text, passwordController.text)
             .then((value) {
           if (value.item1) {
+            print(
+              'user details: \nName: ${ref.read(userDetailsProvider.notifier).state!.name},\nEmail: ${ref.read(userDetailsProvider.notifier).state!.email}',
+            );
+
             CacheHelper.saveData(key: 'email', value: emailController.text);
             CacheHelper.saveData(
               key: 'password',
