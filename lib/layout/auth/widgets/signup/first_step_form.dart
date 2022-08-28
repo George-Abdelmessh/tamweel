@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
@@ -28,7 +30,7 @@ class FirstStepForm extends ConsumerWidget {
     final authProvider = ref.watch(signupFormNotifierProvider.notifier);
     final formKey = GlobalKey<FormState>();
     return SizedBox(
-      height: AppSize.height,
+      height: AppSize.height * 0.6,
       child: Padding(
         padding: AppPaddingCopy.paddingH01,
         child: Form(
@@ -41,7 +43,13 @@ class FirstStepForm extends ConsumerWidget {
                 keyboardType: TextInputType.name,
                 controller: nameController,
                 hintText: 'Auth.Name'.tr(),
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.person_outlined,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 validator: (value) => AppValidators.required(value),
               ),
               SizedBox(height: AppSize.height * 0.025),
@@ -51,7 +59,13 @@ class FirstStepForm extends ConsumerWidget {
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 hintText: 'Auth.Email'.tr(),
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.email_outlined,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 validator: (value) => AppValidators.email(value),
               ),
               SizedBox(height: AppSize.height * 0.025),
@@ -61,7 +75,13 @@ class FirstStepForm extends ConsumerWidget {
                 keyboardType: TextInputType.number,
                 controller: nationalIdController,
                 hintText: 'Auth.NationalId'.tr(),
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.credit_card,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 validator: (value) =>
                     AppValidators.numbersExactLength(value, 14),
               ),
@@ -72,7 +92,13 @@ class FirstStepForm extends ConsumerWidget {
                 keyboardType: TextInputType.phone,
                 controller: phoneController,
                 hintText: 'Auth.Phone'.tr(),
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.phone,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 validator: (value) => AppValidators.phoneNumber(value),
               ),
               SizedBox(height: AppSize.height * 0.04),

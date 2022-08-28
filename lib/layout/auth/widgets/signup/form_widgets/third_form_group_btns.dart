@@ -8,7 +8,7 @@ import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
-import 'package:tamweel/shared/style/app_padding_copy.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
@@ -36,7 +36,13 @@ class ThirdFormGroupButtons extends ConsumerWidget {
           keyboardType: TextInputType.text,
           controller: addressController,
           hintText: 'Auth.Address'.tr(),
-          contentPadding: AppPaddingCopy.paddingH005,
+          prefixWidget: Padding(
+            padding: AppPadding.padding20,
+            child: const Icon(
+              Icons.location_on_outlined,
+              color: AppColor.secondary,
+            ),
+          ),
           validator: (value) => AppValidators.required(value),
         ),
         SizedBox(height: AppSize.height * 0.02),

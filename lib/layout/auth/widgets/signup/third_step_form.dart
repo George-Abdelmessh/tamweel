@@ -134,7 +134,7 @@ class _ThirdStepFormState extends ConsumerState<ThirdStepForm>
     }
 
     return SizedBox(
-      height: AppSize.height,
+      height: AppSize.height * 0.6,
       child: Padding(
         padding: AppPaddingCopy.paddingH01,
         child: Form(
