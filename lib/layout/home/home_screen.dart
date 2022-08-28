@@ -22,7 +22,7 @@ class HomeScreen extends HookConsumerWidget {
   final List<Widget> listOfScreens = [
     const HomeBody(),
     const CategoryBody(),
-    const SearchBody(),
+    SearchBody(),
     const SettingBody()
   ];
 
@@ -36,10 +36,10 @@ class HomeScreen extends HookConsumerWidget {
         //   centerTitle: true,
         // ),
         body: Padding(
-        padding: AppPadding.paddingH002,
-        child: listOfScreens[index],
+          padding: AppPadding.paddingH002,
+          child: listOfScreens[index],
         ),
-      bottomNavigationBar: BottomNavBarItems(),
+        bottomNavigationBar: BottomNavBarItems(),
       ),
     );
   }

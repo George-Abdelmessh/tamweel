@@ -28,6 +28,7 @@
 // ! [Loan Details dynamic data] make dynamic data  
 
 
+
 //Todo George: >
 // * Adding to the Todo List
 // $ todo list:

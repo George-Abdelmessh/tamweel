@@ -7,7 +7,7 @@ class CustomRowButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onTap,
-    required this.titleSize,
+    this.titleSize,
     this.icon,
     this.titleColor = Colors.black,
   });
@@ -15,7 +15,7 @@ class CustomRowButton extends StatelessWidget {
   final onTap;
   final IconData? icon;
   final Color titleColor;
-  final double titleSize;
+  final double? titleSize;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class CustomRowButton extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: titleSize,
+                  fontSize: AppSize.height * 0.025,
                   color: titleColor,
                 ),
               )

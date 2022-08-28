@@ -12,4 +12,5 @@ class AppEndPoints {
   static const getloans = 'getloans';
   static const banners = 'banners';
   static const mostWantedLoans = 'getloansmostwanted';
+  static const search = 'search';
 }

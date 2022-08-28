@@ -9,6 +9,7 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/navigation/app_navigator.dart';
+import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
@@ -35,9 +36,7 @@ class CategoryTile extends StatelessWidget {
                 child: ClipRRect(
                   clipBehavior: Clip.hardEdge,
                   child: CachedNetworkImage(
-                    imageUrl:
-                        'https://images.akhbarelyom.com//images/images/medium/20210504102723802.jpg',
-                    // '${AppEndPoints.baseUrl}/${loanData.image!}',
+                    imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
                     width: AppSize.width,
                     // height: AppSize.height * 0.25,
                     fit: BoxFit.cover,
