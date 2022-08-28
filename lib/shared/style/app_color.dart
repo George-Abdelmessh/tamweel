@@ -17,6 +17,8 @@ class AppColor {
   /// GREY COLOR
   static const Color grey = Color(0xffF4F4F4);
 
+  static const Color shimmer = Color.fromARGB(255, 205, 198, 198);
+
   /// PRIMARY COLOR IN APP
   static const Color primary = Color(0xffB68922);
   static const Color primaryDarker = Color.fromARGB(255, 154, 115, 24);

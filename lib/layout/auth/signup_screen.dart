@@ -61,7 +61,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
           body: SingleChildScrollView(
             physics: AppHelper.scroll,
             child: SizedBox(
-              height: AppSize.height * 1.5,
+              height: AppSize.height * 1.1,
               width: AppSize.width,
               child: Column(
                 children: [

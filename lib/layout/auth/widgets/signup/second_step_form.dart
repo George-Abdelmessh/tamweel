@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/providers/auth/signup_form_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
@@ -7,6 +7,7 @@ import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.da
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
+import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
@@ -25,7 +26,7 @@ class SecondStepForm extends ConsumerWidget {
     final authProvider = ref.watch(signupFormNotifierProvider.notifier);
     final formKey = GlobalKey<FormState>();
     return SizedBox(
-      height: AppSize.height,
+      height: AppSize.height * 0.6,
       child: Padding(
         padding: AppPaddingCopy.paddingH01,
         child: Form(
@@ -38,7 +39,13 @@ class SecondStepForm extends ConsumerWidget {
                 controller: passwordController,
                 hintText: 'Auth.Password'.tr(),
                 keyboardType: TextInputType.text,
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.lock_outline,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 isObscureText: true,
                 validator: (value) => AppValidators.password(value),
               ),
@@ -49,7 +56,13 @@ class SecondStepForm extends ConsumerWidget {
                 controller: confirmPasswordController,
                 keyboardType: TextInputType.text,
                 hintText: 'Auth.ConfirmPassword'.tr(),
-                contentPadding: AppPaddingCopy.paddingH005,
+                prefixWidget: Padding(
+                  padding: AppPadding.padding20,
+                  child: const Icon(
+                    Icons.lock_outline,
+                    color: AppColor.secondary,
+                  ),
+                ),
                 isObscureText: true,
                 validator: (value) =>
                     AppValidators.identical(value, passwordController.text),
