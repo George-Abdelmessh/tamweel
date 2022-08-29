@@ -164,12 +164,13 @@ class ApiRepo {
     }
     // print(response!.data);
     final status = response.data['status'] == 'true' ? true : false;
+    response.data['refreshtoken'] = '';
     return Tuple5(
       status,
       response.data['message'] as String,
       response.data['user']['id'] as int,
-      response.data['accessToken'] as String,
-      response.data['refreshToken'] as String,
+      response.data['accesstoken'] as String,
+      response.data['refreshtoken'] as String,
     );
   }
 
@@ -237,5 +238,4 @@ class ApiRepo {
     });
     return bankLoans!;
   }
-
 }
