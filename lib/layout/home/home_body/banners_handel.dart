@@ -13,10 +13,12 @@ class HomeBanners extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bannerList = ref.watch(bannersProvider);
     return bannerList.when(
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      // loading: () => const Center(
+      //   child: CircularProgressIndicator(),
+      // ),
+      // error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => Container(),
+      error: (error, stack) => Container(),
       data: (snapshot) {
         if (snapshot.isEmpty) {
           return Container();
@@ -24,9 +26,7 @@ class HomeBanners extends ConsumerWidget {
           if (index <= snapshot.length) {
             return CustomBanner(
               loanID: snapshot[index].id!,
-              //TODO: Swap the image with the real image
               imgUlr: '${AppEndPoints.baseUrl}/${snapshot[index].image!}',
-              // imgUlr: snapshot[index].image!,
               text: snapshot[index].title!,
             );
           } else {

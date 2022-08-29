@@ -21,9 +21,11 @@ class BankLoansCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bankLoansList = ref.watch(bankLoanProvider);
     return bankLoansList.when(
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      // loading: () => const Center(
+      //   child: CircularProgressIndicator(),
+      // ),
+      // error: (error, stack) => Container(),
+      loading: () => Container(),
       error: (error, stack) => Container(),
       data: (snapshot) {
         if (snapshot.isNotEmpty) {

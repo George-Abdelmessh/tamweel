@@ -13,10 +13,12 @@ class HomeSlider extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ads = ref.watch(adsProvider);
     return ads.when(
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      // loading: () => const Center(
+      //   child: CircularProgressIndicator(),
+      // ),
+      // error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => Container(),
+      error: (error, stack) => Container(),
       data: (snapshot) {
         if (snapshot.isNotEmpty) {
           return CarouselSlider.builder(
@@ -34,7 +36,6 @@ class HomeSlider extends ConsumerWidget {
             itemBuilder: (context, index, any) {
               return HomeSliderCard(
                 name: snapshot[index].title!,
-                //TODO: correct Base url
                 imgUrl: '${AppEndPoints.baseUrl}/${snapshot[index].image!}',
               );
             },
