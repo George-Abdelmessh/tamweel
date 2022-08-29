@@ -47,7 +47,7 @@ class CategoryScreen extends StatelessWidget {
                   childAspectRatio: 0.6,
                 ),
                 itemBuilder: (context, index) =>
-                    CategoryTile(loanData: loanData[index]),
+                    CategoryTile(loandata: loanData[index]),
               ),
             ),
           ],

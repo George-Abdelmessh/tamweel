@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'loan_model.freezed.dart';
@@ -12,7 +11,8 @@ class LoanModel with _$LoanModel {
     List<LoanData>? data,
   }) = _LoanModel;
 
-  factory LoanModel.fromJson(Map<String, dynamic> json) => _$LoanModelFromJson(json);
+  factory LoanModel.fromJson(Map<String, dynamic> json) =>
+      _$LoanModelFromJson(json);
 }
 
 @freezed
@@ -36,5 +36,6 @@ class LoanData with _$LoanData {
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _LoanData;
 
-  factory LoanData.fromJson(Map<String, dynamic> json) => _$LoanDataFromJson(json);
+  factory LoanData.fromJson(Map<String, dynamic> json) =>
+      _$LoanDataFromJson(json);
 }
