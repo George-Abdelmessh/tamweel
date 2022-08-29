@@ -48,7 +48,7 @@ class LoginForm extends StatelessWidget {
           child: customTextFormFieldWithValidator(
             context,
             controller: passwordController,
-            validator: (value) => AppValidators.password(value),
+            validator: (value) => AppValidators.required(value),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: TextInputType.emailAddress,
             hintText: 'Auth.Password'.tr(),
