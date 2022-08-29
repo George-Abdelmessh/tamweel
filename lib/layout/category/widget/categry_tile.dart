@@ -1,3 +1,5 @@
+// ignore_for_file: use_decorated_box
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
