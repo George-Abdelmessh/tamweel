@@ -1,3 +1,5 @@
+// ignore_for_file: use_decorated_box
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -37,7 +39,7 @@ class CategoryTile extends StatelessWidget {
                   clipBehavior: Clip.hardEdge,
                   child: CachedNetworkImage(
                     imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
-                    width: AppSize.width,
+                    // width: AppSize.width,
                     // height: AppSize.height * 0.25,
                     fit: BoxFit.cover,
                   ),
