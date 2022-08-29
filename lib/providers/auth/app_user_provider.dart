@@ -4,7 +4,6 @@ import 'package:tamweel/models/user/user_details.dart';
 import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/providers/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
-import 'package:tuple/tuple.dart';
 
 ///Auth Notifier that allows UI to login, logout, and access user tokens.
 class AuthNotifier extends StateNotifier<AppUser> {
@@ -14,7 +13,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
   final Ref ref;
 
   /// Login the user with the given email and password.
-  Future<Tuple3<bool, String, int>> login(
+  Future<bool> login(
     String email,
     String password, {
     bool? showAllert,
@@ -30,12 +29,12 @@ class AuthNotifier extends StateNotifier<AppUser> {
       );
 
       if (response.item1) {
-        print('User logged in with email: $email and password: $password');
+        // print('User logged in with email: $email and password: $password');
         state = AppUser(
           //TODO: Update user.
           userState: AuthState.loggedIn,
-          accessToken: 'accessToken',
-          refreshToken: 'refreshToken',
+          accessToken: response.item4,
+          refreshToken: response.item5,
           userId: response.item3.toString(),
         );
         ref.read(userDetailsProvider.notifier).state =
@@ -43,10 +42,10 @@ class AuthNotifier extends StateNotifier<AppUser> {
       } else {
         state = const AppUser(userState: AuthState.guest);
       }
-      return response;
+      return response.item1;
     } catch (e) {
       state = const AppUser(userState: AuthState.guest);
-      return const Tuple3(false, 'Wrong email or password', 0);
+      return false;
     }
   }
 

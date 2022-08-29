@@ -137,7 +137,7 @@ class ApiRepo {
   ///User Login Method
   /// ? If Login Was Succesfull, Return True and success message
   /// ? else shows a dialog with error message
-  static Future<Tuple3<bool, String, int>> login({
+  static Future<Tuple5<bool, String, int, String, String>> login({
     required String email,
     required String password,
     bool? showAllert,
@@ -154,22 +154,22 @@ class ApiRepo {
       //show error message
       // print(e.toString());
       if (showAllert ?? true) _showAlertDialog(e.toString());
-      return Tuple3(
+      return Tuple5(
         false,
         e.toString(),
         0,
-        // '',
-        // '',
+        '',
+        '',
       );
     }
     // print(response!.data);
     final status = response.data['status'] == 'true' ? true : false;
-    return Tuple3(
+    return Tuple5(
       status,
       response.data['message'] as String,
       response.data['user']['id'] as int,
-      // response.data['accessToken']as String,
-      // response.data['refreshToken']as String,
+      response.data['accessToken'] as String,
+      response.data['refreshToken'] as String,
     );
   }
 

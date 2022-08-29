@@ -22,7 +22,7 @@ class CacheHelper {
             password,
             showAllert: false,
           );
-      if (response.item1) {
+      if (response) {
         isLoggedIn = true;
       }
     }
