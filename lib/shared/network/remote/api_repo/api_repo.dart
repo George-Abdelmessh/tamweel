@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tamweel/main.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
+import 'package:tamweel/models/bank_loans/bank_loans_model.dart';
 import 'package:tamweel/models/banner/banner_model.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
@@ -224,4 +225,17 @@ class ApiRepo {
     });
     return loans!;
   }
+
+  static Future<List<BankData>> getBankLoans() async {
+    List<BankData>? bankLoans;
+
+    /// call get request
+    await DioHelper.getDate(url: AppEndPoints.bankLoans).then((response) {
+      bankLoans = BankLoansModel.fromJson(
+        response.data as Map<String, dynamic>,
+      ).data;
+    });
+    return bankLoans!;
+  }
+
 }

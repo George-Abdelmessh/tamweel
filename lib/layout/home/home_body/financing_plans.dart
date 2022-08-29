@@ -31,10 +31,12 @@ class FinancingPlans extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final programs = ref.watch(programsProvider);
     return programs.when(
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      // loading: () => const Center(
+      //   child: CircularProgressIndicator(),
+      // ),
+      // error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => Container(),
+      error: (error, stack) => Container(),
       data: (snapshot) {
         if (snapshot.isEmpty) {
           return Container();

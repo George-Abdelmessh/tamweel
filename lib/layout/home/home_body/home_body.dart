@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tamweel/layout/home/home_body/bank_loans_card.dart';
 import 'package:tamweel/layout/home/home_body/banners_handel.dart';
-import 'package:tamweel/layout/home/home_body/custom_inkwell_banner.dart';
 import 'package:tamweel/layout/home/home_body/financing_plans.dart';
 import 'package:tamweel/layout/home/home_body/most_loans.dart';
 import 'package:tamweel/layout/home/home_body/slider.dart';
@@ -44,18 +43,14 @@ class HomeBody extends StatelessWidget {
             CustomSizedBoxHeight(
               height: AppSize.height * 0.015,
             ),
-            const BankLoansCard(),
+            const BankLoansCard(index: 0),
             CustomSizedBoxHeight(
               height: AppSize.height * 0.015,
-            ),
-            const CustomInkwellBanner(
-              imgUlr:
-                  'https://ebi.gov.eg/wp-content/uploads/2021/07/Al-Masrafeyon_slider2.jpg',
             ),
             CustomSizedBoxHeight(
               height: AppSize.height * 0.015,
             ),
-            const BankLoansCard(),
+            const BankLoansCard(index: 1,),
           ],
         ),
       ),

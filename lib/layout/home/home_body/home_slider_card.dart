@@ -31,15 +31,15 @@ class HomeSliderCard extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.fill,
-                errorWidget: (context, url, error) =>
-                    const Center(child: Icon(Icons.error)),
-                placeholderFadeInDuration: const Duration(seconds: 1),
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    Center(
-                  child: CircularProgressIndicator(
-                    value: downloadProgress.progress,
-                  ),
-                ),
+                // errorWidget: (context, url, error) =>
+                //     const Center(child: Icon(Icons.error)),
+                // placeholderFadeInDuration: const Duration(seconds: 1),
+                // progressIndicatorBuilder: (context, url, downloadProgress) =>
+                //     Center(
+                //   child: CircularProgressIndicator(
+                //     value: downloadProgress.progress,
+                //   ),
+                // ),
               ),
             ),
             Container(

@@ -16,8 +16,10 @@ class MostLoans extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mostWantedLoanList = ref.watch(mostWantedLoansProvider);
     return mostWantedLoanList.when(
-      loading: () => const Center(child: CircularProgressIndicator(),),
-      error: (error, stack) => Center(child: Text('Error: $error')),
+      // loading: () => const Center(child: CircularProgressIndicator(),),
+      // error: (error, stack) => Center(child: Text('Error: $error')),
+      loading: () => Container(),
+      error: (error, stack) => Container(),
       data: (snapshot) {
         if(snapshot.isNotEmpty) {
           return Container(
