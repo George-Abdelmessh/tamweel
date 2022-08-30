@@ -60,6 +60,26 @@ class DioHelper {
       data: data,
     );
   }
+
+  static Future<Response> putDate({
+    required String url,
+    Map<String, dynamic>? query,
+    required Map<String, dynamic> data,
+    String lang = 'en',
+    String? token = '',
+  }) async {
+    dio!.options.headers = {
+      'Content-Type': 'application/json',
+      'lang': lang,
+      'Authorization': token,
+    };
+    return dio!.put(
+      url,
+      queryParameters: query,
+      data: data,
+    );
+  }
+
 }
 
 /// An interceptor that handles the error responses from a [Dio] request.

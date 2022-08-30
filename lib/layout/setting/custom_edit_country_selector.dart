@@ -46,7 +46,7 @@ class CustomEditCountrySelector extends ConsumerWidget {
               selectedItemHighlightColor: AppColor.secondary.withOpacity(0.75),
               isExpanded: true,
               dropdownFullScreen: true,
-              dropdownMaxHeight: AppSize.height * 0.3,
+              dropdownMaxHeight: AppSize.height * 0.4,
               scrollbarAlwaysShow: true,
               value: ref.watch(governorateProvider),
               items: [
@@ -114,7 +114,7 @@ class CustomEditCountrySelector extends ConsumerWidget {
               selectedItemHighlightColor: AppColor.secondary.withOpacity(0.75),
               isExpanded: true,
               dropdownFullScreen: true,
-              dropdownMaxHeight: AppSize.height * 0.3,
+              dropdownMaxHeight: AppSize.height * 0.4,
               scrollbarAlwaysShow: true,
               value: ref.watch(cityProvider),
               items: [

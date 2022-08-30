@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
@@ -8,6 +6,7 @@ import 'package:tamweel/layout/setting/widget/first_container_widget.dart';
 import 'package:tamweel/layout/setting/widget/second_container_widget.dart';
 import 'package:tamweel/models/auth/app_user_model.dart';
 import 'package:tamweel/providers/auth/app_user_provider.dart';
+import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/providers/edit_profile/edit_country_selector_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
@@ -24,6 +23,7 @@ class SettingBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authProvider = ref.watch(authNotifierProvider);
+    final userData = ref.watch(userDetailsProvider);
     return SafeArea(
       child: Scaffold(
         body: CustomSpinHudWidget(
@@ -46,23 +46,23 @@ class SettingBody extends ConsumerWidget {
                           if (authProvider.userState == AuthState.loggedIn)
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children:  [
                                 Text(
-                                  'Kariim Reda',
-                                  style: TextStyle(
+                                  userData!.name,
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 25,
                                   ),
                                 ),
-                                Divider(height: 5),
+                                const Divider(height: 5),
                                 Text(
-                                  'redakariim3@gmail.com',
-                                  style: TextStyle(color: Colors.grey),
+                                  userData.email,
+                                  style: const TextStyle(color: Colors.grey),
                                 ),
-                                Divider(height: 5),
+                                const Divider(height: 5),
                                 Text(
-                                  '01027979893',
-                                  style: TextStyle(color: Colors.grey),
+                                  userData.mobile,
+                                  style: const TextStyle(color: Colors.grey),
                                 ),
                               ],
                             ),
@@ -92,7 +92,9 @@ class SettingBody extends ConsumerWidget {
                                     .loadData(context);
                                 AppNavigator.push(
                                   context: context,
-                                  screen: const EditProfileScreen(),
+                                  screen: EditProfileScreen(
+                                    userDetails: userData!,
+                                  ),
                                 );
                               },
                               // color: AppColor.transparent,

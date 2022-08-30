@@ -7,6 +7,15 @@ import 'package:tamweel/models/auth/city.dart';
 import 'package:tamweel/models/auth/gov.dart';
 import 'package:tamweel/providers/hud/hud_provider.dart';
 
+
+/// the Marital Status of the user
+enum EditMaritalStatus {
+  married,
+  divorced,
+  widowed,
+  single,
+}
+
 class EditProfileNotifier extends StateNotifier<int> {
   EditProfileNotifier(this.ref) : super(0);
 
@@ -71,3 +80,8 @@ final govIdProvider = StateProvider<String>((ref) {
   return '0';
 });
 
+/// Provides whether the phone has the ability to vibrate or not.
+final canvibrateProvider = StateProvider((ref) => false);
+
+/// Provides whether the phone has the ability to control vibrattion or not.
+final hasVibrationController = StateProvider((ref) => false);
