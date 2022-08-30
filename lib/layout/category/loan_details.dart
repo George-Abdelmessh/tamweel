@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:tamweel/layout/apply/apply_screen.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
@@ -15,6 +18,14 @@ class LoanDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void apply() {
+      AppNavigator.push(
+        context: context,
+        screen: const ApplyScreen(),
+        type: PageTransitionType.bottomToTop,
+      );
+    }
+
     return CustomSpinHudWidget(
       child: Scaffold(
         floatingActionButton: const CustomFloatingBackButton(),
@@ -64,7 +75,7 @@ class LoanDetailsScreen extends StatelessWidget {
                       ),
                       CustomWideButton(
                         title: loandata.buttonText!,
-                        onTap: () {},
+                        onTap: () => apply(),
                       ),
                       const Divider(
                         thickness: 0,
@@ -191,7 +202,7 @@ class LoanDetailsScreen extends StatelessWidget {
                   padding: AppPadding.paddingH005,
                   child: CustomWideButton(
                     title: loandata.buttonText!,
-                    onTap: () {},
+                    onTap: () => apply(),
                   ),
                 ),
                 SizedBox(

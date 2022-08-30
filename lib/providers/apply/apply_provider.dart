@@ -1,6 +1,9 @@
 //Represents the different ways a user may be asked to enter information
 //in the application process. This is used to determine which widget to
 //display in the application process.
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/models/apply/apply_state.dart';
+
 enum FormType {
   // ^ Constants for FormType [Data we already have]:
   //0
@@ -71,3 +74,31 @@ enum FormType {
 //   password,
 //   nationalId,
 // }
+
+class ApplyStateNotifier extends StateNotifier<ApplicationState> {
+  ApplyStateNotifier()
+      : super(
+          ApplicationState(
+            image: '',
+            loanId: 0,
+            loanTitle: '',
+            steps: [],
+          ),
+        );
+
+  Future<void> loadSteps() async {
+    //TODO: Load steps from api repo
+  }
+  void nextStep() {
+    state = state..currentStep = state.currentStep++;
+  }
+
+  void prevStep() {
+    state = state..currentStep = state.currentStep--;
+  }
+}
+
+final applyStateProvider =
+    StateNotifierProvider<ApplyStateNotifier, ApplicationState>(
+  (ref) => ApplyStateNotifier(),
+);
