@@ -74,7 +74,7 @@ class LoanDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: AppSize.height * 0.15,
+                  height: AppSize.height * 0.18,
                   child: ColoredBox(
                     color: AppColor.grey,
                     child: Padding(

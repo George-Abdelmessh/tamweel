@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:native_notify/native_notify.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
@@ -23,6 +24,7 @@ void main() async {
   DioHelper.init();
   await CacheHelper.init();
   await CacheHelper.tryLogin();
+  NativeNotify.initialize(1608, 'h3QulRMxibuTXkVjAXw01x', null, null);
   runApp(
     EasyLocalization(
       supportedLocales: AppLocales.supportedLocales,
