@@ -6,6 +6,7 @@ import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/setting/custom_edit_country_selector.dart';
 import 'package:tamweel/models/user/user_details.dart';
+import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/providers/edit_profile/edit_country_selector_provider.dart';
 import 'package:tamweel/providers/edit_profile/gender_provider.dart';
 import 'package:tamweel/providers/edit_profile/update_profile_provider.dart';
@@ -14,6 +15,7 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/network/remote/api_repo/api_repo.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
@@ -154,6 +156,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
         userMaritalStatus:
             EditMaritalStatus.values[maritalStatusController.selectedIndex!],
       );
+      ref.read(userDetailsProvider.notifier).state =
+          await ApiRepo.getUserDetails(widget.userDetails.id);
+      Navigator.pop(context);
     }
   }
 
@@ -172,28 +177,28 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: ui.TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'EditProfile.UserInfo'.tr(),
-            style: const TextStyle(
-              color: AppColor.secondary,
+      child: CustomSpinHudWidget(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'EditProfile.UserInfo'.tr(),
+              style: const TextStyle(
+                color: AppColor.secondary,
+              ),
+            ),
+            backgroundColor: Colors.transparent,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: AppColor.secondary,
+              ),
             ),
           ),
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColor.secondary,
-            ),
-          ),
-        ),
-        body: Form(
-          key: _globalKey,
-          child: CustomSpinHudWidget(
+          body: Form(
+            key: _globalKey,
             child: SingleChildScrollView(
               child: Padding(
                 padding: AppPadding.paddingH005,
@@ -260,7 +265,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
                       keyboardType: TextInputType.text,
                       contentPadding: AppPaddingCopy.paddingH005,
                       isObscureText: true,
-                      //validator: (value) => AppValidators.password(value),
+                      validator: (value) => AppValidators.password(value),
                     ),
                     SizedBox(height: AppSize.height * 0.025),
                     customTextFormFieldWithValidator(
@@ -271,10 +276,10 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
                       hintText: 'Auth.ConfirmPassword'.tr(),
                       contentPadding: AppPaddingCopy.paddingH005,
                       isObscureText: true,
-                      // validator: (value) => AppValidators.identical(
-                      //   value,
-                      //   passwordController.text,
-                      // ),
+                      validator: (value) => AppValidators.identical(
+                        value,
+                        passwordController.text,
+                      ),
                     ),
                     SizedBox(height: AppSize.height * 0.02),
                     if (!ref.read(isLoadingProvider))
@@ -311,15 +316,17 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
                           height: AppSize.height * 0.04,
                           decoration: BoxDecoration(
                             borderRadius: AppRadius.radius20,
-                            color: selected ? AppColor.secondary : AppColor.grey,
+                            color:
+                                selected ? AppColor.secondary : AppColor.grey,
                           ),
                           child: Center(
                             child: FittedBox(
                               child: Text(
                                 value.toString(),
                                 style: TextStyle(
-                                  color:
-                                      selected ? AppColor.white : AppColor.black,
+                                  color: selected
+                                      ? AppColor.white
+                                      : AppColor.black,
                                 ),
                               ),
                             ),
@@ -355,15 +362,17 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
                           height: AppSize.height * 0.04,
                           decoration: BoxDecoration(
                             borderRadius: AppRadius.radius20,
-                            color: selected ? AppColor.secondary : AppColor.grey,
+                            color:
+                                selected ? AppColor.secondary : AppColor.grey,
                           ),
                           child: Center(
                             child: FittedBox(
                               child: Text(
                                 value.toString(),
                                 style: TextStyle(
-                                  color:
-                                      selected ? AppColor.white : AppColor.black,
+                                  color: selected
+                                      ? AppColor.white
+                                      : AppColor.black,
                                 ),
                               ),
                             ),
