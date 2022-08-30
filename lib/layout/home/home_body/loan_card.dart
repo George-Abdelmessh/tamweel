@@ -3,10 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:tamweel/layout/category/loan_details.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/navigation/app_navigator.dart';
 import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_decoration.dart';
@@ -128,13 +130,16 @@ class LoanCard extends StatelessWidget {
                   ),
                 ],
               ),
-              CustomSizedBoxHeight(
+               CustomSizedBoxHeight(
                 height: AppSize.height * 0.025,
               ),
               CustomWideButton(
                 title: 'Apply'.tr(),
                 onTap: () {
-                  // ToDo Navigate To Loan Info
+                  AppNavigator.push(
+                    context: context,
+                    screen: LoanDetailsScreen(loandata: loanData),
+                  );
                 },
               )
             ],

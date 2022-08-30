@@ -17,9 +17,9 @@ import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
 class CategoryTile extends StatelessWidget {
-  const CategoryTile({super.key, required this.loanData});
+  const CategoryTile({super.key, required this.loandata});
 
-  final LoanData loanData;
+  final LoanData loandata;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +38,7 @@ class CategoryTile extends StatelessWidget {
                 child: ClipRRect(
                   clipBehavior: Clip.hardEdge,
                   child: CachedNetworkImage(
-                    imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
+                    imageUrl: '${AppEndPoints.baseUrl}/${loandata.image!}',
                     // width: AppSize.width,
                     // height: AppSize.height * 0.25,
                     fit: BoxFit.cover,
@@ -49,7 +49,7 @@ class CategoryTile extends StatelessWidget {
                 height: AppSize.height * 0.01,
               ),
               AutoSizeText(
-                loanData.name!,
+                loandata.name!,
                 maxFontSize: 18,
                 minFontSize: 16,
                 maxLines: 1,
@@ -60,9 +60,9 @@ class CategoryTile extends StatelessWidget {
               ),
               RatingBar.builder(
                 ignoreGestures: true,
-                initialRating: loanData.initRate == null
+                initialRating: loandata.initRate == null
                     ? 1
-                    : loanData.initRate!.toDouble(),
+                    : loandata.initRate!.toDouble(),
                 minRating: 1,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
                 itemSize: 20,
@@ -92,7 +92,7 @@ class CategoryTile extends StatelessWidget {
                     ),
                   ),
                   AutoSizeText(
-                    loanData.cardReachTo!,
+                    loandata.cardReachTo!,
                     maxFontSize: 16,
                     minFontSize: 16,
                     maxLines: 1,
@@ -118,7 +118,7 @@ class CategoryTile extends StatelessWidget {
                     ),
                   ),
                   AutoSizeText(
-                    loanData.cardRepayment!,
+                    loandata.cardRepayment!,
                     maxFontSize: 16,
                     minFontSize: 16,
                     maxLines: 1,
@@ -137,7 +137,7 @@ class CategoryTile extends StatelessWidget {
                 onTap: () {
                   AppNavigator.push(
                     context: context,
-                    screen: LoanDetailsScreen(),
+                    screen:  LoanDetailsScreen(loandata: loandata),
                   );
                 },
               ),
