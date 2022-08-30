@@ -12,4 +12,5 @@ class AppEndPoints {
   static const mostWantedLoans = 'getloansmostwanted';
   static const search = 'search';
   static const bankLoans = 'get/loan/bank';
+  static const updateUser = '/user/update';
 }

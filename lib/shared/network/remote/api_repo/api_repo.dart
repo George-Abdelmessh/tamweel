@@ -238,4 +238,39 @@ class ApiRepo {
     });
     return bankLoans!;
   }
+
+  static Future<void> updateUserData({
+    required int id,
+    required String email,
+    required String password,
+    required String name,
+    required String nationalId,
+    required String phone,
+    required String address,
+    required String country,
+    required String city,
+    required int maritalStatus,
+    required int gender,
+  }) async {
+    final data = {
+      'id' : id,
+      'email': email,
+      'password': password,
+      'name': name,
+      'national_id': nationalId,
+      'mobile': phone,
+      'address': address,
+      'country': country,
+      'area': city,
+      'marital_status': maritalStatus,
+      'gender': gender,
+    };
+    Response? response;
+    try {
+      response =
+          await DioHelper.putDate(url: AppEndPoints.updateUser, data: data);
+    } on DioError catch (e) {
+      _showAlertDialog(e.toString());
+    }
+  }
 }
