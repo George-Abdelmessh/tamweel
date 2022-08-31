@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-// import 'package:native_notify/native_notify.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:tamweel/firebase_options.dart';
 import 'package:tamweel/layout/auth/login_options_screen.dart';
 import 'package:tamweel/layout/home/home_screen.dart';
 import 'package:tamweel/layout/onBoarding/onboarding_screen.dart';
@@ -13,18 +15,33 @@ import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_locales.dart';
 import 'package:tamweel/shared/style/app_theme.dart';
 
+
+/// [oneSignal] api key b5dc1dd4-8273-4ae1-bcad-6761745a9e78
+const String oneSignalAppId = 'b5dc1dd4-8273-4ae1-bcad-6761745a9e78';
+
 ///Used to access context to show Alerts
 final navigatorKey = GlobalKey<NavigatorState>();
+
+Future<void> initPlatformState() async {
+  OneSignal.shared.setAppId(oneSignalAppId);
+  OneSignal.shared
+      .promptUserForPushNotificationPermission()
+      .then((accepted) {});
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: IOS Orientation in XCode
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await initPlatformState();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await EasyLocalization.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
   await CacheHelper.tryLogin();
-  // NativeNotify.initialize(1608, 'h3QulRMxibuTXkVjAXw01x', null, null);
   runApp(
     EasyLocalization(
       supportedLocales: AppLocales.supportedLocales,
