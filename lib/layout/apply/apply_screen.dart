@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/providers/apply/apply_provider.dart';
+import 'package:tamweel/providers/apply/form_widgets_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
+import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
 class ApplyScreen extends ConsumerWidget {
@@ -9,6 +13,10 @@ class ApplyScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //providers
+    final stepLoader = ref.watch(loadStepsProvider);
+    final stepper = ref.watch(applyStateProvider.notifier);
+
     return SafeArea(
       child: Scaffold(
         floatingActionButton: const CustomFloatingBackButton(),
@@ -20,10 +28,26 @@ class ApplyScreen extends ConsumerWidget {
             child: Column(
               children: [
                 const Text('Apply'),
-                Container(
-                  height: AppSize.height * 2,
-                  width: 100,
-                  color: Colors.red,
+                stepLoader.when(
+                  data: (data) {
+                    final formProvider = ref.watch(formWidgetsProvider);
+                    return formProvider;
+                  },
+                  error: (error, stackTrace) => Text(error.toString()),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColor.secondary,
+                    ),
+                  ),
+                ),
+                //back and next buttons
+                CustomWideButton(
+                  title: 'next',
+                  onTap: () => stepper.nextStep(),
+                ),
+                CustomWideButton(
+                  title: 'back',
+                  onTap: () => stepper.prevStep(),
                 ),
               ],
             ),
