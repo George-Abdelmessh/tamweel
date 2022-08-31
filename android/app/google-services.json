@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "292905878675-b3tq7ja4ca33ngij085v3lo7danka1id.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tamweel",
+            "certificate_hash": "2911c51d2f95974c3ca5f28026df908df7dfea9e"
+          }
+        },
+        {
           "client_id": "292905878675-vnigqued2pnubn3pnjssle0jdk3h3s10.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "292905878675-vnigqued2pnubn3pnjssle0jdk3h3s10.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "292905878675-uq5rvgtmh7ivmd2kilj7k5uodt3o44ae.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tamweel"
+              }
             }
           ]
         }

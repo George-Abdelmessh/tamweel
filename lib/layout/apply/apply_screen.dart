@@ -50,6 +50,11 @@ class ApplyScreen extends ConsumerWidget {
                     fit: BoxFit.cover,
                     width: AppSize.width * 0.4,
                     height: AppSize.width * 0.4,
+                    errorWidget: (context, url, error) => const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColor.secondary,
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: AppSize.height * 0.05,

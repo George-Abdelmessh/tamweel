@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD0ZLFRt_rX73d8vZ68FCogxvu6LMWa-oM',
-    appId: '1:292905878675:web:618aa44bac1bbad7d2b966',
-    messagingSenderId: '292905878675',
-    projectId: 'tamweel-misr',
-    authDomain: 'tamweel-misr.firebaseapp.com',
-    storageBucket: 'tamweel-misr.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDwiMxLZ3TAbt8RBttR2TME7DIdjMw2AXI',
     appId: '1:292905878675:android:e13a38bc23f1387ad2b966',
@@ -66,16 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '292905878675',
     projectId: 'tamweel-misr',
     storageBucket: 'tamweel-misr.appspot.com',
-    iosClientId: '292905878675-uq5rvgtmh7ivmd2kilj7k5uodt3o44ae.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tamweel',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCJjvh5EE9XItzwvj_x6-qgxOJhJb4Ui3Y',
-    appId: '1:292905878675:ios:33cf380162f29350d2b966',
-    messagingSenderId: '292905878675',
-    projectId: 'tamweel-misr',
-    storageBucket: 'tamweel-misr.appspot.com',
+    androidClientId: '292905878675-b3tq7ja4ca33ngij085v3lo7danka1id.apps.googleusercontent.com',
     iosClientId: '292905878675-uq5rvgtmh7ivmd2kilj7k5uodt3o44ae.apps.googleusercontent.com',
     iosBundleId: 'com.example.tamweel',
   );
