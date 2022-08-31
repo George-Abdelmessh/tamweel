@@ -15,16 +15,19 @@ class ApplicationState {
     required this.image,
     required this.loanTitle,
     required this.steps,
+    this.currentStep = 0,
+    this.endSummary = true,
+    this.answers = const [],
   }) {
     answers = List.filled(steps.length, {});
   }
 
-  int currentStep = 0;
-  bool endSummary = true;
+  int? currentStep = 0;
+  bool? endSummary = true;
   final int loanId;
   final String loanTitle;
   final String image;
-  final List<Map<String, dynamic>> steps;
+  final List<dynamic> steps;
   List<Map<String, dynamic>>? answers;
 
   // //copy with method
