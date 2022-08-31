@@ -13,4 +13,5 @@ class AppEndPoints {
   static const search = 'search';
   static const bankLoans = 'get/loan/bank';
   static const updateUser = '/user/update';
+  static const filterCategory = 'program/loan';
 }
