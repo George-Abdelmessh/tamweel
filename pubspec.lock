@@ -281,6 +281,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+
   firebase_core:
     dependency: "direct main"
     description:
@@ -302,6 +303,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.2"
+
   fixnum:
     dependency: transitive
     description:

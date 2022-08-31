@@ -7,6 +7,7 @@ import 'package:tamweel/main.dart';
 import 'package:tamweel/models/ad/ad_model.dart';
 import 'package:tamweel/models/bank_loans/bank_loans_model.dart';
 import 'package:tamweel/models/banner/banner_model.dart';
+import 'package:tamweel/models/filter/filter_category.dart';
 import 'package:tamweel/models/financing_program/financing_program_model.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/models/user/user_details.dart';
@@ -26,6 +27,16 @@ class ApiRepo {
     // ignore: avoid_print
     print(loans);
     return loans!;
+  }
+
+  static Future<List<LoanCard>> filterCategory() async {
+    List<LoanCard>? categories;
+    await DioHelper.getDate(url: AppEndPoints.filterCategory).then((response) {
+      categories =
+          FilterCategory.fromJson(response.data as Map<String, dynamic>).data;
+    });
+    print(categories);
+    return categories!;
   }
 
   static void _showAlertDialog(String message) {
@@ -253,7 +264,7 @@ class ApiRepo {
     required int gender,
   }) async {
     final data = {
-      'id' : id,
+      'id': id,
       'email': email,
       'password': password,
       'name': name,

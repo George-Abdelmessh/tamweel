@@ -1,30 +1,28 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, avoid_dynamic_calls
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/providers/category/filter_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
-class CustomDropDownButton extends StatelessWidget {
-  CustomDropDownButton({super.key});
+// ignore: non_constant_identifier_names
+final categoryProvider = StateProvider<String?>((ref) => 'الكل');
+final catIndexProvider = StateProvider<int>((ref) => -1);
 
-  final List<String> items = [
-    'كل برامج تمويل',
-    'برامج تمويل المزارع',
-    'برامج تمويل الشركات',
-    'تمويل المشروعات الصغيرة',
-    'تمويل الشباب',
-    'برامج تمويل المرأة',
-    'تمويل ذوي الهمم',
-    'تمويل أفراد',
-  ];
-  String? selectedValue;
+class CustomDropDownButton extends ConsumerWidget {
+  const CustomDropDownButton({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loanProvider = ref.watch(filterFutureProvider);
+    final selectedValue = ref.watch(categoryProvider);
+    List dataWhen = [];
     return DropdownButtonHideUnderline(
-      child: DropdownButton2(
+      child: DropdownButton2<String>(
         isExpanded: true,
         hint: Row(
           children: [
@@ -35,33 +33,69 @@ class CustomDropDownButton extends StatelessWidget {
             const Expanded(
               child: Text(
                 'برامج التمويل',
-                style: TextStyle(color: AppColor.primary,
-                  ),
+                style: TextStyle(
+                  color: AppColor.primary,
+                ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
         ),
-        items: items
-            .map(
-              (item) => DropdownMenuItem<String>(
-                value: item,
+        items: loanProvider.when(
+          data: (data) {
+            final items = data.map((e) => e.name);
+            dataWhen = data;
+            final widgets = [
+              const DropdownMenuItem<String>(
+                value: 'الكل',
                 child: FittedBox(
                   child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 14,
+                    'كل برامج التمويل',
+                    style: TextStyle(
+                      fontSize: 20,
                       color: AppColor.primary,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
+              )
+            ];
+            widgets.addAll(
+              items.map(
+                (item) => DropdownMenuItem<String>(
+                  value: item,
+                  child: FittedBox(
+                    child: Text(
+                      item!,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: AppColor.primary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
               ),
-            )
-            .toList(),
+            );
+
+            return widgets;
+          },
+          error: (_, __) => [const DropdownMenuItem(child: Text(''))],
+          loading: () => [const DropdownMenuItem(child: Text(''))],
+        ),
         value: selectedValue,
-        onChanged: (value) {},
+        onChanged: (value) {
+          if (value == 'الكل') {
+            ref.read(categoryProvider.state).state = value;
+            ref.read(catIndexProvider.state).state = -1;
+            return;
+          }
+          ref.read(categoryProvider.state).state = value;
+          ref.read(catIndexProvider.state).state =
+              dataWhen.indexWhere((element) => element.name == value);
+        },
         icon: const Icon(
           Icons.keyboard_arrow_left_outlined,
           size: 18,
