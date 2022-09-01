@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/Error/no_connection.dart';
 import 'package:tamweel/layout/category/widget/categry_tile.dart';
 import 'package:tamweel/layout/search/search_loading.dart';
 import 'package:tamweel/providers/search/search_loan_provider.dart';
@@ -54,27 +55,28 @@ class SearchBody extends ConsumerWidget {
             ),
             Expanded(
               child: searchProvider.when(
-                data: (loanData) => SizedBox(
-                  width: AppSize.width,
-                  height: AppSize.height - 56,
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: loanData.length,
-                    physics: AppHelper.scroll,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.6,
-                    ),
-                    itemBuilder: (context, index) =>
-                        CategoryTile(loandata: loanData[index]),
-                  ),
-                ),
-                error: (error, stack) => Container(
-                  color: AppColor.error,
-                  width: 100,
-                  height: 100,
-                ),
+                data: (loanData) => loanData.isNotEmpty
+                    ? SizedBox(
+                        width: AppSize.width,
+                        height: AppSize.height - 56,
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          itemCount: loanData.length,
+                          physics: AppHelper.scroll,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.6,
+                          ),
+                          itemBuilder: (context, index) =>
+                              CategoryTile(loandata: loanData[index]),
+                        ),
+                      )
+                    : ref.read(searchPhraseProvider).isNotEmpty
+                        ? const NoConnection(text: 'لا يوجد نتائج لهذا البحث ')
+                        : const SizedBox.shrink(),
+                error: (error, stack) =>
+                    const NoConnection(text: 'تعذر الاتصال'),
                 loading: () => const SearchLoadingScreen(),
               ),
             ),
