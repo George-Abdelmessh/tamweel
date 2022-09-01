@@ -88,6 +88,12 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
 
   Ref ref;
 
+  // void reset() {
+  //   state = ApplicationState(
+  //     steps: [],
+  //   );
+  // }
+
   Future<void> loadSteps(int id) async {
     final jsonMap = await ApiRepo.getLoanSteps(id);
     state = ApplicationState(
@@ -131,6 +137,18 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
   ///   example: string, number, date, lists, etc
   void setAnswer(int step, String title, dynamic answer) {
     state = state..answers!['steps'][step][title] = answer;
+    state = ApplicationState(
+      steps: state.steps,
+      currentStep: state.currentStep,
+      endSummary: state.endSummary,
+      answers: state.answers,
+    );
+  }
+
+  ///Set a specific image with given [image]
+  void setImage(dynamic image) {
+    // if th
+    state = state..answers!['images[]'].add(image);
     state = ApplicationState(
       steps: state.steps,
       currentStep: state.currentStep,

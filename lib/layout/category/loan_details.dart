@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tamweel/layout/apply/apply_screen.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
@@ -21,7 +22,9 @@ class LoanDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void apply() {
+      // ref.read(applyStateProvider.notifier).reset();
       ref.read(loanDataProvider.state).state = loandata;
+      ref.read(uploadImageProvider.state).state = {};
       AppNavigator.push(
         context: context,
         screen: const ApplyScreen(),
