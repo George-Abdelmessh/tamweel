@@ -5,6 +5,7 @@ class BottomNavBarIndex extends StateNotifier<int> {
 
   void setIndex(int index) {
     state = index;
+    return;
   }
 
   @override

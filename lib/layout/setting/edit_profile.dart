@@ -157,8 +157,10 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen>
             EditMaritalStatus.values[maritalStatusController.selectedIndex!],
       );
       ref.read(userDetailsProvider.notifier).state =
-          await ApiRepo.getUserDetails(widget.userDetails.id);
-      Navigator.pop(context);
+          await ApiRepo.getUserDetails(widget.userDetails.id).then((value) {
+        Navigator.pop(context);
+        return null;
+      });
     }
   }
 
