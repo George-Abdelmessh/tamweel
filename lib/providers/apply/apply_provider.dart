@@ -106,6 +106,7 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
         steps: state.steps,
         currentStep: state.currentStep,
         endSummary: state.endSummary,
+        answers: state.answers,
       );
       // print(state.currentStep);
     }
@@ -119,6 +120,7 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
         steps: state.steps,
         currentStep: state.currentStep,
         endSummary: state.endSummary,
+        answers: state.answers,
       );
     }
   }

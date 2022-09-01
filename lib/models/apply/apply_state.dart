@@ -14,9 +14,9 @@ class ApplicationState {
     required this.steps,
     this.currentStep = 0,
     this.endSummary = true,
-    this.answers = const [],
+    this.answers,
   }) {
-    answers = List.filled(steps.length, {});
+    answers ??= List.filled(steps.length, {});
   }
 
   int? currentStep = 0;
