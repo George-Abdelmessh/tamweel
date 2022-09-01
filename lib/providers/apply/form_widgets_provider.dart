@@ -32,7 +32,7 @@ class FormWidgets extends ConsumerWidget {
           itemBuilder: (context, index) {
             //TODO: return items = genereate widgets of [map] method
             // ignore: avoid_dynamic_calls
-            return FormWidgetsSwitcher(formType: map[index]['type'] as int);
+            return FormWidgetsSwitcher(index: index);
           },
 
           // return Container(

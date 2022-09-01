@@ -1,15 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 
 class FormWidgetsSwitcher extends ConsumerWidget {
-  const FormWidgetsSwitcher({super.key, required this.formType});
+  const FormWidgetsSwitcher({super.key, required this.index});
 
-  final int formType;
+  final int index;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    switch (formType) {
+    final step = ref.watch(
+      applyStateProvider.select((applyState) => applyState.currentStep),
+    );
+    final map = ref.watch(
+      applyStateProvider
+          // ignore: avoid_dynamic_calls
+          .select((applyState) => applyState.steps[step!]['form']),
+    ) as List;
+
+    if (index >= map.length) return Container();
+
+    switch (map[index]['type'] as int) {
       case 0:
         return Container();
       case 1:
@@ -35,7 +48,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 11:
         return Container();
       case 12:
-        return Container();
+        return QAGroupButton(data: map[index] as Map<dynamic, dynamic>);
       case 13:
         return Container();
       case 14:

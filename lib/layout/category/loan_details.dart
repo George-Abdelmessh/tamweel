@@ -88,7 +88,7 @@ class LoanDetailsScreen extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(
-                  height: AppSize.height * 0.18,
+                  height: AppSize.height * 0.2,
                   child: ColoredBox(
                     color: AppColor.grey,
                     child: Padding(
