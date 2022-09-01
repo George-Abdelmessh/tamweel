@@ -53,7 +53,6 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                       color: AppColor.primary,
                     ),
                   ),
-
                   ClipRect(
                     child: SizedBox(
                       // width: AppSize.width * 0.4,
@@ -74,77 +73,90 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                   SizedBox(
                     height: AppSize.height * 0.02,
                   ),
-                  if (state.steps.isNotEmpty)
-                    AutoSizeText(
-                      // ignore: avoid_dynamic_calls
-                      state.steps[state.currentStep!]['title'] as String? ?? '',
-                      style: TextStyle(
-                        fontSize: AppSize.height * 0.03,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.primary,
-                      ),
-                      maxLines: 1,
-                    ),
-                  NumberStepper(
-                    activeStep: state.currentStep!,
-                    enableNextPreviousButtons: false,
-                    enableStepTapping: false,
-                    activeStepColor: AppColor.secondary,
-                    stepColor: AppColor.white,
-                    numbers: [
-                      for (var i = 1; i < state.steps.length + 1; i++) i
-                    ],
-                  ),
-                  if (state.steps.isNotEmpty)
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: AutoSizeText(
-                        // ignore: avoid_dynamic_calls
-                        state.steps[state.currentStep!]['description']
-                                as String? ??
-                            '',
-                        textAlign: TextAlign.start,
-                        maxLines: 3,
-                      ),
-                    ),
-                  SizedBox(
-                    height: AppSize.height * 0.05,
-                  ),
-
-                  stepLoader.when(
-                    data: (data) {
-                      // final formProvider = ref.watch(formWidgetsProvider);
-                      return const FormWidgets();
-                    },
-                    error: (error, stackTrace) => const Text('قريبا'),
-                    loading: () => const SizedBox.shrink(),
-                  ),
-                  SizedBox(
-                    height: AppSize.height * 0.05,
-                  ),
-                  //back and next buttons
-                  Row(
+                  Column(
                     children: [
-                      Expanded(
-                        child: CustomWideButton(
-                          title: 'back',
-                          onTap: () => stepper.prevStep(),
+                      if (state.steps.isNotEmpty)
+                        AutoSizeText(
+                          // ignore: avoid_dynamic_calls
+                          state.steps[state.currentStep!]['title'] as String? ??
+                              '',
+                          style: TextStyle(
+                            fontSize: AppSize.height * 0.03,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.primary,
+                          ),
+                          maxLines: 1,
                         ),
+                      SizedBox(
+                        width: AppSize.width * 0.01,
+                      ),
+                      NumberStepper(
+                        activeStep: state.currentStep!,
+                        enableNextPreviousButtons: false,
+                        enableStepTapping: false,
+                        activeStepColor: AppColor.secondary,
+                        stepColor: AppColor.white,
+                        numbers: [
+                          for (var i = 1; i < state.steps.length + 1; i++) i
+                        ],
+                      ),
+                      if (state.steps.isNotEmpty)
+                        Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: AutoSizeText(
+                            // ignore: avoid_dynamic_calls
+                            state.steps[state.currentStep!]['description']
+                                    as String? ??
+                                '',
+                            textAlign: TextAlign.start,
+                            maxLines: 3,
+                          ),
+                        ),
+                      SizedBox(
+                        height: AppSize.height * 0.05,
+                      ),
+
+                      stepLoader.when(
+                        data: (data) {
+                          // final formProvider = ref.watch(formWidgetsProvider);
+                          return const FormWidgets();
+                        },
+                        error: (error, stackTrace) => const Text('قريبا'),
+                        loading: () => const SizedBox.shrink(),
                       ),
                       SizedBox(
-                        width: AppSize.width * 0.05,
+                        height: AppSize.height * 0.05,
                       ),
-                      Expanded(
-                        child: CustomWideButton(
-                          title: 'next',
-                          onTap: () => stepper.nextStep(),
-                        ),
+                      //back and next buttons
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomWideButton(
+                              title: 'back',
+                              onTap: () {
+                                stepper.prevStep();
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: AppSize.width * 0.05,
+                          ),
+                          Expanded(
+                            child: CustomWideButton(
+                              title: 'next',
+                              onTap: () {
+                                stepper.nextStep();
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: AppSize.height * 0.2,
+                        color: AppColor.white,
                       ),
                     ],
-                  ),
-                  SizedBox(
-                    height: AppSize.height * 0.1,
-                  ),
+                  )
                 ],
               ),
             ),
