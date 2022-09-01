@@ -16,13 +16,16 @@ class ApplicationState {
     this.endSummary = true,
     this.answers,
   }) {
-    answers ??= List.filled(steps.length, {});
+    answers ??= {
+      'images[]': [],
+      'steps': {List.filled(steps.length, {})}
+    };
   }
 
   int? currentStep = 0;
   bool? endSummary = true;
   final List<dynamic> steps;
-  List<Map<String, dynamic>>? answers;
+  dynamic answers;
 
   // //copy with method
   // ApplicationState copyWith({
