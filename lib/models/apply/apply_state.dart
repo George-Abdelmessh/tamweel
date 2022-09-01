@@ -11,24 +11,21 @@ class ApplicationState {
   ///Create a new instance of the ApplicationState class
 
   ApplicationState({
-    required this.loanId,
-    required this.image,
-    required this.loanTitle,
     required this.steps,
     this.currentStep = 0,
     this.endSummary = true,
-    this.answers = const [],
+    this.answers,
   }) {
-    answers = List.filled(steps.length, {});
+    answers ??= {
+      'images[]': [],
+      'steps': {List.filled(steps.length, {})}
+    };
   }
 
   int? currentStep = 0;
   bool? endSummary = true;
-  final int loanId;
-  final String loanTitle;
-  final String image;
   final List<dynamic> steps;
-  List<Map<String, dynamic>>? answers;
+  dynamic answers;
 
   // //copy with method
   // ApplicationState copyWith({

@@ -20,6 +20,7 @@ class CustomDrawerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        // ignore: avoid_dynamic_calls
         onTap();
       },
       borderRadius: AppRadius.radius10,

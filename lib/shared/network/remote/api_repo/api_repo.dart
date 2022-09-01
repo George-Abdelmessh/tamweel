@@ -35,7 +35,7 @@ class ApiRepo {
       categories =
           FilterCategory.fromJson(response.data as Map<String, dynamic>).data;
     });
-    print(categories);
+    // print(categories);
     return categories!;
   }
 
@@ -276,12 +276,19 @@ class ApiRepo {
       'marital_status': maritalStatus,
       'gender': gender,
     };
-    Response? response;
+
     try {
-      response =
-          await DioHelper.putDate(url: AppEndPoints.updateUser, data: data);
+      await DioHelper.putDate(url: AppEndPoints.updateUser, data: data);
     } on DioError catch (e) {
       _showAlertDialog(e.toString());
     }
+  }
+
+  static Future<Map> getLoanSteps(int loan) async {
+    final query = {'id': loan};
+    final response =
+        await DioHelper.getDate(url: AppEndPoints.loanSteps, query: query);
+
+    return response.data['data'][0] as Map<String, dynamic>;
   }
 }

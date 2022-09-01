@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'dart:core';
 
 import 'package:easy_localization/easy_localization.dart';

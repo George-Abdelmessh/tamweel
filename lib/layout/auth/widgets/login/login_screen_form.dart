@@ -68,6 +68,7 @@ class LoginForm extends StatelessWidget {
           child: CustomWideButton(
             title: 'Auth.Login'.tr(),
             onTap: () {
+              // ignore: avoid_dynamic_calls
               login();
             },
           ),

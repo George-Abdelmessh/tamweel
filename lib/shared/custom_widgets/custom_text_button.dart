@@ -10,6 +10,7 @@ class CustomTextButton extends StatelessWidget {
     this.titleColor = AppColor.primary,
   });
   final String title;
+  // ignore: prefer_typing_uninitialized_variables, type_annotate_public_apis
   final onTap;
   final Color titleColor;
 

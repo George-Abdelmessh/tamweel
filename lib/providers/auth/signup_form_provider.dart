@@ -1,3 +1,5 @@
+// ignore_for_file: use_late_for_private_fields_and_variables
+
 import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -21,7 +23,7 @@ enum MaritalStatus {
 class SignUpFormNotifier extends StateNotifier<int> {
   SignUpFormNotifier(this.ref) : super(0);
 
-  final ref;
+  final Ref ref;
   //state getter
   int get step => state;
   String? _govs;

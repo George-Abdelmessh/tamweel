@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tamweel/layout/apply/apply_screen.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
+import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/Hud/custom_spin_hud.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
@@ -12,13 +14,14 @@ import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
-class LoanDetailsScreen extends StatelessWidget {
+class LoanDetailsScreen extends ConsumerWidget {
   const LoanDetailsScreen({super.key, required this.loandata});
   final LoanData loandata;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     void apply() {
+      ref.read(loanDataProvider.state).state = loandata;
       AppNavigator.push(
         context: context,
         screen: const ApplyScreen(),
@@ -85,7 +88,7 @@ class LoanDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: AppSize.height * 0.18,
+                  height: AppSize.height * 0.2,
                   child: ColoredBox(
                     color: AppColor.grey,
                     child: Padding(
@@ -202,7 +205,9 @@ class LoanDetailsScreen extends StatelessWidget {
                   padding: AppPadding.paddingH005,
                   child: CustomWideButton(
                     title: loandata.buttonText!,
-                    onTap: () => apply(),
+                    onTap: () {
+                      apply();
+                    },
                   ),
                 ),
                 SizedBox(

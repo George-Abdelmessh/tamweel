@@ -1,3 +1,5 @@
+// ignore_for_file: use_late_for_private_fields_and_variables
+
 import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -6,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/models/auth/city.dart';
 import 'package:tamweel/models/auth/gov.dart';
 import 'package:tamweel/providers/hud/hud_provider.dart';
-
 
 /// the Marital Status of the user
 enum EditMaritalStatus {
@@ -19,7 +20,7 @@ enum EditMaritalStatus {
 class EditProfileNotifier extends StateNotifier<int> {
   EditProfileNotifier(this.ref) : super(0);
 
-  final ref;
+  final Ref ref;
   int get step => state;
   String? _govs;
   String? _cities;
@@ -62,15 +63,14 @@ class EditProfileNotifier extends StateNotifier<int> {
   }
 }
 
-
 final editProfileNotifierProvider =
-StateNotifierProvider<EditProfileNotifier, int>(
-      (ref) => EditProfileNotifier(ref),
+    StateNotifierProvider<EditProfileNotifier, int>(
+  (ref) => EditProfileNotifier(ref),
 );
 
 /// Provides user selected governorate in signup process
 final governorateProvider =
-StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
+    StateProvider.autoDispose((ref) => 'Auth.Governorate'.tr());
 
 /// Provides user selected City in signup process
 final cityProvider = StateProvider.autoDispose((ref) => 'Auth.City'.tr());
