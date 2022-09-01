@@ -31,10 +31,6 @@ class HomeScreen extends HookConsumerWidget {
     final int index = ref.watch(indexProvider);
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text(titleAppBar[index]),
-        //   centerTitle: true,
-        // ),
         body: Padding(
           padding: AppPadding.paddingH002,
           child: listOfScreens[index],

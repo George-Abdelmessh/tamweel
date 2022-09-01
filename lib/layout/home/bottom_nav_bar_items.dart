@@ -44,9 +44,8 @@ class BottomNavBarItems extends HookConsumerWidget {
       showElevation: false,
       items: items,
       selectedIndex: index,
-      onItemSelected: (index) {
-        ref.read(indexProvider.notifier).setIndex(index);
-      },
+      onItemSelected: (index) =>
+          ref.read(indexProvider.notifier).setIndex(index),
       animationDuration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
     );
