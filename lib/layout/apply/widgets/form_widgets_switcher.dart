@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
+import 'package:tamweel/providers/apply/apply_provider.dart';
 
 class FormWidgetsSwitcher extends ConsumerWidget {
   const FormWidgetsSwitcher({super.key, required this.formType});
@@ -52,6 +54,12 @@ class FormWidgetsSwitcher extends ConsumerWidget {
         return Container();
       case 21:
         return Container();
+      case 22:
+        return QAUploadImage(
+          //TODO: fix
+          step: ref.read(applyStateProvider).currentStep!,
+          index: ref.read(applyStateProvider).currentStep!,
+        );
       case 23:
         return Container();
       case 24:
