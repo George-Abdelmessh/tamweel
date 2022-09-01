@@ -29,7 +29,7 @@ class CustomWideButton extends StatelessWidget {
           onTap();
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: background,
+          primary: background,
           elevation: 0.0,
           enableFeedback: true,
           minimumSize: AppSize.size,
