@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "292905878675",
+    "project_id": "tamweel-misr",
+    "storage_bucket": "tamweel-misr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292905878675:android:e13a38bc23f1387ad2b966",
+        "android_client_info": {
+          "package_name": "com.example.tamweel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292905878675-b3tq7ja4ca33ngij085v3lo7danka1id.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tamweel",
+            "certificate_hash": "2911c51d2f95974c3ca5f28026df908df7dfea9e"
+          }
+        },
+        {
+          "client_id": "292905878675-vnigqued2pnubn3pnjssle0jdk3h3s10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwiMxLZ3TAbt8RBttR2TME7DIdjMw2AXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292905878675-vnigqued2pnubn3pnjssle0jdk3h3s10.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "292905878675-uq5rvgtmh7ivmd2kilj7k5uodt3o44ae.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tamweel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
