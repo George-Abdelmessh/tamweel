@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,11 +13,16 @@ import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
 
-class ApplyScreen extends ConsumerWidget {
+class ApplyScreen extends ConsumerStatefulWidget {
   const ApplyScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ApplyScreenState();
+}
+
+class _ApplyScreenState extends ConsumerState<ApplyScreen> {
+  @override
+  Widget build(BuildContext context) {
     //providers
     final stepLoader = ref.watch(loadStepsProvider);
     final stepper = ref.watch(applyStateProvider.notifier);
@@ -68,6 +74,17 @@ class ApplyScreen extends ConsumerWidget {
                   SizedBox(
                     height: AppSize.height * 0.02,
                   ),
+                  if (state.steps.isNotEmpty)
+                    AutoSizeText(
+                      // ignore: avoid_dynamic_calls
+                      state.steps[state.currentStep!]['title'] as String? ?? '',
+                      style: TextStyle(
+                        fontSize: AppSize.height * 0.03,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.primary,
+                      ),
+                      maxLines: 1,
+                    ),
                   NumberStepper(
                     activeStep: state.currentStep!,
                     enableNextPreviousButtons: false,
@@ -78,6 +95,18 @@ class ApplyScreen extends ConsumerWidget {
                       for (var i = 1; i < state.steps.length + 1; i++) i
                     ],
                   ),
+                  if (state.steps.isNotEmpty)
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: AutoSizeText(
+                        // ignore: avoid_dynamic_calls
+                        state.steps[state.currentStep!]['description']
+                                as String? ??
+                            '',
+                        textAlign: TextAlign.start,
+                        maxLines: 3,
+                      ),
+                    ),
                   SizedBox(
                     height: AppSize.height * 0.05,
                   ),

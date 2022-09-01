@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:animated_switcher_plus/animated_switcher_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
-import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 
 class FormWidgets extends ConsumerWidget {
