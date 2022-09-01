@@ -5,24 +5,46 @@ import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
-class QAGroupButton extends ConsumerWidget {
-  QAGroupButton({super.key, required this.data});
+class QAGroupButton extends ConsumerStatefulWidget {
+  const QAGroupButton({super.key, required this.data});
 
-  final GroupButtonController _controller = GroupButtonController();
   final Map data;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<QAGroupButton> createState() => _QAGroupButtonState();
+}
+
+class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
+  final GroupButtonController _controller = GroupButtonController();
+
+  final requiredWidgetsProvider =
+      StateNotifierProvider.autoDispose<RequiredWidgets, Widget>(
+    (ref) => RequiredWidgets(),
+  );
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   // _controller.selectIndex(ref.read(_indexProvider));
+    /// ToDo implement switch case
+
+    ref.read(requiredWidgetsProvider.notifier)
+        .setRequiredWidgets(const Text('data'));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final selectedIndex = ref.watch(_indexProvider);
     final selectedIndexNoti = ref.watch(_indexProvider.notifier);
-    final requiredWidgets = ref.watch(_requiredWidgetsProvider.notifier);
+    final requiredWidgets = ref.watch(requiredWidgetsProvider.notifier);
     return Column(
-      crossAxisAlignment: data['options'].length == 2
+      crossAxisAlignment: widget.data['options'].length == 2
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
       children: [
         Text(
-          data['title'].toString(),
+          widget.data['title'].toString(),
           style: TextStyle(
             fontSize: AppSize.width * 0.043,
             fontWeight: FontWeight.bold,
@@ -35,13 +57,9 @@ class QAGroupButton extends ConsumerWidget {
           controller: _controller,
           onSelected: (object, index, isSelected) {
             selectedIndexNoti.setIndex(index);
-            if (data["childEnable"] == selectedIndex) {
-              /// ToDo implement switch case
-              requiredWidgets.setRequiredWidgets(const Text('data'));
-            }
             return null;
           },
-          buttons: data['options'] as List<Object?>,
+          buttons: widget.data['options'] as List<Object?>,
           buttonBuilder: (selected, value, context) {
             return Container(
               width: AppSize.width * 0.2,
@@ -66,7 +84,7 @@ class QAGroupButton extends ConsumerWidget {
         SizedBox(
           height: AppSize.height * 0.02,
         ),
-        if (data["childEnable"] == selectedIndex)
+        if (widget.data["childEnable"] == selectedIndex)
           requiredWidgets.widget
         else
           Container(),
@@ -81,11 +99,6 @@ class SetIndex extends StateNotifier<int> {
   void setIndex(int index) {
     state = index;
     return;
-  }
-
-  @override
-  set state(int index) {
-    super.state = index;
   }
 }
 
@@ -102,7 +115,3 @@ class RequiredWidgets extends StateNotifier<Widget> {
     return;
   }
 }
-
-final _requiredWidgetsProvider = StateNotifierProvider<RequiredWidgets, Widget>(
-  (ref) => RequiredWidgets(),
-);
