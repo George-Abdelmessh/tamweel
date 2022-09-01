@@ -7,6 +7,7 @@ import 'package:tamweel/providers/apply/form_widgets_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_floating_back_button.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
+import 'package:tamweel/shared/network/end_points.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_helper.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
@@ -20,7 +21,9 @@ class ApplyScreen extends ConsumerWidget {
     final stepLoader = ref.watch(loadStepsProvider);
     final stepper = ref.watch(applyStateProvider.notifier);
     final state = ref.watch(applyStateProvider);
+    final loanData = ref.watch(loanDataProvider);
 
+    // print(loanData);
     return SafeArea(
       child: Scaffold(
         floatingActionButton: const CustomFloatingBackButton(),
@@ -34,10 +37,10 @@ class ApplyScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: AppSize.height * 0.05,
+                    height: AppSize.height * 0.02,
                   ),
                   Text(
-                    state.loanTitle,
+                    loanData!.name!,
                     style: TextStyle(
                       fontSize: AppSize.height * 0.03,
                       fontWeight: FontWeight.bold,
@@ -45,19 +48,25 @@ class ApplyScreen extends ConsumerWidget {
                     ),
                   ),
 
-                  CachedNetworkImage(
-                    imageUrl: state.image,
-                    fit: BoxFit.cover,
-                    width: AppSize.width * 0.4,
-                    height: AppSize.width * 0.4,
-                    errorWidget: (context, url, error) => const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColor.secondary,
+                  ClipRect(
+                    child: SizedBox(
+                      // width: AppSize.width * 0.4,
+                      height: AppSize.height * 0.15,
+                      child: CachedNetworkImage(
+                        imageUrl: '${AppEndPoints.baseUrl}/${loanData.image!}',
+                        fit: BoxFit.fitHeight,
+                        // width: AppSize.width,
+                        height: AppSize.width * 0.4,
+                        errorWidget: (context, url, error) => const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColor.secondary,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: AppSize.height * 0.05,
+                    height: AppSize.height * 0.02,
                   ),
                   NumberStepper(
                     activeStep: state.currentStep!,
@@ -65,7 +74,9 @@ class ApplyScreen extends ConsumerWidget {
                     enableStepTapping: false,
                     activeStepColor: AppColor.secondary,
                     stepColor: AppColor.white,
-                    numbers: [for (var i = 0; i < state.steps.length; i++) i],
+                    numbers: [
+                      for (var i = 1; i < state.steps.length + 1; i++) i
+                    ],
                   ),
                   SizedBox(
                     height: AppSize.height * 0.05,
@@ -76,17 +87,8 @@ class ApplyScreen extends ConsumerWidget {
                       // final formProvider = ref.watch(formWidgetsProvider);
                       return const FormWidgets();
                     },
-                    error: (error, stackTrace) => Text(error.toString()),
-                    loading: () => Center(
-                      child: SizedBox(
-                        height: AppSize.height * 0.5,
-                        child: const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColor.secondary,
-                          ),
-                        ),
-                      ),
-                    ),
+                    error: (error, stackTrace) => const Text('قريبا'),
+                    loading: () => const SizedBox.shrink(),
                   ),
                   SizedBox(
                     height: AppSize.height * 0.05,

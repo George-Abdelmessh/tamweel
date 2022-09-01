@@ -284,4 +284,12 @@ class ApiRepo {
       _showAlertDialog(e.toString());
     }
   }
+
+  static Future<Map> getLoanSteps(int loan) async {
+    final query = {'id': loan};
+    final response =
+        await DioHelper.getDate(url: AppEndPoints.loanSteps, query: query);
+
+    return response.data['data'][0] as Map<String, dynamic>;
+  }
 }

@@ -11,9 +11,6 @@ class ApplicationState {
   ///Create a new instance of the ApplicationState class
 
   ApplicationState({
-    required this.loanId,
-    required this.image,
-    required this.loanTitle,
     required this.steps,
     this.currentStep = 0,
     this.endSummary = true,
@@ -24,9 +21,6 @@ class ApplicationState {
 
   int? currentStep = 0;
   bool? endSummary = true;
-  final int loanId;
-  final String loanTitle;
-  final String image;
   final List<dynamic> steps;
   List<Map<String, dynamic>>? answers;
 

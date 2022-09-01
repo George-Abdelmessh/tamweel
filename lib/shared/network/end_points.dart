@@ -14,4 +14,5 @@ class AppEndPoints {
   static const bankLoans = 'get/loan/bank';
   static const updateUser = '/user/update';
   static const filterCategory = 'program/loan';
+  static const loanSteps = 'show/steps';
 }
