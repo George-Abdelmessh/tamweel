@@ -70,8 +70,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 22:
         return QAUploadImage(
           //TODO: fix
-          step: ref.read(applyStateProvider).currentStep!,
-          index: ref.read(applyStateProvider).currentStep!,
+          title: map[index]['title'] as String,
         );
       case 23:
         return Container();

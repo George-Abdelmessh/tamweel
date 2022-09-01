@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,13 +12,9 @@ import 'package:tamweel/shared/style/app_padding.dart';
 class QAUploadImage extends HookConsumerWidget {
   QAUploadImage({
     super.key,
-    this.title,
-    required this.step,
-    required this.index,
+    required this.title,
   });
   final String? title;
-  final int step;
-  final int index;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -26,56 +23,49 @@ class QAUploadImage extends HookConsumerWidget {
       padding: AppPadding.paddingH005.add(AppPadding.paddingV20),
       child: SizedBox(
         width: AppSize.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            //Text with title as question
-            if (title != null) Text(title!),
+            if (title != null)
+              AutoSizeText(
+                title!,
+                maxLines: 1,
+              ),
+            const Spacer(),
             SizedBox(
-              height: AppSize.height * 0.01,
-            ),
-            //TODO: image picker to pick image from gallery
-            // then upload it with dio
-            Row(
-              children: [
-                const Expanded(child: Text('صورة البطاقة')),
-                Expanded(
-                  child: CustomWideButton(
-                    background: AppColor.secondary,
-                    height: AppSize.height * 0.035,
-                    title: 'Pick Image',
-                    onTap: () async {
-                      // Pick an image
-                      final XFile? pickedFile =
-                          await _picker.pickImage(source: ImageSource.gallery);
-                      if (pickedFile != null) {
-                        print(pickedFile.path);
-                        final FormData formData = FormData.fromMap({
-                          'image[]': [
-                            await MultipartFile.fromFile(pickedFile.path),
-                            await MultipartFile.fromFile(pickedFile.path),
-                            await MultipartFile.fromFile(pickedFile.path),
-                          ],
-                          'steps': {
-                            [
+              width: AppSize.width * 0.2,
+              child: CustomWideButton(
+                background: AppColor.secondary,
+                height: AppSize.height * 0.035,
+                title: 'Pick Image',
+                onTap: () async {
+                  // Pick an image
+                  final XFile? pickedFile =
+                      await _picker.pickImage(source: ImageSource.gallery);
+                  if (pickedFile != null) {
+                    final FormData formData = FormData.fromMap({
+                      'image[]': [
+                        await MultipartFile.fromFile(pickedFile.path),
+                        await MultipartFile.fromFile(pickedFile.path),
+                        await MultipartFile.fromFile(pickedFile.path),
+                      ],
+                      'steps': {
+                        [
+                          {
+                            'form': [
                               {
-                                'form': [
-                                  {
-                                    'title': 'soret el beta2a',
-                                    'answer': 'test post request'
-                                  }
-                                ]
+                                'title': 'soret el beta2a',
+                                'answer': 'test post request'
                               }
                             ]
                           }
-                        });
-                        DioHelper.dio!.post('loan/request', data: formData);
+                        ]
                       }
-                    },
-                  ),
-                ),
-              ],
-            )
+                    });
+                    DioHelper.dio!.post('loan/request', data: formData);
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

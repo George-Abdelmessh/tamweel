@@ -125,12 +125,12 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
     }
   }
 
-  ///Set a specific answer at [step] and [index] with [answer]
+  ///Set a specific answer at [step] and [title] with [answer]
   ///
   /// - [answer] has to be a json acceptable object, for
   ///   example: string, number, date, lists, etc
-  void setAnswer(int step, String index, dynamic answer) {
-    state = state..answers![step][index] = answer;
+  void setAnswer(int step, String title, dynamic answer) {
+    state = state..answers!['steps'][step][title] = answer;
     state = ApplicationState(
       steps: state.steps,
       currentStep: state.currentStep,
