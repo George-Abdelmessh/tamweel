@@ -26,6 +26,7 @@ class CustomButton extends StatelessWidget {
     return MaterialButton(
       height: height,
       onPressed: () {
+        // ignore: avoid_dynamic_calls
         onTap();
       },
       minWidth: double.infinity,

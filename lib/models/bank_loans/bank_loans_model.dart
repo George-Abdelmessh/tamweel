@@ -12,7 +12,8 @@ class BankLoansModel with _$BankLoansModel {
     List<BankData>? data,
   }) = _BankLoansModel;
 
-  factory BankLoansModel.fromJson(Map<String, dynamic> json) => _$BankLoansModelFromJson(json);
+  factory BankLoansModel.fromJson(Map<String, dynamic> json) =>
+      _$BankLoansModelFromJson(json);
 }
 
 @freezed
@@ -26,6 +27,6 @@ class BankData with _$BankData {
     List<LoanData>? loans,
   }) = _BankData;
 
-  factory BankData.fromJson(Map<String, dynamic> json) => _$BankDataFromJson(json);
+  factory BankData.fromJson(Map<String, dynamic> json) =>
+      _$BankDataFromJson(json);
 }
-

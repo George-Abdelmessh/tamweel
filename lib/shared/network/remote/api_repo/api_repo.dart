@@ -35,7 +35,7 @@ class ApiRepo {
       categories =
           FilterCategory.fromJson(response.data as Map<String, dynamic>).data;
     });
-    print(categories);
+    // print(categories);
     return categories!;
   }
 
@@ -276,10 +276,9 @@ class ApiRepo {
       'marital_status': maritalStatus,
       'gender': gender,
     };
-    Response? response;
+
     try {
-      response =
-          await DioHelper.putDate(url: AppEndPoints.updateUser, data: data);
+      await DioHelper.putDate(url: AppEndPoints.updateUser, data: data);
     } on DioError catch (e) {
       _showAlertDialog(e.toString());
     }

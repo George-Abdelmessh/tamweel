@@ -7,7 +7,7 @@ import 'package:tamweel/shared/style/app_padding_copy.dart';
 import 'package:tamweel/shared/style/app_radius.dart';
 
 class FirstContainer extends StatelessWidget {
-  const FirstContainer({Key? key}) : super(key: key);
+  const FirstContainer({super.key});
 
   @override
   Widget build(BuildContext context) {

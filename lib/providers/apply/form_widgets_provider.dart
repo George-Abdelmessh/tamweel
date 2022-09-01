@@ -17,12 +17,9 @@ class FormWidgets extends ConsumerWidget {
     );
     final map = ref.watch(
       applyStateProvider
+          // ignore: avoid_dynamic_calls
           .select((applyState) => applyState.steps[step!]['form']),
     ) as List;
-
-    print(step);
-    print(map);
-
     // returns a list of widgets that represent the [map] of the current [step]
     return AnimatedSwitcherTranslation.right(
       duration: const Duration(seconds: 1),
