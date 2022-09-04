@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:tamweel/Error/no_connection.dart';
+import 'package:tamweel/layout/Error/no_connection.dart';
 
 class AppNavigator {
   /// NAVIGATOR PUSH

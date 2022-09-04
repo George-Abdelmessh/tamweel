@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tamweel/Error/no_connection.dart';
+import 'package:tamweel/layout/Error/no_connection.dart';
 import 'package:tamweel/layout/category/widget/category_screen.dart';
 import 'package:tamweel/providers/category/filter_provider.dart';
 import 'package:tamweel/providers/category/loan_provider.dart';

@@ -88,6 +88,9 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
           requiredWidgets.widget
         else
           Container(),
+      SizedBox(
+        height: AppSize.height * 0.02,
+      ),
       ],
     );
   }
