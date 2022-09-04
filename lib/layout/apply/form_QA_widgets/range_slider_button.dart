@@ -60,6 +60,7 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
                 min: double.parse(widget.data['min'].toString()),
                 max: double.parse(widget.data['max'].toString()),
                 value: currentSliderValue!,
+                
                 onChanged: (values) {
                   /// ToDo Insert data into  answer provider with round function
                   valueNoti.state = values;

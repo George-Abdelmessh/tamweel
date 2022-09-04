@@ -141,7 +141,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 26:
         return Container();
       case 27:
-        return Container();
+        return QAGroupButton(data: widget);
       default:
         return Container();
     }

@@ -21,6 +21,11 @@ class ApplyScreen extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _ApplyScreenState();
 }
 
+//make a provider for the form key
+final formKeyProvider = Provider<GlobalKey<FormState>>((ref) {
+  return GlobalKey<FormState>();
+});
+
 class _ApplyScreenState extends ConsumerState<ApplyScreen> {
   @override
   Widget build(BuildContext context) {
@@ -29,6 +34,9 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
     final stepper = ref.watch(applyStateProvider.notifier);
     final state = ref.watch(applyStateProvider);
     final loanData = ref.watch(loanDataProvider);
+
+    //form key for validation
+    final formKey = ref.watch(formKeyProvider);
 
     // print(loanData);
     return SafeArea(
@@ -146,6 +154,11 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                             child: CustomWideButton(
                               title: 'Navigation.Next'.tr(),
                               onTap: () {
+                                //TODO: remove comment to validate the form
+                                // if (formKey.currentState!.validate()) {
+                                //   stepper.nextStep();
+                                // }
+                                //TODO: remove this line to validate the form
                                 stepper.nextStep();
                               },
                             ),
