@@ -125,7 +125,7 @@ class ApplicationSummary extends ConsumerWidget {
                       ),
                       Expanded(
                         child: CustomWideButton(
-                          title: 'Navigation.Next'.tr(),
+                          title: 'Apply'.tr(),
                           onTap: () {
                             //TODO: Post Request
                             stepper.nextStep();

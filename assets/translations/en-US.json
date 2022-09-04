@@ -48,5 +48,6 @@
         "AccessDenied": "Access Denied",
         "NotFound": "The requested information could not be found",
         "NoInternet": "No internet connection detected, please try again."
-    }
+    },
+    "Apply":"Apply for the loan"
 }
