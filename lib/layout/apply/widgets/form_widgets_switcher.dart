@@ -95,7 +95,10 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 11:
         return Container();
       case 12:
-        return QAGroupButton(data: widget);
+        return QAGroupButton(
+          title: widget['title'] as String,
+          data: widget,
+        );
       case 13:
         return QADropDown(
           formType: FormType.dropDown,
@@ -141,7 +144,10 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 26:
         return Container();
       case 27:
-        return QAGroupButton(data: widget);
+        return QAGroupButton(
+          title: widget['title'] as String,
+          data: widget,
+        );
       default:
         return Container();
     }

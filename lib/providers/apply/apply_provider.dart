@@ -147,7 +147,6 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
 
   ///Set a specific image with given [image]
   void setImage(dynamic image) {
-    // if th
     state = state..answers!['images[]'].add(image);
     state = ApplicationState(
       steps: state.steps,

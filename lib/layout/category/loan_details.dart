@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tamweel/layout/apply/apply_screen.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
 import 'package:tamweel/models/apply/apply_state.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
@@ -28,6 +29,7 @@ class LoanDetailsScreen extends ConsumerWidget {
       ref.read(loanDataProvider.state).state = loandata;
       ref.read(uploadImageProvider.state).state = {};
       ref.refresh(loadStepsProvider);
+      ref.read(groupButtonProvider.notifier).state = {};
       AppNavigator.push(
         context: context,
         screen: const ApplyScreen(),
