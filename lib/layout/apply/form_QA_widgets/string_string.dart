@@ -45,7 +45,7 @@ class QAStringStringOneLine extends HookConsumerWidget {
                 //update answers map on text change
                 applyState.setAnswer(step, title, answer);
               },
-              maxLines: 1,
+              maxLines: validationType == FormType.description ? 7 : 1,
               padding: AppPadding.paddingH005,
               borderColor: AppColor.secondary,
               keyboardType: validationType == FormType.email
