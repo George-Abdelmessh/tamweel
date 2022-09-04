@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/dropdown.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/range_slider_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
