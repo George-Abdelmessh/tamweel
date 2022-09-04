@@ -18,7 +18,7 @@ class ApplicationState {
   }) {
     answers ??= {
       'images[]': [],
-      'steps': {List.filled(steps.length, {})}
+      'steps': List.filled(steps.length, {}),
     };
   }
 

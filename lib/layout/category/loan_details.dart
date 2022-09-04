@@ -23,6 +23,7 @@ class LoanDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void apply() {
+      // ignore: invalid_use_of_protected_member
       ref.read(applyStateProvider.notifier).state = ApplicationState(steps: []);
       ref.read(loanDataProvider.state).state = loandata;
       ref.read(uploadImageProvider.state).state = {};

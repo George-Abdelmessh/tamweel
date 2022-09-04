@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
 import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/style/app_padding.dart';
+import 'package:tamweel/shared/validators/app_validators.dart';
 
 class QAStringNumber extends HookConsumerWidget {
   const QAStringNumber({
     super.key,
-    this.title,
-    this.hint,
+    required this.title,
     required this.step,
-    required this.index,
+    this.hint,
+    this.validationType,
   });
 
-  final String? title;
-  final String? hint;
+  final String title;
   final int step;
-  final int index;
+  final String? hint;
+  final FormType? validationType;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final answerController = useTextEditingController();
-
+    // final answerController = useTextEditingController();
+    final applyState = ref.watch(applyStateProvider.notifier);
     return Padding(
       padding: AppPadding.paddingH005,
       child: SizedBox(
@@ -31,20 +32,47 @@ class QAStringNumber extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Text with title as question
-            if (title != null) Text(title!),
+            if (title != null) Text(title),
             SizedBox(
               height: AppSize.height * 0.01,
             ),
             customTextFormFieldWithValidator(
               context,
               hintText: hint,
-              controller: answerController,
-              onChanged: (value) {
-                //TODO: Set Provider.Answers at [step] and [index] to the value
+              // controller: answerController,
+              onChanged: (answer) {
+                //update answers map on text change
+                applyState.setAnswer(step, title, answer);
               },
               maxLines: 1,
               borderColor: AppColor.secondary,
-              keyboardType: TextInputType.number,
+              padding: AppPadding.paddingH005,
+              keyboardType: validationType == FormType.phone
+                  ? TextInputType.phone
+                  : TextInputType.number,
+              validator: validationType == null
+                  ? null
+                  : validationType == FormType.phone
+                      ? (value) => AppValidators.phoneNumber(value)
+                      : validationType == FormType.nationalId
+                          ? (value) =>
+                              AppValidators.numbersExactLength(value, 14)
+                          : (value) => AppValidators.required(value),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              prefixWidget: validationType == FormType.phone
+                  ? const Icon(
+                      Icons.phone_rounded,
+                      color: AppColor.secondary,
+                    )
+                  : validationType == FormType.nationalId
+                      ? const Icon(
+                          Icons.credit_card_rounded,
+                          color: AppColor.secondary,
+                        )
+                      : null,
+            ),
+            SizedBox(
+              height: AppSize.height * 0.05,
             ),
           ],
         ),

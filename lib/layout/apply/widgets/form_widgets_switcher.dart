@@ -1,6 +1,10 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 
@@ -16,25 +20,55 @@ class FormWidgetsSwitcher extends ConsumerWidget {
     );
     final map = ref.watch(
       applyStateProvider
-          // ignore: avoid_dynamic_calls
           .select((applyState) => applyState.steps[step!]['form']),
     ) as List;
 
     if (index >= map.length) return Container();
 
-    switch (map[index]['type'] as int) {
+    final widget = map[index] as Map<String, dynamic>;
+    switch (widget['type'] as int) {
       case 0:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.name,
+        );
       case 1:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.email,
+        );
       case 2:
-        return Container();
+        return QAStringNumber(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.phone,
+        );
       case 3:
-        return Container();
+        return QAStringNumber(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.nationalId,
+        );
       case 4:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.password,
+        );
       case 5:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.address,
+        );
       case 6:
         return Container();
       case 7:
@@ -42,9 +76,19 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 8:
         return Container();
       case 9:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.string,
+        );
       case 10:
-        return Container();
+        return QAStringNumber(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.number,
+        );
       case 11:
         return Container();
       case 12:
@@ -69,7 +113,6 @@ class FormWidgetsSwitcher extends ConsumerWidget {
         return Container();
       case 22:
         return QAUploadImage(
-          //TODO: fix
           title: map[index]['title'] as String,
         );
       case 23:
