@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/bank_selector.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/dropdown.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/range_slider_button.dart';
@@ -127,7 +128,12 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 23:
         return Container();
       case 24:
-        return Container();
+        return QABankSelector(
+          formType: FormType.bankBranch,
+          options: widget['options'] as List,
+          step: step!,
+          title: widget['title'] as String?,
+        );
       case 25:
         return Container();
       case 26:
