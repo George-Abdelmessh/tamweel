@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
@@ -132,7 +133,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                         children: [
                           Expanded(
                             child: CustomWideButton(
-                              title: 'back',
+                              title: 'Navigation.Back'.tr(),
                               onTap: () {
                                 stepper.prevStep();
                               },
@@ -143,7 +144,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                           ),
                           Expanded(
                             child: CustomWideButton(
-                              title: 'next',
+                              title: 'Navigation.Next'.tr(),
                               onTap: () {
                                 stepper.nextStep();
                               },

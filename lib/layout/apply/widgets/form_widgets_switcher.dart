@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/dropdown.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
@@ -92,9 +93,14 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 11:
         return Container();
       case 12:
-        return QAGroupButton(data: map[index] as Map<dynamic, dynamic>);
+        return QAGroupButton(data: widget);
       case 13:
-        return Container();
+        return QADropDown(
+          formType: FormType.dropDown,
+          options: widget['options'] as List,
+          step: step!,
+          title: widget['title'] as String,
+        );
       case 14:
         return Container();
       case 15:
@@ -113,7 +119,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
         return Container();
       case 22:
         return QAUploadImage(
-          title: map[index]['title'] as String,
+          title: widget['title'] as String,
         );
       case 23:
         return Container();
