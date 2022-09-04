@@ -34,9 +34,10 @@ class _QADropDownState extends ConsumerState<QABankSelector> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final gov = widget.options[0] as Map<String, dynamic>;
+    final gov = widget.options[0] as dynamic;
     // set selected option to the key of the first map in the list
-    selectedOption = gov.keys.first;
+    // ignore: avoid_dynamic_calls
+    selectedOption = gov.keys.first as String;
     // set selected option 2 to the first value of the first map in the list
     // ignore: avoid_dynamic_calls
     selectedOption2 = gov[selectedOption][0] as String;
@@ -46,8 +47,8 @@ class _QADropDownState extends ConsumerState<QABankSelector> {
     options2 = gov[selectedOption] as List<dynamic>;
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) {
       final Map answerMap = {
-        'gov': selectedOption,
-        'bank': selectedOption2,
+        'المحافظة': selectedOption,
+        'فرع البنك': selectedOption2,
       };
       ref
           .read(applyStateProvider.notifier)
@@ -129,8 +130,8 @@ class _QADropDownState extends ConsumerState<QABankSelector> {
                           .values
                           .first as List<dynamic>;
                       final Map answerMap = {
-                        'gov': answer,
-                        'bank': selectedOption2,
+                        'المحافظة': answer,
+                        'فرع البنك': selectedOption2,
                       };
                       applyState.setAnswer(step, title ?? '', answerMap);
                       // print(answerMap);
@@ -179,8 +180,8 @@ class _QADropDownState extends ConsumerState<QABankSelector> {
                   // ignore: cast_nullable_to_non_nullable
                   final answer = value as String;
                   final Map answerMap = {
-                    'gov': selectedOption,
-                    'bank': answer,
+                    'المحافظة': selectedOption,
+                    'فرع البنك': answer,
                   };
                   setState(
                     () {
