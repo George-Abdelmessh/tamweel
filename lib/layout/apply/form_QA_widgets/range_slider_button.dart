@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
+import 'package:tamweel/shared/style/app_color.dart';
 import 'package:tamweel/shared/validators/app_validators.dart';
 
 class QARangeSliderButton extends ConsumerStatefulWidget {
@@ -60,9 +61,9 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
                 min: double.parse(widget.data['min'].toString()),
                 max: double.parse(widget.data['max'].toString()),
                 value: currentSliderValue!,
-                
+                activeColor: AppColor.secondary,
                 onChanged: (values) {
-                  /// ToDo Insert data into  answer provider with round function
+                  // ignore: invalid_use_of_protected_member
                   valueNoti.state = values;
                   currentSliderValue = value;
                   controller.text = values.round().toString();
