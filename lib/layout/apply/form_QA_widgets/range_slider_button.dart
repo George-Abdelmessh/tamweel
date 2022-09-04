@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
-import 'package:tamweel/shared/custom_widgets/custom_text_form_field.dart';
+import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
+import 'package:tamweel/shared/validators/app_validators.dart';
 
 class QARangeSliderButton extends ConsumerStatefulWidget {
-  const QARangeSliderButton({super.key, required this.data});
+  const QARangeSliderButton({
+    super.key,
+    required this.data,
+    required this.step,
+    required this.title,
+  });
 
   final Map data;
+  final int step;
+  final String title;
 
   @override
   ConsumerState<QARangeSliderButton> createState() =>
@@ -30,6 +39,7 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
   Widget build(BuildContext context) {
     final value = ref.watch(sliderValueProvider);
     final valueNoti = ref.watch(sliderValueProvider.notifier);
+    final apply = ref.watch(applyStateProvider.notifier);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,6 +65,11 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
                   valueNoti.state = values;
                   currentSliderValue = value;
                   controller.text = values.round().toString();
+                  apply.setAnswer(
+                    widget.step,
+                    widget.title,
+                    values.round().toString(),
+                  );
                 },
               ),
             ),
@@ -64,16 +79,28 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
             SizedBox(
               width: AppSize.width * 0.2,
               child: Form(
-                key: key,
-                child: CustomTextFormField(
+                child: customTextFormFieldWithValidator(
+                  context,
                   controller: controller,
-                  labelText: '',
-                  onSubmit: (val) {
-                    print(val);
-                    valueNoti.state = double.parse(val);
-                    currentSliderValue = double.parse(val);
+                  keyboardType: TextInputType.number,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => AppValidators.required(value),
+                  onEditingComplete: () {
+                    if (double.parse(controller.text) <
+                            double.parse(widget.data['min'].toString()) ||
+                        double.parse(controller.text) >
+                            double.parse(widget.data['max'].toString())) {
+                      controller.text = widget.data['min'].toString();
+                    }
+                    // print(controller.text);
+                    valueNoti.setValue(double.parse(controller.text));
+                    currentSliderValue = double.parse(controller.text);
+                    apply.setAnswer(
+                      widget.step,
+                      widget.title,
+                      controller.text,
+                    );
                   },
-                  type: TextInputType.number,
                 ),
               ),
             ),
@@ -89,6 +116,7 @@ class SliderValue extends StateNotifier<double> {
 
   void setValue(double value) {
     state = value;
+    state = state;
     return;
   }
 }

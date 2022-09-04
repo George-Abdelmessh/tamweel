@@ -95,7 +95,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 11:
         return Container();
       case 12:
-        return QAGroupButton(data: map[index] as Map<dynamic, dynamic>);
+        return QAGroupButton(data: widget);
       case 13:
         return QADropDown(
           formType: FormType.dropDown,
@@ -119,7 +119,9 @@ class FormWidgetsSwitcher extends ConsumerWidget {
         return Container();
       case 21:
         return QARangeSliderButton(
-          data: map[index] as Map<dynamic, dynamic>,
+          data: widget,
+          step: step!,
+          title: widget['title'] as String,
         );
       case 22:
         return QAUploadImage(
