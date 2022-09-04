@@ -3,8 +3,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
+<<<<<<< Updated upstream
 import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
+=======
+import 'package:tamweel/layout/apply/form_QA_widgets/range_slider_button.dart';
+>>>>>>> Stashed changes
 import 'package:tamweel/layout/apply/form_QA_widgets/upload_image.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 
@@ -92,7 +96,9 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 11:
         return Container();
       case 12:
-        return QAGroupButton(data: map[index] as Map<dynamic, dynamic>);
+        return QAGroupButton(
+          data: map[index] as Map<dynamic, dynamic>,
+        );
       case 13:
         return Container();
       case 14:
@@ -110,7 +116,9 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 20:
         return Container();
       case 21:
-        return Container();
+        return QARangeSliderButton(
+          data: map[index] as Map<dynamic, dynamic>,
+        );
       case 22:
         return QAUploadImage(
           title: map[index]['title'] as String,
