@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/country_selector.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_text_form_with_validator.dart';
@@ -45,7 +46,7 @@ class QAStringStringOneLine extends HookConsumerWidget {
                 //update answers map on text change
                 applyState.setAnswer(step, title, answer);
               },
-              maxLines: 1,
+              maxLines: validationType == FormType.description ? 7 : 1,
               padding: AppPadding.paddingH005,
               borderColor: AppColor.secondary,
               keyboardType: validationType == FormType.email
@@ -70,7 +71,7 @@ class QAStringStringOneLine extends HookConsumerWidget {
                       Icons.person_outline_rounded,
                       color: AppColor.secondary,
                     )
-                  : validationType == FormType.adress
+                  : validationType == FormType.address
                       ? const Icon(
                           Icons.location_on_outlined,
                           color: AppColor.secondary,
@@ -87,9 +88,12 @@ class QAStringStringOneLine extends HookConsumerWidget {
                                 )
                               : null,
             ),
-            SizedBox(
-              height: AppSize.height * 0.05,
-            ),
+            if (validationType == FormType.address)
+              QACountrySelector(title: title, step: step)
+            else
+              SizedBox(
+                height: AppSize.height * 0.05,
+              ),
           ],
         ),
       ),

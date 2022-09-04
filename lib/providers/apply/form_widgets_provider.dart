@@ -31,11 +31,11 @@ class FormWidgets extends ConsumerWidget {
           child: ListView.builder(
             shrinkWrap: true,
             physics: AppHelper.neverScroll,
-            itemCount: map.length,
+            itemCount: map.length + 1,
             itemBuilder: (context, index) {
               //TODO: return items = genereate widgets of [map] method
               // ignore: avoid_dynamic_calls
-              return FormWidgetsSwitcher(index: index);
+              return FormWidgetsSwitcher(index: index,);
             },
 
             // return Container(

@@ -106,7 +106,7 @@ class ApplyStateNotifier extends StateNotifier<ApplicationState> {
 
   ///Move to the next Form Step
   void nextStep() {
-    if (state.currentStep! < state.steps.length - 1) {
+    if (state.currentStep! < state.steps.length) {
       state = state..currentStep = state.currentStep! + 1;
       state = ApplicationState(
         steps: state.steps,

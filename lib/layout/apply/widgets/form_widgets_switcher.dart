@@ -111,7 +111,12 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 15:
         return Container();
       case 16:
-        return Container();
+        return QAStringStringOneLine(
+          step: step!,
+          title: widget['title'] as String,
+          hint: widget['hint'] as String?,
+          validationType: FormType.description,
+        );
       case 17:
         return Container();
       case 18:
