@@ -26,13 +26,21 @@ class QADropDown extends ConsumerStatefulWidget {
 }
 
 class _QADropDownState extends ConsumerState<QADropDown> {
+  String selectedOption = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedOption = widget.options[0] as String;
+  }
+
   @override
   Widget build(BuildContext context) {
     final String title = widget.title;
     final int step = widget.step;
     final FormType formType = widget.formType;
     final List<dynamic> options = widget.options;
-    var selectedOption = options[0];
+
     // final answerController = useTextEditingController();
     final applyState = ref.watch(applyStateProvider.notifier);
     return Padding(
@@ -82,9 +90,14 @@ class _QADropDownState extends ConsumerState<QADropDown> {
                   //map govs to dropdown menu items
                 ],
                 onChanged: (value) {
-                  setState(() {
-                    selectedOption = value;
-                  });
+                  // ignore: cast_nullable_to_non_nullable
+                  final answer = value as String;
+                  setState(
+                    () {
+                      selectedOption = answer;
+                      applyState.setAnswer(step, title, answer);
+                    },
+                  );
                 },
               ),
             ),
