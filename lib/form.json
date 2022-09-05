@@ -73,7 +73,12 @@
                     "title": "مبلغ القرض",
                     "type": 21,
                     "max": 30000,
-                    "min": 4000
+                    "min": 4000,
+                    "calculator": {
+                        "title": "قيمة القرض",
+                        "type": 28,
+                        "management_fee": 8
+                    }
                 },
                 {
                     "title": "مدة السداد",

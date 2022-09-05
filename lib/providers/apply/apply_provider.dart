@@ -67,6 +67,8 @@ enum FormType {
   loanValue,
   //27 multi Widget Radio button
   multiWidgetRadio,
+  //28 calculate loan price
+  calculator,
 }
 
 // /// validators for string/number form fields

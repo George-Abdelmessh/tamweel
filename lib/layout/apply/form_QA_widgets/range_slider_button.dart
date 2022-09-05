@@ -31,7 +31,7 @@ class _QARangeSliderButtonState extends ConsumerState<QARangeSliderButton> {
   @override
   void initState() {
     super.initState();
-    currentSliderValue = double.parse(widget.data['min'].toString());
+    currentSliderValue = double.parse(widget.data['min'].toString()).roundToDouble();
     controller.text =
         double.parse(widget.data['min'].toString()).round().toString();
   }

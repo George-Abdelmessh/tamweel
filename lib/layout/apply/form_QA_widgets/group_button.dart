@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member, avoid_dynamic_calls
+
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -44,6 +46,7 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
     });
     ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
       /// ToDo switch case for adding type widget
+
           const Text('data'),
         );
   }
@@ -56,7 +59,6 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
     final requiredWidgets = ref.watch(requiredWidgetsProvider.notifier);
     final apply = ref.watch(applyStateProvider.notifier);
     return Column(
-      // ignore: avoid_dynamic_calls
       crossAxisAlignment: widget.data['options'].length == 2
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
@@ -74,7 +76,6 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
         GroupButton(
           controller: _controller,
           onSelected: (object, index, isSelected) {
-            /// ToDo Apply answer provider
             setState(() {
             groupButtonData.state[stepProvider!] = {
                 widget.title: index
@@ -115,8 +116,7 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
         if (ref.watch(groupButtonProvider.notifier).state[stepProvider] !=
                 null &&
             widget.data['childEnable'] ==
-                ref
-                    .watch(groupButtonProvider.notifier)
+                ref.watch(groupButtonProvider.notifier)
                     .state[stepProvider]![widget.title])
           requiredWidgets.widget
         else
@@ -128,18 +128,6 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
     );
   }
 }
-
-// class SetIndex extends StateNotifier<int> {
-//   SetIndex() : super(0);
-//
-//   int index = 0;
-//   void setIndex(int value) {
-//     index = value;
-//     return;
-//   }
-// }
-//
-// final indexProvider = StateNotifierProvider<SetIndex, int>((ref) => SetIndex());
 
 class RequiredWidgets extends StateNotifier<Widget> {
   RequiredWidgets() : super(Container());
