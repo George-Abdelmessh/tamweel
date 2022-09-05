@@ -49,8 +49,8 @@
                     ],
                     "childEnable": 0,
                     "child": {
-                        "title": "",
-                        "type": 25,
+                        "title": "اسم الشخص",
+                        "type": 0,
                         "option": "نعم"
                     }
                 }

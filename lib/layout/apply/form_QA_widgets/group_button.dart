@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/style/app_color.dart';
@@ -45,9 +47,7 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
       };
     });
     ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
-      /// ToDo switch case for adding type widget
-
-          const Text('data'),
+          Container(),
         );
   }
 
@@ -59,7 +59,7 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
     final requiredWidgets = ref.watch(requiredWidgetsProvider.notifier);
     final apply = ref.watch(applyStateProvider.notifier);
     return Column(
-      crossAxisAlignment: widget.data['options'].length == 2
+      crossAxisAlignment: (widget.data['options'].length) == 2
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
       children: [
@@ -77,15 +77,61 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
           controller: _controller,
           onSelected: (object, index, isSelected) {
             setState(() {
-            groupButtonData.state[stepProvider!] = {
-                widget.title: index
-              };
+              groupButtonData.state[stepProvider!] = {widget.title: index};
             });
             apply.setAnswer(
               stepProvider!,
-               widget.title,
+              widget.title,
               widget.data['options'][index],
             );
+            if (widget.data['childEnable'] ==
+                ref.watch(groupButtonProvider.notifier)
+                    .state[stepProvider]![widget.title]) {
+              if(widget.data['child']['type'] as int == 5 &&
+                  widget.data['childEnable'] !=
+                      ref.watch(groupButtonProvider.notifier)
+                          .state[stepProvider]![widget.title]) {
+                /// ToDo unComment to insert address auto
+                // apply.setAnswer(
+                //   stepProvider!,
+                //   widget.title,
+                //   ref.watch(userDetailsProvider)!.address,
+                // );
+              } else {
+                switch (widget.data['child']['type'] as int) {
+                case 0:
+                  ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
+                        QAStringStringOneLine(
+                          step: stepProvider!,
+                          title: widget.data['child']['title'].toString(),
+                          hint: widget.data['child']['title'].toString(),
+                          validationType: FormType.name,
+                        ),
+                      );
+                  break;
+                case 5:
+                  ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
+                      QAStringStringOneLine(
+                        step: stepProvider!,
+                        title: widget.data['child']['title'].toString(),
+                        hint: widget.data['child']['title'].toString(),
+                        validationType: FormType.address,
+                      ),
+                  );
+                  break;
+                case 9: case 10:
+                  ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
+                        QAStringNumber(
+                          step: stepProvider!,
+                          title: widget.data['child']['title'].toString(),
+                          hint: widget.data['child']['title'].toString(),
+                          validationType: FormType.number,
+                        ),
+                      );
+                  break;
+              }
+              }
+            }
             return null;
           },
           buttons: widget.data['options'] as List<Object?>,
@@ -116,7 +162,8 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
         if (ref.watch(groupButtonProvider.notifier).state[stepProvider] !=
                 null &&
             widget.data['childEnable'] ==
-                ref.watch(groupButtonProvider.notifier)
+                ref
+                    .watch(groupButtonProvider.notifier)
                     .state[stepProvider]![widget.title])
           requiredWidgets.widget
         else
