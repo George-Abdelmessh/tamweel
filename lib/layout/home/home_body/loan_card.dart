@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:tamweel/layout/category/loan_details.dart';
+import 'package:tamweel/layout/coming_soon/coming_soon_screen.dart';
 import 'package:tamweel/models/loan/loan_model.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_sized_box_height.dart';
@@ -136,9 +137,13 @@ class LoanCard extends StatelessWidget {
               CustomWideButton(
                 title: 'Apply'.tr(),
                 onTap: () {
+                  loanData.isAvailable == 1?
                   AppNavigator.push(
                     context: context,
                     screen: LoanDetailsScreen(loandata: loanData),
+                  ) : AppNavigator.push(
+                    context: context,
+                    screen: const ComingSoonScreen(),
                   );
                 },
               )

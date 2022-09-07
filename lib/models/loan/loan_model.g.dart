@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'loan_model.dart';
 
 // **************************************************************************
@@ -33,6 +31,7 @@ _$_LoanData _$$_LoanDataFromJson(Map<String, dynamic> json) => _$_LoanData(
       title: json['title'] as String?,
       description: json['description'] as String?,
       buttonText: json['button_text'] as String?,
+      isAvailable: json['is_available'] as int?,
       loanFee: json['loan_fee'] as String?,
       costBenefit: json['cost_benefit'] as String?,
       profileImage: json['profile_image'] as String?,
@@ -53,6 +52,7 @@ Map<String, dynamic> _$$_LoanDataToJson(_$_LoanData instance) =>
       'title': instance.title,
       'description': instance.description,
       'button_text': instance.buttonText,
+      'is_available': instance.isAvailable,
       'loan_fee': instance.loanFee,
       'cost_benefit': instance.costBenefit,
       'profile_image': instance.profileImage,

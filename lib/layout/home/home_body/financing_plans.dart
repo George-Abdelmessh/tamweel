@@ -31,10 +31,6 @@ class FinancingPlans extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final programs = ref.watch(programsProvider);
     return programs.when(
-      // loading: () => const Center(
-      //   child: CircularProgressIndicator(),
-      // ),
-      // error: (error, stack) => Center(child: Text('Error: $error')),
       loading: () => Container(),
       error: (error, stack) => Container(),
       data: (snapshot) {
@@ -51,6 +47,7 @@ class FinancingPlans extends ConsumerWidget {
               itemBuilder: (context, index) => FinancingPlansCard(
                 name: snapshot[index].name!,
                 image: '${AppEndPoints.baseUrl}/${snapshot[index].logo!}',
+                index: index,
               ),
               separatorBuilder: (context, index) => CustomSizedBoxWidth(
                 width: AppSize.width * 0.015,

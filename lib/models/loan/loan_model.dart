@@ -27,6 +27,7 @@ class LoanData with _$LoanData {
     String? title,
     String? description,
     @JsonKey(name: 'button_text') String? buttonText,
+    @JsonKey(name: 'is_available') int? isAvailable,
     @JsonKey(name: 'loan_fee') String? loanFee,
     @JsonKey(name: 'cost_benefit') String? costBenefit,
     @JsonKey(name: 'profile_image') String? profileImage,

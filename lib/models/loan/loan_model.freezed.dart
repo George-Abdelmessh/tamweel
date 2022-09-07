@@ -208,6 +208,8 @@ mixin _$LoanData {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'button_text')
   String? get buttonText => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_available')
+  int? get isAvailable => throw _privateConstructorUsedError;
   @JsonKey(name: 'loan_fee')
   String? get loanFee => throw _privateConstructorUsedError;
   @JsonKey(name: 'cost_benefit')
@@ -243,6 +245,7 @@ abstract class $LoanDataCopyWith<$Res> {
       String? title,
       String? description,
       @JsonKey(name: 'button_text') String? buttonText,
+      @JsonKey(name: 'is_available') int? isAvailable,
       @JsonKey(name: 'loan_fee') String? loanFee,
       @JsonKey(name: 'cost_benefit') String? costBenefit,
       @JsonKey(name: 'profile_image') String? profileImage,
@@ -271,6 +274,7 @@ class _$LoanDataCopyWithImpl<$Res> implements $LoanDataCopyWith<$Res> {
     Object? title = freezed,
     Object? description = freezed,
     Object? buttonText = freezed,
+    Object? isAvailable = freezed,
     Object? loanFee = freezed,
     Object? costBenefit = freezed,
     Object? profileImage = freezed,
@@ -316,6 +320,10 @@ class _$LoanDataCopyWithImpl<$Res> implements $LoanDataCopyWith<$Res> {
           ? _value.buttonText
           : buttonText // ignore: cast_nullable_to_non_nullable
               as String?,
+      isAvailable: isAvailable == freezed
+          ? _value.isAvailable
+          : isAvailable // ignore: cast_nullable_to_non_nullable
+              as int?,
       loanFee: loanFee == freezed
           ? _value.loanFee
           : loanFee // ignore: cast_nullable_to_non_nullable
@@ -364,6 +372,7 @@ abstract class _$$_LoanDataCopyWith<$Res> implements $LoanDataCopyWith<$Res> {
       String? title,
       String? description,
       @JsonKey(name: 'button_text') String? buttonText,
+      @JsonKey(name: 'is_available') int? isAvailable,
       @JsonKey(name: 'loan_fee') String? loanFee,
       @JsonKey(name: 'cost_benefit') String? costBenefit,
       @JsonKey(name: 'profile_image') String? profileImage,
@@ -394,6 +403,7 @@ class __$$_LoanDataCopyWithImpl<$Res> extends _$LoanDataCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? buttonText = freezed,
+    Object? isAvailable = freezed,
     Object? loanFee = freezed,
     Object? costBenefit = freezed,
     Object? profileImage = freezed,
@@ -439,6 +449,10 @@ class __$$_LoanDataCopyWithImpl<$Res> extends _$LoanDataCopyWithImpl<$Res>
           ? _value.buttonText
           : buttonText // ignore: cast_nullable_to_non_nullable
               as String?,
+      isAvailable: isAvailable == freezed
+          ? _value.isAvailable
+          : isAvailable // ignore: cast_nullable_to_non_nullable
+              as int?,
       loanFee: loanFee == freezed
           ? _value.loanFee
           : loanFee // ignore: cast_nullable_to_non_nullable
@@ -484,6 +498,7 @@ class _$_LoanData implements _LoanData {
       this.title,
       this.description,
       @JsonKey(name: 'button_text') this.buttonText,
+      @JsonKey(name: 'is_available') this.isAvailable,
       @JsonKey(name: 'loan_fee') this.loanFee,
       @JsonKey(name: 'cost_benefit') this.costBenefit,
       @JsonKey(name: 'profile_image') this.profileImage,
@@ -518,6 +533,9 @@ class _$_LoanData implements _LoanData {
   @JsonKey(name: 'button_text')
   final String? buttonText;
   @override
+  @JsonKey(name: 'is_available')
+  final int? isAvailable;
+  @override
   @JsonKey(name: 'loan_fee')
   final String? loanFee;
   @override
@@ -541,7 +559,7 @@ class _$_LoanData implements _LoanData {
 
   @override
   String toString() {
-    return 'LoanData(id: $id, name: $name, image: $image, initRate: $initRate, cardReachTo: $cardReachTo, cardRepayment: $cardRepayment, title: $title, description: $description, buttonText: $buttonText, loanFee: $loanFee, costBenefit: $costBenefit, profileImage: $profileImage, loanRequirement: $loanRequirement, bankId: $bankId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'LoanData(id: $id, name: $name, image: $image, initRate: $initRate, cardReachTo: $cardReachTo, cardRepayment: $cardRepayment, title: $title, description: $description, buttonText: $buttonText, isAvailable: $isAvailable, loanFee: $loanFee, costBenefit: $costBenefit, profileImage: $profileImage, loanRequirement: $loanRequirement, bankId: $bankId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -562,6 +580,8 @@ class _$_LoanData implements _LoanData {
                 .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.buttonText, buttonText) &&
+            const DeepCollectionEquality()
+                .equals(other.isAvailable, isAvailable) &&
             const DeepCollectionEquality().equals(other.loanFee, loanFee) &&
             const DeepCollectionEquality()
                 .equals(other.costBenefit, costBenefit) &&
@@ -587,6 +607,7 @@ class _$_LoanData implements _LoanData {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(buttonText),
+      const DeepCollectionEquality().hash(isAvailable),
       const DeepCollectionEquality().hash(loanFee),
       const DeepCollectionEquality().hash(costBenefit),
       const DeepCollectionEquality().hash(profileImage),
@@ -619,6 +640,7 @@ abstract class _LoanData implements LoanData {
           final String? title,
           final String? description,
           @JsonKey(name: 'button_text') final String? buttonText,
+          @JsonKey(name: 'is_available') final int? isAvailable,
           @JsonKey(name: 'loan_fee') final String? loanFee,
           @JsonKey(name: 'cost_benefit') final String? costBenefit,
           @JsonKey(name: 'profile_image') final String? profileImage,
@@ -652,6 +674,9 @@ abstract class _LoanData implements LoanData {
   @override
   @JsonKey(name: 'button_text')
   String? get buttonText;
+  @override
+  @JsonKey(name: 'is_available')
+  int? get isAvailable;
   @override
   @JsonKey(name: 'loan_fee')
   String? get loanFee;

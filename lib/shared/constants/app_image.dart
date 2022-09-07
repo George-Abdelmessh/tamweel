@@ -1,21 +1,23 @@
 /// This class for all app assets image
 
 class AppImage {
-  // Example
-  static String firstPage = 'assets/images/page_one.png';
-  static String secondPage = 'assets/images/page_two.png';
+  static String imageBase = 'assets/images/';
+  static String logoBase = 'assets/images/';
 
-  ///App Logo Image Path, This logo has the App icon and App name.
-  static String appLogoIconText = 'assets/logos/app_logo_icon_text.png';
+  static String firstPage = '${imageBase}page_one.png';
+  static String secondPage = '${imageBase}page_two.png';
 
   ///Image displayed in login options screen.
-  static String loginOptionsImage = 'assets/images/login_options.png';
+  static String loginOptionsImage = '${imageBase}login_options.png';
 
   ///Image displayed in login screen
-  static String loginWelcomeImage = 'assets/images/login_welcome.png';
+  static String loginWelcomeImage = '${imageBase}login_welcome.png';
 
   ///Image displayed in signup screen
-  static String signupWelcomeImage = 'assets/images/signup_welcome.png';
-  // ///background displayed in login screen
-  // static String loginBackgroundImage = 'assets/images/login_background.png';
+  static String signupWelcomeImage = '${imageBase}signup_welcome.png';
+
+  static String comingSoon = '${imageBase}soon.png';
+
+  ///App Logo Image Path, This logo has the App icon and App name.
+  static String appLogoIconText = '${logoBase}app_logo_icon_text.png';
 }
