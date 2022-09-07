@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
@@ -14,8 +15,8 @@ final groupButtonProvider = StateProvider<Map<int, Map<String, int>>>((ref) {
   return {};
 });
 
-class QAGroupButton extends ConsumerStatefulWidget {
-  const QAGroupButton({
+class QAGroupButtonWithTree extends ConsumerStatefulWidget {
+  const QAGroupButtonWithTree({
     super.key,
     required this.data,
     required this.title,
@@ -25,10 +26,10 @@ class QAGroupButton extends ConsumerStatefulWidget {
   final String title;
 
   @override
-  ConsumerState<QAGroupButton> createState() => _QAGroupButtonState();
+  ConsumerState<QAGroupButtonWithTree> createState() => _QAGroupButtonState();
 }
 
-class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
+class _QAGroupButtonState extends ConsumerState<QAGroupButtonWithTree> {
   final GroupButtonController _controller = GroupButtonController();
   int? stepProvider;
 
@@ -85,58 +86,68 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
               widget.title,
               widget.data['options'][index],
             );
-            if (childEnable ==
-                    ref.watch(groupButtonProvider.notifier)
-                        .state[stepProvider]![widget.title]) {
-              if (widget.data['child']['type'] as int == 5 &&
-                  childEnable !=
-                      ref.watch(groupButtonProvider.notifier)
-                          .state[stepProvider]![widget.title]) {
-                /// ToDo unComment to insert address auto
-                // apply.setAnswer(
-                //   stepProvider!,
-                //   widget.title,
-                //   ref.watch(userDetailsProvider)!.address,
-                // );
-              } else {
-                switch (widget.data['child']['type'] as int) {
-                  case 0:
-                    ref
-                        .read(requiredWidgetsProvider.notifier)
-                        .setRequiredWidgets(
-                          QAStringStringOneLine(
-                            step: stepProvider!,
-                            title: widget.data['child']['title'].toString(),
-                            hint: widget.data['child']['title'].toString(),
-                            validationType: FormType.name,
-                          ),
-                        );
-                    break;
-                  case 5:
-                    ref
-                        .read(requiredWidgetsProvider.notifier)
-                        .setRequiredWidgets(
-                          QAStringStringOneLine(
-                            step: stepProvider!,
-                            title: widget.data['child']['title'].toString(),
-                            hint: widget.data['child']['title'].toString(),
-                            validationType: FormType.address,
-                          ),
-                        );
-                    break;
-                  case 9:
-                  case 10:
-                    ref
-                        .read(requiredWidgetsProvider.notifier)
-                        .setRequiredWidgets(
-                          QAStringNumber(
-                            step: stepProvider!,
-                            title: widget.data['child']['title'].toString(),
-                            hint: widget.data['child']['title'].toString(),
-                            validationType: FormType.number,
-                          ),
-                        );
-                    break;
+            if (childEnable.contains(
+                  ref.watch(groupButtonProvider.notifier)
+                      .state[stepProvider]![widget.title],
+                ) ==
+                true) {
+              for (int i = 0; i < (widget.data['map'].length as int); i++) {
+                for (int x = 0;
+                    x <
+                        (widget.data['map'][i][(i + 1).toString()].length
+                            as int);
+                    x++) {
+                  switch (widget.data['map'][i][(i + 1).toString()][x]
+                      ['type']) {
+                    case 0:
+                      ref.read(requiredWidgetsProvider.notifier)
+                          .setRequiredWidgets(
+                            QAStringStringOneLine(
+                              step: stepProvider!,
+                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              validationType: FormType.name,
+                            ),
+                          );
+                      break;
+                    case 5:
+                      ref.read(requiredWidgetsProvider.notifier)
+                          .setRequiredWidgets(
+                            QAStringStringOneLine(
+                              step: stepProvider!,
+                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              validationType: FormType.address,
+                            ),
+                          );
+                      break;
+                    case 9:
+                    case 10:
+                    ref.read(requiredWidgetsProvider.notifier)
+                          .setRequiredWidgets(
+                            QAStringNumber(
+                              step: stepProvider!,
+                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                              validationType: FormType.number,
+                            ),
+                          );
+                      break;
+                    case 12:
+                      ref.read(requiredWidgetsProvider.notifier)
+                          .setRequiredWidgets(
+                            QAGroupButton(
+                              data: widget.data['map'][i][(i + 1).toString()][x] as Map,
+                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
+                            ),
+                          );
+                      break;
+                    default:
+                      ref.read(requiredWidgetsProvider.notifier)
+                          .setRequiredWidgets(
+                            Container(),
+                          );
+                  }
                 }
               }
             }
@@ -169,11 +180,13 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
         ),
         if (ref.watch(groupButtonProvider.notifier).state[stepProvider] !=
                 null &&
-            widget.data['childEnable'] ==
-                ref
-                    .watch(groupButtonProvider.notifier)
-                    .state[stepProvider]![widget.title])
-          requiredWidgets.widget
+            childEnable.contains(
+                  ref.watch(groupButtonProvider.notifier)
+                      .state[stepProvider]![widget.title],
+                ) == true)
+          Column(
+            children: requiredWidgets.widget,
+          )
         else
           Container(),
         SizedBox(
@@ -184,18 +197,22 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButton> {
   }
 }
 
-class RequiredWidgets extends StateNotifier<Widget> {
-  RequiredWidgets() : super(Container());
+class RequiredWidgets extends StateNotifier<dynamic> {
+  RequiredWidgets() : super([]);
 
-  Widget widget = Container();
+  List<Widget> widget = [];
 
   void setRequiredWidgets(Widget value) {
-    widget = value;
+    widget.add(value);
     return;
+  }
+
+  List<Widget> getRequiredWidgets() {
+    return widget;
   }
 }
 
 final requiredWidgetsProvider =
-    StateNotifierProvider.autoDispose<RequiredWidgets, Widget>(
+    StateNotifierProvider.autoDispose<RequiredWidgets, dynamic>(
   (ref) => RequiredWidgets(),
 );

@@ -13,10 +13,6 @@ class HomeBanners extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bannerList = ref.watch(bannersProvider);
     return bannerList.when(
-      // loading: () => const Center(
-      //   child: CircularProgressIndicator(),
-      // ),
-      // error: (error, stack) => Center(child: Text('Error: $error')),
       loading: () => Container(),
       error: (error, stack) => Container(),
       data: (snapshot) {

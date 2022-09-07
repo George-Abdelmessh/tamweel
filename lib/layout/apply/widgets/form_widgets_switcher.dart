@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/bank_selector.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/dropdown.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/group_button.dart';
+import 'package:tamweel/layout/apply/form_QA_widgets/group_button_with_tree.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/range_slider_button.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_numer.dart';
 import 'package:tamweel/layout/apply/form_QA_widgets/string_string.dart';
@@ -149,7 +150,7 @@ class FormWidgetsSwitcher extends ConsumerWidget {
       case 26:
         return Container();
       case 27:
-        return QAGroupButton(
+        return QAGroupButtonWithTree(
           title: widget['title'] as String,
           data: widget,
         );
