@@ -47,9 +47,7 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButtonWithTree> {
         widget.title: 0
       };
     });
-    ref.read(requiredWidgetsProvider.notifier).setRequiredWidgets(
-          Container(),
-        );
+    ref.read(requiredWidgetsProvider.notifier).widget = [];
   }
 
   @override
@@ -81,73 +79,93 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButtonWithTree> {
             setState(() {
               groupButtonData.state[stepProvider!] = {widget.title: index};
             });
+            ref.read(requiredWidgetsProvider.notifier).widget = [];
             apply.setAnswer(
               stepProvider!,
               widget.title,
               widget.data['options'][index],
             );
             if (childEnable.contains(
-                  ref.watch(groupButtonProvider.notifier)
+                  ref
+                      .watch(groupButtonProvider.notifier)
                       .state[stepProvider]![widget.title],
                 ) ==
                 true) {
-              for (int i = 0; i < (widget.data['map'].length as int); i++) {
-                for (int x = 0;
-                    x <
-                        (widget.data['map'][i][(i + 1).toString()].length
-                            as int);
-                    x++) {
-                  switch (widget.data['map'][i][(i + 1).toString()][x]
-                      ['type']) {
-                    case 0:
-                      ref.read(requiredWidgetsProvider.notifier)
-                          .setRequiredWidgets(
-                            QAStringStringOneLine(
-                              step: stepProvider!,
-                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              validationType: FormType.name,
-                            ),
-                          );
-                      break;
-                    case 5:
-                      ref.read(requiredWidgetsProvider.notifier)
-                          .setRequiredWidgets(
-                            QAStringStringOneLine(
-                              step: stepProvider!,
-                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              validationType: FormType.address,
-                            ),
-                          );
-                      break;
-                    case 9:
-                    case 10:
-                    ref.read(requiredWidgetsProvider.notifier)
-                          .setRequiredWidgets(
-                            QAStringNumber(
-                              step: stepProvider!,
-                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              hint: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                              validationType: FormType.number,
-                            ),
-                          );
-                      break;
-                    case 12:
-                      ref.read(requiredWidgetsProvider.notifier)
-                          .setRequiredWidgets(
-                            QAGroupButton(
-                              data: widget.data['map'][i][(i + 1).toString()][x] as Map,
-                              title: widget.data['map'][i][(i + 1).toString()][x]['title'].toString(),
-                            ),
-                          );
-                      break;
-                    default:
-                      ref.read(requiredWidgetsProvider.notifier)
-                          .setRequiredWidgets(
-                            Container(),
-                          );
-                  }
+              for (int x = 0;
+                  x <
+                      (widget.data['map'][index][(index + 1).toString()].length
+                          as int);
+                  x++) {
+                switch (widget.data['map'][index][(index + 1).toString()][x]
+                    ['type']) {
+                  case 0:
+                    ref
+                        .read(requiredWidgetsProvider.notifier)
+                        .setRequiredWidgets(
+                          QAStringStringOneLine(
+                            step: stepProvider!,
+                            title: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            hint: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            validationType: FormType.name,
+                          ),
+                        );
+                    break;
+                  case 5:
+                    ref
+                        .read(requiredWidgetsProvider.notifier)
+                        .setRequiredWidgets(
+                          QAStringStringOneLine(
+                            step: stepProvider!,
+                            title: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            hint: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            validationType: FormType.address,
+                          ),
+                        );
+                    break;
+                  case 9:
+                  case 10:
+                    ref
+                        .read(requiredWidgetsProvider.notifier)
+                        .setRequiredWidgets(
+                          QAStringNumber(
+                            step: stepProvider!,
+                            title: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            hint: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                            validationType: FormType.number,
+                          ),
+                        );
+                    break;
+                  case 12:
+                    ref
+                        .read(requiredWidgetsProvider.notifier)
+                        .setRequiredWidgets(
+                          QAGroupButton(
+                            data: widget.data['map'][index]
+                                [(index + 1).toString()][x] as Map,
+                            title: widget.data['map'][index]
+                                    [(index + 1).toString()][x]['title']
+                                .toString(),
+                          ),
+                        );
+                    break;
+                  default:
+                    ref
+                        .read(requiredWidgetsProvider.notifier)
+                        .setRequiredWidgets(
+                          Container(),
+                        );
                 }
               }
             }
@@ -181,9 +199,11 @@ class _QAGroupButtonState extends ConsumerState<QAGroupButtonWithTree> {
         if (ref.watch(groupButtonProvider.notifier).state[stepProvider] !=
                 null &&
             childEnable.contains(
-                  ref.watch(groupButtonProvider.notifier)
+                  ref
+                      .watch(groupButtonProvider.notifier)
                       .state[stepProvider]![widget.title],
-                ) == true)
+                ) ==
+                true)
           Column(
             children: requiredWidgets.widget,
           )
