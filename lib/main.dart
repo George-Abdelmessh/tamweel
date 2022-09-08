@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,7 @@ Future<void> initPlatformState() async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //TODO: IOS Orientation in XCode
+  HttpOverrides.global = MyHttpOverrides();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -97,5 +100,13 @@ class _MyAppState extends State<MyApp> {
                 : const LoginOptionsScreen(),
       ),
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
   }
 }

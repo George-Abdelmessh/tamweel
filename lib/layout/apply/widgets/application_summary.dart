@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tamweel/providers/apply/apply_provider.dart';
+import 'package:tamweel/providers/apply/apply_request_provider.dart';
+import 'package:tamweel/providers/auth/user_details_provider.dart';
 import 'package:tamweel/shared/constants/app_constants.dart';
 import 'package:tamweel/shared/custom_widgets/custom_wide_button.dart';
 import 'package:tamweel/shared/network/end_points.dart';
@@ -15,12 +17,14 @@ class ApplicationSummary extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final stepLoader = ref.watch(loadStepsProvider);
     final stepper = ref.watch(applyStateProvider.notifier);
     final state = ref.watch(applyStateProvider);
     final loanData = ref.watch(loanDataProvider);
+    final userData = ref.watch(userDetailsProvider);
 
     final answers = state.answers['steps'][state.steps.length - 1] as Map;
+    final images = state.answers['images[]'];
+
 
     // final applyState = ref.watch(applyStateProvider);
     return SingleChildScrollView(
@@ -127,7 +131,14 @@ class ApplicationSummary extends ConsumerWidget {
                         child: CustomWideButton(
                           title: 'Apply'.tr(),
                           onTap: () {
-                            //TODO: Post Request
+                            ///TODO: Post Request
+                            ref.read(applyLoanRequestProvider.notifier)
+                                .applyLoanRequest(
+                                  userId: userData!.id,
+                                  loanId: loanData.id!,
+                                  steps: answers,
+                                  images: images,
+                                );
                             stepper.nextStep();
                           },
                         ),

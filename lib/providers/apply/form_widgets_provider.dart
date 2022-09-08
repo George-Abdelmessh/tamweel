@@ -33,22 +33,9 @@ class FormWidgets extends ConsumerWidget {
             physics: AppHelper.neverScroll,
             itemCount: map.length + 1,
             itemBuilder: (context, index) {
-              //TODO: return items = genereate widgets of [map] method
               // ignore: avoid_dynamic_calls
               return FormWidgetsSwitcher(index: index,);
             },
-
-            // return Container(
-            //   color: Color.fromRGBO(
-            //     Random().nextInt(100) + 150,
-            //     Random().nextInt(100) + 150,
-            //     Random().nextInt(100) + 150,
-            //     1.0,
-            //   ),
-            //   width: AppSize.width,
-            //   height: Random().nextDouble() * 200 + 25,
-            //   child: Center(child: Text(index.toString())),
-            // );
           ),
         ),
       ),

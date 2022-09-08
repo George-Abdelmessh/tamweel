@@ -13,6 +13,7 @@ class DioHelper {
       BaseOptions(
         baseUrl: '${AppEndPoints.baseUrl}/api/',
         receiveDataWhenStatusError: true,
+          followRedirects: false,
       ),
     );
     providerContainer = ProviderContainer();
@@ -53,12 +54,15 @@ class DioHelper {
       'Content-Type': 'application/json',
       'lang': lang,
       'Authorization': token,
+      'followRedirects': false,
+      'validateStatus': (status) { return status < 500; }
     };
-    return dio!.post(
+    var response =  dio!.post(
       url,
       queryParameters: query,
       data: data,
     );
+    return response;
   }
 
   static Future<Response> putDate({

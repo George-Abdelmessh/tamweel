@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls, avoid_bool_literals_in_conditional_expressions
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -190,12 +192,6 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.banners).then((response) {
-      // //Todo: Remove bellow for loob To get real images
-      // //ignore: argument_type_not_assignable
-      // for (var i = 0; i < response.data['data'].length; i++) {
-      //   response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
-      // }
-
       banners = BannerModel.fromJson(
         response.data as Map<String, dynamic>,
       ).data;
@@ -208,11 +204,6 @@ class ApiRepo {
 
     /// call get request
     await DioHelper.getDate(url: AppEndPoints.mostWantedLoans).then((response) {
-      // //Todo: Remove bellow for loob To get real images
-      // //ignore: argument_type_not_assignable
-      // for (var i = 0; i < response.data['data'].length; i++) {
-      //   response.data['data'][i]['image'] = 'https://picsum.photos/2000/1000';
-      // }
       mostWantedLoans = LoanModel.fromJson(
         response.data as Map<String, dynamic>,
       ).data;
@@ -290,5 +281,32 @@ class ApiRepo {
         await DioHelper.getDate(url: AppEndPoints.loanSteps, query: query);
 
     return response.data['data'][0] as Map<String, dynamic>;
+  }
+
+  static Future<void> applyLoanRequest({
+    required int userId,
+    required int loanId,
+    required Map<dynamic, dynamic> steps,
+    required dynamic images,
+  }) async {
+    final String fileName = images[0].path.split('/').last.toString();
+    final data = FormData.fromMap({
+      'user_id': userId,
+      'loan_id': loanId,
+      'steps': steps,
+      'image[]': await MultipartFile.fromFile(
+        images.path.toString(),
+        filename: fileName,
+      ),
+    });
+
+    try {
+      await DioHelper.dio!.post(
+        AppEndPoints.baseUrl + AppEndPoints.loanRequest,
+        data: data,
+      );
+    } on DioError catch (e) {
+      print('error ' + e.error.toString());
+    }
   }
 }

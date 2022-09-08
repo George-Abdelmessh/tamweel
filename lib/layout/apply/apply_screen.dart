@@ -161,7 +161,7 @@ class _ApplyScreenState extends ConsumerState<ApplyScreen> {
                                   child: CustomWideButton(
                                     title: 'Navigation.Next'.tr(),
                                     onTap: () {
-                                      //TODO: remove comment to validate the form
+                                      ///TODO: remove comment to validate the form
                                       // if (formKey.currentState!.validate()) {
                                       //   stepper.nextStep();
                                       // }
