@@ -25,7 +25,7 @@ class AuthNotifier extends StateNotifier<AppUser> {
       final response = await ApiRepo.login(
         email: email,
         password: password,
-        showAllert: showAllert,
+        showAlert: showAllert,
       );
 
       if (response.item1) {

@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_dynamic_calls, avoid_bool_literals_in_conditional_expressions
 
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -148,12 +146,12 @@ class ApiRepo {
   }
 
   ///User Login Method
-  /// ? If Login Was Succesfull, Return True and success message
+  /// ? If Login Was Successfully, Return True and success message
   /// ? else shows a dialog with error message
   static Future<Tuple5<bool, String, int, String, String>> login({
     required String email,
     required String password,
-    bool? showAllert,
+    bool? showAlert,
   }) async {
     final data = {
       'email': email,
@@ -166,7 +164,7 @@ class ApiRepo {
     } on DioError catch (e) {
       //show error message
       // print(e.toString());
-      if (showAllert ?? true) _showAlertDialog(e.toString());
+      if (showAlert ?? true) _showAlertDialog(e.toString());
       return Tuple5(
         false,
         e.toString(),
@@ -219,10 +217,10 @@ class ApiRepo {
     }
     List<LoanData>? loans;
 
-    final querydata = {'name': query};
+    final queryData = {'name': query};
     await DioHelper.getDate(
       url: AppEndPoints.search,
-      query: querydata,
+      query: queryData,
     ).then((response) {
       loans = LoanModel.fromJson(response.data as Map<String, dynamic>).data;
     });
@@ -287,26 +285,29 @@ class ApiRepo {
     required int userId,
     required int loanId,
     required Map<dynamic, dynamic> steps,
-    required dynamic images,
+    required List images,
   }) async {
-    final String fileName = images[0].path.split('/').last.toString();
     final data = FormData.fromMap({
       'user_id': userId,
       'loan_id': loanId,
-      'steps': steps,
-      'image[]': await MultipartFile.fromFile(
-        images.path.toString(),
-        filename: fileName,
-      ),
+      'steps': steps.toString(),
+      'image[]': [
+        images.map((e) async {
+          final fileName = e.path.split('/').last.toString();
+          await MultipartFile.fromFile(
+            e.path.toString(),
+            filename: fileName,
+          );
+        })
+      ],
     });
-
     try {
-      await DioHelper.dio!.post(
-        AppEndPoints.baseUrl + AppEndPoints.loanRequest,
+     await DioHelper.dio!.post(
+        '${AppEndPoints.baseUrl}api/${AppEndPoints.loanRequest}',
         data: data,
       );
     } on DioError catch (e) {
-      print('error ' + e.error.toString());
+      print('error ${e.error}');
     }
   }
 }

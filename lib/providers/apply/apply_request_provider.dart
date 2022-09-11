@@ -12,7 +12,7 @@ class ApplyLoanRequestNotifier extends StateNotifier<void> {
     required int userId,
     required int loanId,
     required Map<dynamic,dynamic> steps,
-    required dynamic images,
+    required List images,
   }) async {
     return ApiRepo.applyLoanRequest(
       userId: userId,

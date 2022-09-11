@@ -62,7 +62,7 @@ class QAUploadImage extends HookConsumerWidget {
                         await _picker.pickImage(source: ImageSource.gallery);
                     if (image != null) {
                       applyStateNotifier
-                          .setImage(await MultipartFile.fromFile(image!.path));
+                          .setImage(image);
                       // set the uploadImageProvider[step]['title'] to true if that step is a valid key
                       if (ref.read(
                             uploadImageProvider,
